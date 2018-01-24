@@ -1,5 +1,6 @@
 <template lang="pug">
  #app
+  nav-bar
   img(src='./assets/logo.png')
   h1 {{ msg }}
   h2 Essential Links
@@ -25,8 +26,13 @@
 </template>
 
 <script>
+import NavBar from './components/shared/NavBar.vue'
+
 export default {
   name: 'app',
+  components: {
+    NavBar
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
