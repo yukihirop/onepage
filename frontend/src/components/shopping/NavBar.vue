@@ -8,7 +8,36 @@
       span
       span
       span
+
+    .nav-right.nav-menu
+      router-link.nav-item.is-tab(to='/',
+      exact-active-class='is-active') Shop
+
+      .nav-item.is-tab(:class="{'active-bottom-border': $route.path === '/cart'}")
+        .field.is-grouped
+          p.control
+            router-link.button.is-info(to='/cart')
+              span.icon
+                i.fa.fa-shopping-cart
+              span Checkout {{ itemsInCart }}
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+const namespace = 'shoppingModule'
+
+export default {
+  computed: {
+    ...mapGetters(namespace, {
+      products: 'cartProducts'
+    }),
+    itemsInCart () {
+      let cart = this.$store.getters[namespace + '/cartProducts']
+      return cart.reduce((accum, item) => accum + item.quantity, 0)
+    }
+  }
+}
+</script>
 
 <style lang='stylus'>
 .nav
