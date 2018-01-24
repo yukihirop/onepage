@@ -26,7 +26,15 @@ const shoppingModule = {
       }
     ]
   },
-  actions: {},
+
+  actions: {
+    addToCart ({ commit }, product) {
+      commit(types.ADD_TO_CART, {
+        id: product.id
+      })
+    }
+  },
+  
   getters: {},
   mutations: {}
 }
