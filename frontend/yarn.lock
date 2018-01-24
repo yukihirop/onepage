@@ -5505,6 +5505,10 @@ void-elements@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
+vue-bulma@^0.0.35:
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/vue-bulma/-/vue-bulma-0.0.35.tgz#5195f35313b50df9f56c9db74afa140ba2b0e24a"
+
 vue-functional-data-merge@^2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/vue-functional-data-merge/-/vue-functional-data-merge-2.0.4.tgz#b045ca57097f31446db6de15c87642b6e88ca7c2"
