@@ -1,6 +1,7 @@
 <template lang="pug">
  #app
   nav-bar
+  shopping-nav-bar
   img(src='./assets/logo.png')
   h1 {{ msg }}
   h2 Essential Links
@@ -27,11 +28,13 @@
 
 <script>
 import NavBar from './components/shared/NavBar.vue'
+import ShoppingNavBar from './components/shopping/NavBar.vue'
 
 export default {
   name: 'app',
   components: {
-    NavBar
+    NavBar,
+    ShoppingNavBar
   },
   data () {
     return {
