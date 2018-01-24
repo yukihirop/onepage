@@ -35,7 +35,22 @@ const shoppingModule = {
     }
   },
 
-  getters: {},
+  getters: {
+    allProducts: state => state.all,
+    getNumberOfProducts: state => (state.all) ? state.all.length : 0,
+    cartProducts: state => {
+      return state.added.map(({ id, quantity }) => {
+        const product = state.all.find(p => p.id === id)
+
+        return {
+          name: product.name,
+          price: product.price,
+          quantity
+        }
+      })
+    }
+  },
+  
   mutations: {
     [types.ADD_TO_CART] (state, { id }) {
       const record = state.added.find(p => p.id === id)
