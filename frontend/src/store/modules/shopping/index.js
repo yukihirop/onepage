@@ -1,3 +1,5 @@
+import * as types from './mutation-types'
+
 const shoppingModule = {
   namespaced: true,
   state: {
