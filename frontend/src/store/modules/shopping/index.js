@@ -34,9 +34,22 @@ const shoppingModule = {
       })
     }
   },
-  
+
   getters: {},
-  mutations: {}
+  mutations: {
+    [types.ADD_TO_CART] (state, { id }) {
+      const record = state.added.find(p => p.id === id)
+
+      if (!record) {
+        state.added.push({
+          id,
+          quantity: 1
+        })
+      } else {
+        record.quantity++
+      }
+    }
+  }
 }
 
 export default shoppingModule
