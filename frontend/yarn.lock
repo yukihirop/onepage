@@ -758,7 +758,7 @@ babel-plugin-transform-regenerator@^6.22.0:
   dependencies:
     regenerator-transform "^0.10.0"
 
-babel-plugin-transform-runtime@^6.15.0:
+babel-plugin-transform-runtime@6.23.0, babel-plugin-transform-runtime@^6.15.0:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-6.23.0.tgz#88490d446502ea9b8e7efb0fe09ec4d99479b1ee"
   dependencies:
@@ -2397,7 +2397,7 @@ finalhandler@1.1.0:
     statuses "~1.3.1"
     unpipe "~1.0.0"
 
-find-babel-config@^1.1.0:
+find-babel-config@1.1.0, find-babel-config@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/find-babel-config/-/find-babel-config-1.1.0.tgz#acc01043a6749fec34429be6b64f542ebb5d6355"
   dependencies:
@@ -3606,6 +3606,15 @@ jest-validate@^22.1.2:
     jest-get-type "^22.1.0"
     leven "^2.1.0"
     pretty-format "^22.1.0"
+
+jest-vue-preprocessor@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/jest-vue-preprocessor/-/jest-vue-preprocessor-1.3.1.tgz#7161a4f1f66eee34c406476447c8cd709938ad75"
+  dependencies:
+    babel-plugin-transform-runtime "6.23.0"
+    find-babel-config "1.1.0"
+    typescript "2.5.3"
+    vue-property-decorator "6.0.0"
 
 jest-worker@^22.1.0:
   version "22.1.0"
@@ -5318,6 +5327,10 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+reflect-metadata@^0.1.10:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
+
 regenerate@^1.2.1:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.3.tgz#0c336d3980553d755c39b586ae3b20aa49c82b7f"
@@ -6283,6 +6296,10 @@ type-is@~1.6.15:
     media-typer "0.3.0"
     mime-types "~2.1.15"
 
+typescript@2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.3.tgz#df3dcdc38f3beb800d4bc322646b04a3f6ca7f0d"
+
 uglify-js@^2.6, uglify-js@^2.6.1, uglify-js@^2.8.29:
   version "2.8.29"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
@@ -6441,6 +6458,10 @@ vue-bulma@^0.0.35:
   version "0.0.35"
   resolved "https://registry.yarnpkg.com/vue-bulma/-/vue-bulma-0.0.35.tgz#5195f35313b50df9f56c9db74afa140ba2b0e24a"
 
+vue-class-component@^6.0.0:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-6.1.2.tgz#87ac0265b0db71a3f49f10d90e4f69f9be9c2fbd"
+
 vue-functional-data-merge@^2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/vue-functional-data-merge/-/vue-functional-data-merge-2.0.4.tgz#b045ca57097f31446db6de15c87642b6e88ca7c2"
@@ -6481,6 +6502,13 @@ vue-loader@^13.0.5:
     vue-hot-reload-api "^2.2.0"
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
+
+vue-property-decorator@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-6.0.0.tgz#bb651b293542e31db0d24f36f4b0250ef08d8515"
+  dependencies:
+    reflect-metadata "^0.1.10"
+    vue-class-component "^6.0.0"
 
 vue-router@^3.0.1:
   version "3.0.1"
