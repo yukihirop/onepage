@@ -7,7 +7,13 @@
     "test": {
       "presets": ["env", "stage-3"],
       "plugins": [
-        "dynamic-import-node"
+        "dynamic-import-node",
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": {
+            "@": "./src"
+          }
+        }]
       ]
     }
   }
