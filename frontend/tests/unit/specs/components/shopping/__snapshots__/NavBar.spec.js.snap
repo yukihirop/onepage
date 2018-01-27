@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar.vue storeを用意してのレンダリングのテスト 1`] = `
+<nav class="nav has-shadow" style="box-shadow: 0 1px 0 rgba(219,219,219,.3);">
+    <div class="nav-left">
+        <router-link to="/" class="nav-item">
+            <img src="../../assets/logo.png" alt="Bulma logo">
+        </router-link>
+    </div><span class="nav-toggle"><span></span><span></span><span></span></span>
+    <div class="nav-right nav-menu">
+        <router-link to="/" exact-active-class="is-active" class="nav-item is-tab">Shop</router-link>
+        <div class="nav-item is-tab">
+            <div class="field is-grouped">
+                <p class="control">
+                    <router-link to="/cart" class="button is-info"><span class="icon"><i class="fa fa-shopping-cart"></i></span><span>Checkout 10</span></router-link>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+`;
+
+exports[`NavBar.vue 初期状態のレンダリングのテスト 1`] = `
+<nav class="nav has-shadow" style="box-shadow: 0 1px 0 rgba(219,219,219,.3);">
+    <div class="nav-left">
+        <router-link to="/" class="nav-item">
+            <img src="../../assets/logo.png" alt="Bulma logo">
+        </router-link>
+    </div><span class="nav-toggle"><span></span><span></span><span></span></span>
+    <div class="nav-right nav-menu">
+        <router-link to="/" exact-active-class="is-active" class="nav-item is-tab">Shop</router-link>
+        <div class="nav-item is-tab">
+            <div class="field is-grouped">
+                <p class="control">
+                    <router-link to="/cart" class="button is-info"><span class="icon"><i class="fa fa-shopping-cart"></i></span><span>Checkout 0</span></router-link>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+`;
