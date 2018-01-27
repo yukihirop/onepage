@@ -17,20 +17,20 @@ describe('Cart.vue', () => {
 
   it('storeを用意してのレンダリングのテスト', () => {
     const mockedStore = {
-    modules: {
-      shoppingModule: {
-        namespaced: true,
-        getters: {
-            cartProducts: jest.fn().mockReturnValue(factoryCart.cartProducts),
+      modules: {
+        shoppingModule: {
+          namespaced: true,
+          getters: {
+            cartProducts: jest.fn().mockReturnValue(factoryCart.cartProducts)
           },
           methods: {
-           checkout (state) {
-             jest.fn()
-           }
-        },
+            checkout (state) {
+              jest.fn()
+            }
+          }
+        }
       }
     }
-  }
     const store = new Vuex.Store(mockedStore)
     const wrapper = shallow(Cart, { store })
     const template = wrapper.html()

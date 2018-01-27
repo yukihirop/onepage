@@ -28,7 +28,7 @@ describe('NavBar.vue', () => {
     }
     const mockedStore = {
       modules: {
-        shoppingModule,
+        shoppingModule
       },
       mocks: {
         $route

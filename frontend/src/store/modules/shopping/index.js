@@ -50,7 +50,7 @@ const shoppingModule = {
       })
     }
   },
-  
+
   mutations: {
     [types.ADD_TO_CART] (state, { id }) {
       const record = state.added.find(p => p.id === id)

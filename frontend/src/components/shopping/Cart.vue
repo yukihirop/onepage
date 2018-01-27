@@ -36,8 +36,7 @@ export default {
       products: 'cartProducts'
     }),
     total () {
-      return this.products.reduce((total, product) => 
-      {
+      return this.products.reduce((total, product) => {
         return total + product.price * product.quantity
       }, 0)
     }

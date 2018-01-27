@@ -3,14 +3,12 @@ import store from '@/store/modules/shopping/index'
 let state = store.state
 
 describe('shoppping - getters', () => {
-
   it('allProducts', () => {
     const result = store.getters.allProducts(state)
     expect(result).toEqual(state.all)
   })
 
   describe('getNumberOfProducts', () => {
-
     beforeEach(() => {
       state = store.state
     })
@@ -35,7 +33,6 @@ describe('shoppping - getters', () => {
   })
 
   describe('cartProducts', () => {
-
     beforeEach(() => {
       state = store.state
     })
@@ -49,19 +46,19 @@ describe('shoppping - getters', () => {
       const mockedState = {
         added: [
           { id: 'a', quantity: 10 },
-          { id: 'b', quantity: 20 },
+          { id: 'b', quantity: 20 }
         ],
         all: [
           { id: 'a', name: '', description: '', price: 0 },
           { id: 'b', name: '', description: '', price: 0 },
-          { id: 'c', name: '', description: '', price: 0 },
+          { id: 'c', name: '', description: '', price: 0 }
         ]
       }
       state = mockedState
       const received = store.getters.cartProducts(state)
       const expected = [
-        {"name": "", "price": 0, "quantity": 10},
-        {"name": "", "price": 0, "quantity": 20}
+        {'name': '', 'price': 0, 'quantity': 10},
+        {'name': '', 'price': 0, 'quantity': 20}
       ]
       expect(received).toEqual(expected)
     })
