@@ -20,18 +20,22 @@ describe('NavBar.vue', () => {
   })
 
   it('storeを用意してのレンダリングのテスト', () => {
+    const shoppingModule = {
+      namespaced: true,
+      getters: {
+        cartProducts: jest.fn().mockReturnValue(factoryCart.cartProducts)
+      }
+    }
     const mockedStore = {
-      shoppingModule: {
-        namespaced: true,
-        getters: {
-          cartProducts: jest.fn().mockReturnValue(factoryCart.cartProducts),
-        },
+      modules: {
+        shoppingModule,
       },
+      mocks: {
+        $route
+      }
     }
     const store = new Vuex.Store(mockedStore)
-    // 今現在、itemsInCartは名前空間で別れていないので、namespaced: trueなmockedStoreではmockできない
-    // TODO: 今後いい方法を考える
-    const wrapper = shallow(NavBar, { store, localVue, mocks: { $route }, computed: { itemsInCart: jest.fn().mockReturnValue(10)}})
+    const wrapper = shallow(NavBar, { store, localVue })
     const template = wrapper.html()
     expect(template).toMatchSnapshot()
   })

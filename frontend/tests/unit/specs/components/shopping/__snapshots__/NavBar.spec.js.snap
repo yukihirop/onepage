@@ -12,7 +12,7 @@ exports[`NavBar.vue storeを用意してのレンダリングのテスト 1`] = 
         <div class="nav-item is-tab">
             <div class="field is-grouped">
                 <p class="control">
-                    <router-link to="/cart" class="button is-info"><span class="icon"><i class="fa fa-shopping-cart"></i></span><span>Checkout 10</span></router-link>
+                    <router-link to="/cart" class="button is-info"><span class="icon"><i class="fa fa-shopping-cart"></i></span><span>Checkout 60</span></router-link>
                 </p>
             </div>
         </div>
