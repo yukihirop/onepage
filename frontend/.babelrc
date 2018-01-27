@@ -1,0 +1,21 @@
+{
+  "presets": [
+    ["env", { "modules": false }],
+    "stage-3"
+  ],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-3"],
+      "plugins": [
+        "dynamic-import-node",
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": {
+            "@": "./src",
+            "@specs": "./tests/unit/specs"
+          }
+        }]
+      ]
+    }
+  }
+}
