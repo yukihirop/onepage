@@ -29,7 +29,7 @@ describe('Products.vue', () => {
       }
     }
     const store = new Vuex.Store(mockedStore)
-    const wrapper = shallow(Products, { store, localVue})
+    const wrapper = shallow(Products, { store, localVue })
     const template = wrapper.html()
     expect(template).toMatchSnapshot()
   })

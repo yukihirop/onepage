@@ -23,7 +23,7 @@ describe('shopping - mutations', () => {
     it('カートに商品が無い時', () => {
       state = mockedState
       const targetId = 'c'
-      store.mutations.ADD_TO_CART(state, { id: targetId})
+      store.mutations.ADD_TO_CART(state, { id: targetId })
       const received = state.added.length
       const expected = 3
       // expect { subject }.toChange(state.added.length).from(2).to(3)
@@ -34,7 +34,7 @@ describe('shopping - mutations', () => {
     it('カートに商品が既にある場合', () => {
       state = mockedState
       const targetId = 'a'
-      store.mutations.ADD_TO_CART(state, { id: targetId})
+      store.mutations.ADD_TO_CART(state, { id: targetId })
       const received = state.added[0]['quantity']
       const expected = 11
       expect(received).toEqual(expected)
