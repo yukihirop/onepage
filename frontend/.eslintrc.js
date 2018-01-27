@@ -3,6 +3,7 @@
 // https://garafu.blogspot.jp/2017/02/eslint-rules-jp.html
 
 module.exports = {
+    root: true,
     extends: "standard",
     parser: 'babel-eslint',
     env: {
