@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import { shallow, createLocalVue } from 'vue-test-utils'
 import Products from '@/components/shopping/Products.vue'
 import store from '@/store'
+import factoryProducts from '@specs/factories/components/shopping/Products'
 
 const localVue = createLocalVue()
 
@@ -20,26 +21,7 @@ describe('Products.vue', () => {
         shoppingModule: {
           namespaced: true,
           getters: {
-            allProducts: jest.fn().mockReturnValue([
-              {
-                id: '1',
-                name: 'a',
-                description: 'A',
-                price: 1
-              },
-              {
-                id: '2',
-                name: 'b',
-                description: 'B',
-                price: 2
-              },
-              {
-                id: '3',
-                name: 'c',
-                description: 'C',
-                price: 3
-              },
-              ]),
+            allProducts: jest.fn().mockReturnValue(factoryProducts.allProducts),
             getNumberOfProducts: jest.fn().mockReturnValue(3)
           },
           methods: jest.fn()

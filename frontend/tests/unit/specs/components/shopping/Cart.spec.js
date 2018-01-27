@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import { shallow, createLocalVue } from 'vue-test-utils'
 import Cart from '@/components/shopping/Cart.vue'
 import store from '@/store'
+import factoryCart from '@specs/factories/components/shopping/Cart'
 
 const localVue = createLocalVue()
 
@@ -20,23 +21,7 @@ describe('Cart.vue', () => {
       shoppingModule: {
         namespaced: true,
         getters: {
-            cartProducts: jest.fn().mockReturnValue([
-              {
-                name: 'a',
-                price: 1,
-                quantity: 10
-              },
-              {
-                name: 'b',
-                price: 2,
-                quantity: 20
-              },
-              {
-                name: 'c',
-                price: 3,
-                quantity: 30
-              },
-            ]),
+            cartProducts: jest.fn().mockReturnValue(factoryCart.cartProducts),
           },
           methods: {
            checkout (state) {
