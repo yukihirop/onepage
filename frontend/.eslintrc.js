@@ -7,6 +7,13 @@ module.exports = {
       browser: true,
       node: true
     },
+    globals: {
+      jest: false,
+      expect: false,
+      describe: false,
+      it: false,
+      beforeEach: false
+    },
     parserOptions: {
       sourceType: 'module',
       ecmaFeatures: {
