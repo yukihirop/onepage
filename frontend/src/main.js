@@ -9,6 +9,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
 
+/* eslint no-new: 0 */
 new Vue({
   el: '#app',
   router,
