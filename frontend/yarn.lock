@@ -6929,6 +6929,10 @@ void-elements@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
+vue-affix@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/vue-affix/-/vue-affix-0.2.4.tgz#4f599f10517cab95a2d628029f91edb83316afe7"
+
 vue-bulma@^0.0.35:
   version "0.0.35"
   resolved "https://registry.yarnpkg.com/vue-bulma/-/vue-bulma-0.0.35.tgz#5195f35313b50df9f56c9db74afa140ba2b0e24a"
