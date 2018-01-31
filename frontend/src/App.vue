@@ -1,24 +1,16 @@
 <template lang="pug">
  #app
   nav-bar
-  shopping-nav-bar
   router-view
 </template>
 
 <script>
 import NavBar from './components/shared/NavBar.vue'
-import ShoppingNavBar from './components/shopping/NavBar.vue'
 
 export default {
   name: 'app',
   components: {
-    NavBar,
-    ShoppingNavBar
-  },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+    NavBar
   }
 }
 </script>
@@ -30,7 +22,6 @@ export default {
   -moz-osx-font-smoothing: grayscale
   text-align: center
   color: #2c3e50
-  margin-top: 60px
 h1, h2
   font-weight: normal
 ul
