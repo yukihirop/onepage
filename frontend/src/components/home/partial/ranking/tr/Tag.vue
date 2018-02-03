@@ -1,16 +1,18 @@
 <template lang="pug">
-tr(style="padding-bottom: 0px;")
-  td
-    p(style="margin-top: 10px;") {{ rank }}
-  td(style="width: 64px;")
-    img(:src='tagImageSrc', style="width: 32px;margin-top: 10px;")
-  td
-    b
-      | {{ tagname }}
-  td
-    b {{ posts }}
-    br
-    small posts
+.panel-block
+  .tag-content
+    .tag-rank
+      p(style="margin-top: 10px;") {{ rank }}
+    .tag-image(style="width: 64px;")
+      img(:src='tagImageSrc', style="width: 32px;margin-top: 10px;")
+    .tag-name
+      b
+        | {{ tagname }}
+    .tag-post
+      .tag-post-posts
+        b {{ posts }}
+      .tag-post-label
+        small posts
 </template>
 
 <script>
@@ -41,3 +43,37 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="stylus">
+.panel-block
+  background-color: white
+
+.tag-content
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+  width: 100%
+  
+  .tag-rank
+    width: 20px
+  
+  .tag-name
+    width:100px
+    text-align: left
+    padding-top: 10px
+    padding-bottom: 10px
+  
+  .tag-post
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-left: auto
+    
+    .tag-post-posts
+      width: 50px
+      text-align: left
+    .tag-post-label
+      width: 50px
+      text-align:left
+</style>
