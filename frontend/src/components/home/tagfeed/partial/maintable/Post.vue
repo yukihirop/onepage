@@ -3,11 +3,11 @@
   .post-left
     .post-image
       figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/64x64.png', alt='Placeholder image')
+        img(:src='profileImageSrc', alt='Placeholder image')
   .post-right
     .post-action
       figure.image.is-16x16
-        img(src='https://bulma.io/images/placeholders/64x64.png', alt='Placeholder image')
+        img(:src='tagImageSrc', alt='Placeholder image')
       .post-message
         b.post-tag {{ tag }}
         |  に新しい投稿がありました。
@@ -24,6 +24,14 @@ export default {
     PostContent
   },
   props: {
+    profileImageSrc: {
+      type: String,
+      required: true
+    },
+    tagImageSrc: {
+      type: String,
+      required: true
+    },
     tag: {
       type: String,
       required: true
@@ -43,6 +51,12 @@ export default {
     summary: {
       type: String,
       required: true
+    }
+  },
+  data(){
+    return {
+      src: require(this.profileImageSrc),
+      src: require(this.tagImageSrc)
     }
   }
 }
