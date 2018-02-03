@@ -3,7 +3,7 @@
   .chat-left
     .chat-image
       figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/64x64.png', alt='Placeholder image')
+        img(:src='profileImageSrc', alt='Placeholder image')
   .chat-right
     .chat-action
       .panel-icon
@@ -32,6 +32,10 @@
 <script>
 export default {
   props: {
+    profileImageSrc: {
+      type: String,
+      required: true
+    },
     who: {
       type: String,
       required: true
@@ -51,6 +55,11 @@ export default {
     refComments: {
       type: Number,
       required: true
+    }
+  },
+  data() {
+    return {
+      src: require(this.profileImageSrc)
     }
   }
 }

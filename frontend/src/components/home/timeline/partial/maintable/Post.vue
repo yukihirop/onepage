@@ -3,7 +3,7 @@
   .post-left
     .post-image
       figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/64x64.png', alt='Placeholder image')
+        img(:src='profileImageSrc', alt='Placeholder image')
   .post-right
     .post-action
       .panel-icon
@@ -26,6 +26,10 @@ export default {
     PostContent
   },
   props: {
+    profileImageSrc: {
+      type: String,
+      required: true
+    },
     who: {
       type: String,
       required: true
@@ -45,6 +49,11 @@ export default {
     summary: {
       type: String,
       required: true
+    }
+  },
+  data() {
+    return {
+      src: require(this.profileImageSrc)
     }
   }
 }
