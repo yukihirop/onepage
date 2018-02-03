@@ -22,6 +22,7 @@ export default {
   -moz-osx-font-smoothing: grayscale
   text-align: center
   color: #2c3e50
+  background-color: #F5F5F5
 h1, h2
   font-weight: normal
 ul
