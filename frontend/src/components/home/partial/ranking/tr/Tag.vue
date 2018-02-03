@@ -3,7 +3,7 @@ tr(style="padding-bottom: 0px;")
   td
     p(style="margin-top: 10px;") {{ rank }}
   td(style="width: 64px;")
-    img(v-bind:src='imageSrc', style="width: 32px;margin-top: 10px;")
+    img(:src='tagImageSrc', style="width: 32px;margin-top: 10px;")
   td
     b
       | {{ tagname }}
@@ -20,7 +20,7 @@ export default {
       type: Number,
       required: true
     },
-    imageSrc: {
+    tagImageSrc: {
       type: String,
       required: true
     },
@@ -36,7 +36,7 @@ export default {
   // https://kuroeveryday.blogspot.jp/2017/10/img-src-data-binding-vuejs.html
   data() {
     return {
-      src: this.imageSrc
+      src: require(this.tagImageSrc)
     }
   }
 }
