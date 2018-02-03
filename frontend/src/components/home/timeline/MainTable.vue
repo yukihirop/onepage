@@ -1,141 +1,63 @@
 <template lang="pug">
 .hero
-  article.media
-    .media-left
-      figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
-    .media-content
-      .content
-        p
-          strong John Smith
-          small @johnsmith
-          small 31m
-          br
-          |           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-      nav.level.is-mobile
-        .level-left
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-reply
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-retweet
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-heart
-  article.media
-    .media-left
-      figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
-    .media-content
-      .content
-        p
-          strong John Smith
-          small @johnsmith
-          small 31m
-          br
-          |           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-      nav.level.is-mobile
-        .level-left
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-reply
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-retweet
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-heart
-  article.media
-    .media-left
-      figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
-    .media-content
-      .content
-        p
-          strong John Smith
-          small @johnsmith
-          small 31m
-          br
-          |           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-      nav.level.is-mobile
-        .level-left
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-reply
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-retweet
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-heart
-  article.media
-    .media-left
-      figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
-    .media-content
-      .content
-        p
-          strong John Smith
-          small @johnsmith
-          small 31m
-          br
-          |           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-      nav.level.is-mobile
-        .level-left
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-reply
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-retweet
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-heart
-  article.media
-    .media-left
-      figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
-    .media-content
-      .content
-        p
-          strong John Smith
-          small @johnsmith
-          small 31m
-          br
-          |           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-      nav.level.is-mobile
-        .level-left
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-reply
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-retweet
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-heart
-  article.media
-    .media-left
-      figure.image.is-64x64
-        img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
-    .media-content
-      .content
-        p
-          strong John Smith
-          small @johnsmith
-          small 31m
-          br
-          |           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-      nav.level.is-mobile
-        .level-left
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-reply
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-retweet
-          a.level-item
-            span.icon.is-small
-              i.fa.fa-heart
+  .panel-block
+    .chat-header
+      .panel-icon
+        i.fa.fa-list-ul.fa-2x.timeline
+      .title.is-6 タイムライン
+  chat(who='Yuma Inaura', what='コメント', when='1 hour ago',
+       comment='とっても聞いてみたいと思いました。',
+       refTitle='コードレビューで気をつけていること',
+       refComments=2)
+  post(who='aimerald', when='3 hours ago',
+       title='rubyでLispの処理系を書いた話',
+       organization = '株式会社Aiming',
+       summary='Lispっていいですよね。何と言ってもインタプリタシンプルですよね。これrubyでも書けそうな気がしたんでかいてみました。少しでもLispに興味を盛ってくれる人が増えたら嬉しいなと思って作ってみました。')
+  like(who='aimerald', when='1 day ago',
+       title='瞑想がプログラマに与える効果に関して',
+       organization = '株式会社Aiming',
+       summary = 'Googleも取り入れている瞑想。意外としらない瞑想の効果。そんな瞑想の効果を1年間自分でたってみた経験を踏まえ話して見たいともいます。この資料をみて瞑想を生活週間に取り入れてくれる人が増えたらいいな')
+  chat(who='skuroki', when='2 days ago',
+       comment='資料の構成が非常に参考になりました。',
+       refTitle='新人プログラマとペアプロしてわかったこと',
+       refComments=72)
+  post(who='Yuma Inaura', when='1 week ago',
+       title='瞑想がプログラマに与える効果に関して',
+       organization = '株式会社Aiming',
+       summary = 'Googleも取り入れている瞑想。意外としらない瞑想の効果。そんな瞑想の効果を1年間自分でたってみた経験を踏まえ話して見たいともいます。この資料をみて瞑想を生活週間に取り入れてくれる人が増えたらいいな')
 </template>
+
+<script>
+import Chat from './partial/maintable/Chat.vue'
+import Like from './partial/maintable/Like.vue'
+import Post from './partial/maintable/Post.vue'
+
+export default {
+  components: {
+    Chat,
+    Like,
+    Post
+  }
+}
+</script>
+
+<style scoped lang="stylus">
+$theme_color = #0081C1
+
+.panel-block
+  display: flex
+  flex-direction: row
+  align-items: center
+  background-color: $theme_color
+
+.chat-header
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  .timeline
+    color: white
+
+  .title
+    color: white
+</style>
