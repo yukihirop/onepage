@@ -13,3 +13,8 @@ nav.panel
       i.fa.fa-tags
     |     タグフィード
 </template>
+
+<style scoped lang="stylus">
+.panel
+  background-color: white
+</style>
