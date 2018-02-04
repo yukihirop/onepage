@@ -53,6 +53,8 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+$theme_color = #0081C1
+
 .panel-block
   background-color: white
   padding-top: 0
@@ -75,6 +77,9 @@ export default {
     text-align: left
     padding-top: 10px
     padding-bottom: 10px
+    
+    a
+      color: $theme_color
   
   .user-likes
     display: flex

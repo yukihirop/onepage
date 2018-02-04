@@ -38,6 +38,12 @@ export default {
 $custome_white = #F8F8F8
 $theme_color = #0081C1
 
+nav.panel
+  a
+    color: $theme_color
+    .is-active
+      color: dark
+
 .panel-heading
   margin-bottom: 0px
   background-color: $theme_color
