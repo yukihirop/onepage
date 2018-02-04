@@ -3,7 +3,8 @@
   .columns
     aside.sidebar.column.is-2
       //- widthで幅を固定しないとスクロールした時に変わってしまう
-      affix.menu.sidebar-menu(relative-element-selector='#non-affix-content', :offset='{ top: 32, bottom: 0 }', style='width: 160px')
+      //- mybulma.scssを使っている時はtopは86にする必要がある。(原因不明)
+      affix.menu.sidebar-menu(relative-element-selector='#non-affix-content', :offset='{ top: 86, bottom: 0 }', style='width: 160px')
         menu-list
     .column
       #non-affix-content
@@ -32,5 +33,6 @@ export default {
 <!-- navbar他のコンテンツ重なる -->
 <style scoped lang="stylus">
 .container
-  padding-top: 32px
+  //padding-top: 32px mybulma.scss使わない場合
+  padding-top: 86px
 </style>

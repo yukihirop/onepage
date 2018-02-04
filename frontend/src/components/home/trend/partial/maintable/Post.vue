@@ -101,6 +101,11 @@ ul
 .post-detail
   width: 150px
   padding-top: 10px
+  
+  // mybulma.scss では以下が必要
+  ul
+    li
+      margin-left: 10px
 
 .post-right
   display: inline-flex
