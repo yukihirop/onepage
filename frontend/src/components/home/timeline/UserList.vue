@@ -6,17 +6,17 @@
         article.tile.is-child
           advertisement
         article.tile.is-child
-          user-ranking
+          recommend-user-list
 </template>
 
 <script>
 import Advertisement from '../Advertisement.vue'
-import UserRanking from '../partial/ranking/User.vue'
+import RecommendUserList from './partial/userlist/RecommendUser.vue'
 
 export default {
   components: {
     Advertisement,
-    UserRanking
+    RecommendUserList
   }
 }
 </script>
