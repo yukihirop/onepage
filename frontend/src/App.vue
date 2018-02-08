@@ -1,16 +1,16 @@
 <template lang="pug">
  #app
-  nav-bar
+  shared-nav-bar
   router-view
 </template>
 
 <script>
-import NavBar from './components/shared/NavBar.vue'
+import SharedNavBar from './components/organisms/navbar/SharedNavBar.vue'
 
 export default {
   name: 'app',
   components: {
-    NavBar
+    SharedNavBar
   }
 }
 </script>
