@@ -118,10 +118,10 @@ ul
       &-who
         padding-left: 0.5em
 
-      &-when
-        position: abusolute
-        margin: auto
-        margin-right: 0
+    &-when
+      position: abusolute
+      margin: auto
+      margin-right: 0
 
   &-comment
     padding-left: 1.5em
