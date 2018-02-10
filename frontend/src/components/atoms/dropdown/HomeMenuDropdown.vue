@@ -1,14 +1,14 @@
 <template lang="pug">
 .dropdown-content
-  a.dropdown-item
+  router-link(to='/trend').dropdown-item
     span.icon
       i.fa.fa-bar-chart
     span トレンド
-  a.dropdown-item
+  router-link(to='/timeline' exact).dropdown-item
     span.icon
       i.fa.fa-list-ul
     span タイムライン
-  a.dropdown-item
+  router-link(to='/tagfeed' exact).dropdown-item
     span.icon
       i.fa.fa-tags
     span タグ・フィード
