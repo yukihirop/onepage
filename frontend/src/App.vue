@@ -1,24 +1,19 @@
 <template lang="pug">
  #app
-  nav-bar
-  shopping-nav-bar
+  shared-nav-bar
   router-view
+  shared-footer
 </template>
 
 <script>
-import NavBar from './components/shared/NavBar.vue'
-import ShoppingNavBar from './components/shopping/NavBar.vue'
+import SharedNavBar from './components/organisms/navbar/SharedNavBar.vue'
+import SharedFooter from './components/atoms/footer/SharedFooter.vue'
 
 export default {
   name: 'app',
   components: {
-    NavBar,
-    ShoppingNavBar
-  },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+    SharedNavBar,
+    SharedFooter,
   }
 }
 </script>
@@ -30,7 +25,7 @@ export default {
   -moz-osx-font-smoothing: grayscale
   text-align: center
   color: #2c3e50
-  margin-top: 60px
+  background-color: #F5F5F5
 h1, h2
   font-weight: normal
 ul

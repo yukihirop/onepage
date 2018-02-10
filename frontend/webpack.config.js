@@ -1,7 +1,35 @@
 const path = require('path')
 const webpack = require('webpack')
 
-module.exports = {
+const bulma = {
+  entry: __dirname + '/src/assets/css/mybulma.scss',
+  output: {
+    path: path.resolve(__dirname, './dist/assets/css'),
+    publicPath: '/dist/assets/css/',
+    filename: 'mybulma.scss'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  }
+}
+
+const app = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -64,7 +92,8 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]',
+          outputPath: 'assets/image/'
         }
       },
       {
@@ -110,3 +139,5 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+
+module.exports = [app, bulma]
