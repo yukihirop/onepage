@@ -51,6 +51,7 @@
     "pug": "^2.0.0-rc.4",
     "pug-loader": "^2.3.0",
     "sass-loader": "^6.0.6",
+    "storybook-router": "^0.3.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue-jest": "^1.4.0",
