@@ -1,11 +1,10 @@
 <template lang="pug">
-#dropdown-menu3.dropdown-menu(role='menu')
-  .dropdown-content
-    a.dropdown-item
-      span.icon
-        i.fa.fa-users
-      span ユーザー一覧
-    hr.dropdown-divider
+.dropdown-content
+  a.dropdown-item
+    span.icon
+      i.fa.fa-users
+    span ユーザー一覧
+  hr.dropdown-divider
 </template>
 
 <script>

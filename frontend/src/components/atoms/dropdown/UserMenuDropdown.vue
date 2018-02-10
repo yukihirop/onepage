@@ -1,19 +1,18 @@
 <template lang="pug">
-#dropdown-menu3.dropdown-menu(role='menu')
-  .dropdown-content
-    a.dropdown-item(href='#')
-      | マイページ
-    hr.dropdown-divider
-    a.dropdown-item(href='#')
-      | 下書き一覧
-    a.dropdown-item(href='#')
-      | 通知一覧
-    hr.dropdown-divider
-    a.dropdown-item(href='#')
-      | ヘルプ
-    hr.dropdown-divider
-    a.dropdown-item(href='#')
-      | ログアウト
+.dropdown-content
+  a.dropdown-item(href='#')
+    | マイページ
+  hr.dropdown-divider
+  a.dropdown-item(href='#')
+    | 下書き一覧
+  a.dropdown-item(href='#')
+    | 通知一覧
+  hr.dropdown-divider
+  a.dropdown-item(href='#')
+    | ヘルプ
+  hr.dropdown-divider
+  a.dropdown-item(href='#')
+    | ログアウト
 </template>
 
 <script>
