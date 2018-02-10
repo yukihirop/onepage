@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import PostWithTagMedia from '../../molecules/media_object/PostWIthTagMedia.vue'
+import PostWithTagMedia from '../../molecules/media_object/PostWithTagMedia.vue'
 
 export default {
   components: {
