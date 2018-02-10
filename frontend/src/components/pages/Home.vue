@@ -4,7 +4,8 @@
     aside.sidebar.column.is-2
       //- widthで幅を固定しないとスクロールした時に変わってしまう
       //- mybulma.scssを使っている時はtopは86にする必要がある。(原因不明)
-      affix.menu.sidebar-menu(relative-element-selector='#non-affix-content', :offset='{ top: 86, bottom: 0 }', style='width: 160px')
+      //- footerを設定することでbottmの設定を0から-128にする必要があった(原因不明)
+      affix.menu.sidebar-menu(relative-element-selector='#non-affix-content', :offset='{ top: 86, bottom: -128 }', style='width: 160px')
         home-menu
     .column
       #non-affix-content

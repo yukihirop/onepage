@@ -2,15 +2,18 @@
  #app
   shared-nav-bar
   router-view
+  shared-footer
 </template>
 
 <script>
 import SharedNavBar from './components/organisms/navbar/SharedNavBar.vue'
+import SharedFooter from './components/atoms/footer/SharedFooter.vue'
 
 export default {
   name: 'app',
   components: {
-    SharedNavBar
+    SharedNavBar,
+    SharedFooter,
   }
 }
 </script>
