@@ -2,6 +2,7 @@
 import { storiesOf } from '@storybook/vue'
 import PostMedia         from '@/components/molecules/media_object/PostMedia.vue'
 import PostWithLikeMedia from '@/components/molecules/media_object/PostWithLikeMedia.vue'
+import PostWithPostMedia from '@/components/molecules/media_object/PostWithPostMedia.vue'
 import PostWithTagMedia  from '@/components/molecules/media_object/PostWithTagMedia.vue'
 
 require('@/assets/css/mybulma.scss')
@@ -44,6 +45,7 @@ storiesOf('molecules/MediaObject', module)
   .add('PostWithTagMedia', () => ({
     components: { PostWithTagMedia },
     template: `<post-with-tag-media
+                  :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
                   :tag-image-src="'https://bulma.io/images/placeholders/32x32.png'"
                   tag='JavaScript'
                   when='1 months ago'
