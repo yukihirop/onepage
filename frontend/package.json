@@ -25,6 +25,7 @@
     "not ie <= 8"
   ],
   "devDependencies": {
+    "@storybook/vue": "^3.3.12",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
