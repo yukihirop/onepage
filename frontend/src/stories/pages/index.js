@@ -47,11 +47,11 @@ const homeRoutes = [{
 
 storiesOf('pages', module)
   .addDecorator(StoryRouter({},
-      {
-        routes: homeRoutes,
-        initialEntry: '/trend',
-      }
-    )
+    {
+      routes: homeRoutes,
+      initialEntry: '/trend'
+    }
+  )
   )
   .add('Home', () => ({
     // <home />では何も表示されない(原因不明)

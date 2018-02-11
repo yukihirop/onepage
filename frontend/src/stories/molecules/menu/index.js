@@ -52,11 +52,11 @@ require('@/assets/css/mybulma.scss')
 storiesOf('molecules/Menu', module)
   .addDecorator(VueInfoAddon)
   .addDecorator(StoryRouter({},
-      {
-        routes: homeRoutes,
-        initialEntry: '/trend'
-      }
-    )
+    {
+      routes: homeRoutes,
+      initialEntry: '/trend'
+    }
+  )
   )
   .add('HomeMenu', () => ({
     components: { HomeMenu },
