@@ -1,12 +1,6 @@
 <template lang="pug">
 .hero
-  .panel-block
-    .t-post-media-header
-      .panel-icon
-        i.fa.fa-bar-chart.fa-2x.trend
-      .title.is-6 トレンド
-    .t-post-media-subtitle
-      .title.is-7 ここ数時間で人気を集めている記事
+  trend-table-title
   post-media(:profile-image-src='require("../../../assets/home/user/yukihirop.jpg")',
        who='yukihirop', when='3 hours ago', likes=278,
        title='OnePageというWEBサービスを作った話',
@@ -40,38 +34,20 @@
 </template>
 
 <script>
+import TrendTableTitle from '../../atoms/title/TrendTableTitle.vue'
 import PostMedia from '../../atoms/media_object/PostMedia.vue'
 
 export default {
   components: {
+    TrendTableTitle,
     PostMedia
   }
 }
 </script>
 
 <style scoped lang="stylus">
-$theme_color = #0081C1
-
 .panel-block
   display: flex
   flex-direction: row
   align-items: center
-  background-color: $theme_color
-
-  .t-post-media-header
-    display: flex
-    flex-direction: row
-    align-items: center
-    width: 150px
-
-    .trend
-      color: white
-
-    .title
-      color: white
-
-  .t-post-media-subtitle
-    .title
-      color: white
-      padding-left: 1.0em
 </style>
