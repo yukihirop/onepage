@@ -1,6 +1,7 @@
 /* eslint no-multi-spaces: 0 */
 import { storiesOf } from '@storybook/vue'
 import StoryRouter from 'storybook-router'
+import VueInfoAddon  from 'storybook-addon-vue-info'
 
 import HomeMenu        from '@/components/molecules/menu/HomeMenu.vue'
 import Home            from '@/components/pages/Home.vue'
@@ -49,6 +50,7 @@ const homeRoutes = [{
 require('@/assets/css/mybulma.scss')
 
 storiesOf('molecules/Menu', module)
+  .addDecorator(VueInfoAddon)
   .addDecorator(StoryRouter({},
       {
         routes: homeRoutes,

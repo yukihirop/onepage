@@ -1,5 +1,7 @@
 /* eslint no-multi-spaces: 0 */
 import { storiesOf } from '@storybook/vue'
+import VueInfoAddon  from 'storybook-addon-vue-info'
+
 import PostWithLikeMedia from '@/components/molecules/media_object/PostWithLikeMedia.vue'
 import PostWithPostMedia from '@/components/molecules/media_object/PostWithPostMedia.vue'
 import PostWithTagMedia  from '@/components/molecules/media_object/PostWithTagMedia.vue'
@@ -7,6 +9,7 @@ import PostWithTagMedia  from '@/components/molecules/media_object/PostWithTagMe
 require('@/assets/css/mybulma.scss')
 
 storiesOf('molecules/MediaObject', module)
+  .addDecorator(VueInfoAddon)
   .add('PostWithLikeMedia', () => ({
     components: { PostWithLikeMedia },
     template: `<post-with-like-media

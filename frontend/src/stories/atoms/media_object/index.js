@@ -1,5 +1,7 @@
 /* eslint no-multi-spaces: 0 */
 import { storiesOf } from '@storybook/vue'
+import VueInfoAddon  from 'storybook-addon-vue-info'
+
 import ChatMedia             from '@/components/atoms/media_object/ChatMedia.vue'
 import NotificationChatMedia from '@/components/atoms/media_object/NotificationChatMedia.vue'
 import NotificationEditMedia from '@/components/atoms/media_object/NotificationEditMedia.vue'
@@ -12,6 +14,7 @@ import UserMedia             from '@/components/atoms/media_object/UserMedia.vue
 require('@/assets/css/mybulma.scss')
 
 storiesOf('atoms/MediaObject', module)
+  .addDecorator(VueInfoAddon)
   .add('ChatMedia', () => ({
     components: { ChatMedia },
     template: `<chat-media
