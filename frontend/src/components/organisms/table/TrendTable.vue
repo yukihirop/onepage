@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import PostMedia from '../../molecules/media_object/PostMedia.vue'
+import PostMedia from '../../atoms/media_object/PostMedia.vue'
 
 export default {
   components: {
