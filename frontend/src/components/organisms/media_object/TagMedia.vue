@@ -19,7 +19,7 @@ nav.panel
 </template>
 
 <script>
-import TagMedia from '../../atoms/media_object/TagMedia.vue'
+import TagMedia from '@/components/atoms/media_object/TagMedia.vue'
 
 export default {
   components: {

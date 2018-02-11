@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import PostContentMedia from '../../atoms/media_object/PostContentMedia.vue'
+import PostContentMedia from '@/components/atoms/media_object/PostContentMedia.vue'
 
 export default {
   components: {

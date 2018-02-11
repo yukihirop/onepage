@@ -60,10 +60,10 @@ nav.navbar.is-primary.is-fixed-top
 </template>
 
 <script>
-import UserMenuDropdown from '../../atoms/dropdown/UserMenuDropdown.vue'
-import NotificationDropdown from '../../molecules/dropdown/NotificationDropdown.vue'
-import HomeMenuDropdown from '../../atoms/dropdown/HomeMenuDropdown.vue'
-import AllInfoDropdown from '../../atoms/dropdown/AllInfoDropdown.vue'
+import UserMenuDropdown from '@/components/atoms/dropdown/UserMenuDropdown.vue'
+import NotificationDropdown from '@/components/molecules/dropdown/NotificationDropdown.vue'
+import HomeMenuDropdown from '@/components/atoms/dropdown/HomeMenuDropdown.vue'
+import AllInfoDropdown from '@/components/atoms/dropdown/AllInfoDropdown.vue'
 
 export default {
   components: {

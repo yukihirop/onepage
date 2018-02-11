@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import AdvertisementFigure from '../../atoms/figure/AdvertisementFigure.vue'
+import AdvertisementFigure from '@/components/atoms/figure/AdvertisementFigure.vue'
 import RecommendUserMedia from '../media_object/RecommendUserMedia.vue'
 
 export default {

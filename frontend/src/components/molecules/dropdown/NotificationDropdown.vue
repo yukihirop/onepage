@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import listener from '../../mixins/dropdown.js'
-import NotificationChatMedia from '../../atoms/media_object/NotificationChatMedia.vue'
-import NotificationEditMedia from '../../atoms/media_object/NotificationEditMedia.vue'
+import listener from '@/components/mixins/dropdown.js'
+import NotificationChatMedia from '@/components/atoms/media_object/NotificationChatMedia.vue'
+import NotificationEditMedia from '@/components/atoms/media_object/NotificationEditMedia.vue'
 
 export default {
   mixins: [listener],
