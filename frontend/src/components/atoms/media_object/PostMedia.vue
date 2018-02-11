@@ -5,16 +5,14 @@
       figure.image.is-64x64
         img(:src='profileImageSrc', alt='Placeholder image')
     .a-post-media-left-detail
-      ul(style='text-align: left;')
-        li
-          b {{ who }}
-        li
-          b {{ when }}
-        br
-        li.thumbs-o-up(style='margin-left: 25px;')
-         span.icon.is-small
-            i.fa.fa-thumbs-o-up
-              b {{ likes }}
+      .a-post-media-left-detail-who
+        b {{ who }}
+      .a-post-media-left-detail-when
+        b {{ when }}
+      .a-post-media-left-detail-likes
+        span.icon.is-small
+          i.fa.fa-thumbs-o-up
+            b {{ likes }}
   .a-post-media-right
     .a-post-media-right-title
       h1
@@ -101,10 +99,14 @@ ul
   &-detail
     width: 150px
     padding-top: 10px
-    // mybulma.scss では以下が必要
-    ul
-      li
-        margin-left: 10px
+    text-align: left
+    
+    &-who
+      margin-left: 10px
+    &-when
+      margin-left: 10px
+    &-likes
+      margin-left: 25px
 
 .a-post-media-right
   display: inline-flex
