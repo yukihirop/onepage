@@ -1,10 +1,6 @@
 <template lang="pug">
 .hero
-  .panel-block
-    .timeline-table-header
-      .panel-icon
-        i.fa.fa-list-ul.fa-2x.timeline
-      .title.is-6 タイムライン
+  time-line-table-title
   chat-media(:profile-image-src='require("../../../assets/home/user/yusabana.png")',
        who='Yuma Inaura', what='コメント', when='1 hour ago',
        comment='とっても聞いてみたいと思いました。',
@@ -33,12 +29,14 @@
 </template>
 
 <script>
+import TimeLineTableTitle from '../../atoms/title/TimeLineTableTitle.vue'
 import ChatMedia from '../../atoms/media_object/ChatMedia.vue'
 import PostWithLikeMedia from '../../molecules/media_object/PostWithLikeMedia.vue'
 import PostWithPostMedia from '../../molecules/media_object/PostWithPostMedia.vue'
 
 export default {
   components: {
+    TimeLineTableTitle,
     ChatMedia,
     PostWithLikeMedia,
     PostWithPostMedia
@@ -47,22 +45,8 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-$theme_color = #0081C1
-
 .panel-block
   display: flex
   flex-direction: row
   align-items: center
-  background-color: $theme_color
-
-.timeline-table-header
-  display: flex
-  flex-direction: row
-  align-items: center
-
-  .timeline
-    color: white
-
-  .title
-    color: white
 </style>

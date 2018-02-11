@@ -9,7 +9,8 @@
     "lint": "eslint --ext .js,.vue src tests",
     "test": "jest",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./src/assets"
   },
   "dependencies": {
     "bulma": "^0.6.2",
@@ -25,6 +26,11 @@
     "not ie <= 8"
   ],
   "devDependencies": {
+    "@storybook/addon-knobs": "^3.3.12",
+    "@storybook/addon-notes": "^3.3.12",
+    "@storybook/addon-options": "^3.3.12",
+    "@storybook/addon-viewport": "^3.3.12",
+    "@storybook/vue": "^3.3.12",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
@@ -49,6 +55,8 @@
     "pug": "^2.0.0-rc.4",
     "pug-loader": "^2.3.0",
     "sass-loader": "^6.0.6",
+    "storybook-addon-vue-info": "^0.1.8",
+    "storybook-router": "^0.3.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue-jest": "^1.4.0",

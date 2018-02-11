@@ -1,18 +1,17 @@
 <template lang="pug">
-#dropdown-menu3.dropdown-menu(role='menu')
-  .dropdown-content
-    a.dropdown-item
-      span.icon
-        i.fa.fa-bar-chart
-      span トレンド
-    a.dropdown-item
-      span.icon
-        i.fa.fa-list-ul
-      span タイムライン
-    a.dropdown-item
-      span.icon
-        i.fa.fa-tags
-      span タグ・フィード
+.dropdown-content
+  router-link(to='/trend').dropdown-item
+    span.icon
+      i.fa.fa-bar-chart
+    span トレンド
+  router-link(to='/timeline' exact).dropdown-item
+    span.icon
+      i.fa.fa-list-ul
+    span タイムライン
+  router-link(to='/tagfeed' exact).dropdown-item
+    span.icon
+      i.fa.fa-tags
+    span タグ・フィード
 </template>
 
 <script>

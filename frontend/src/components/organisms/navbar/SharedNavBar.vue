@@ -17,14 +17,16 @@ nav.navbar.is-primary.is-fixed-top
                 span ホーム
                 span.icon.is-small
                   i.fa.fa-angle-down(aria-hidden='true')
-            home-menu-dropdown(v-if="isShowHomeMenu" v-on:close="isShowHomeMenu = false")
+            #dropdown-menu3.dropdown-menu(role='menu')
+              home-menu-dropdown(v-if="isShowHomeMenu" v-on:close="isShowHomeMenu = false")
           .dropdown.is-active.all-info
             .dropdown-trigger
               a(aria-haspopup='true', aria-controls='dropdown-menu3' v-on:click.stop="showAllInfo")
                 span みんなの情報
                 span.icon.is-small
                   i.fa.fa-angle-down(aria-hidden='true')
-            all-info-dropdown(v-if="isShowAllInfo" v-on:close="isShowAllInfo = false")
+            #dropdown-menu3.dropdown-menu(role='menu')
+              all-info-dropdown(v-if="isShowAllInfo" v-on:close="isShowAllInfo = false")
           .field
             p.control.has-icons-left.search
               input.input(type='password', placeholder='キーワードを入力')
@@ -44,14 +46,17 @@ nav.navbar.is-primary.is-fixed-top
             .dropdown-trigger
               button.button(aria-haspopup='true', aria-controls='dropdown-menu3' v-on:click.stop="showNotificationList" v-bind:class="setDanger")
                 span {{ notifications }}
-            notification-dropdown(v-if="isShowNotificationList" v-on:close="isShowNotificationList = false")
+                //- https://github.com/jgthms/bulma/issues/172
+            #dropdown-menu3.dropdown-menu(role='menu' style='left: -800%;')
+              notification-dropdown(v-if="isShowNotificationList" v-on:close="isShowNotificationList = false")
           .dropdown.user-menu(v-bind:class="{ 'is-active': isShowUserMenu }")
             .dropdown-trigger
               button.button(aria-haspopup='true', aria-controls='dropdown-menu3' v-on:click.stop="showUserMenu")
                 span yukihirop
                 span.icon.is-small
                   i.fa.fa-angle-down(aria-hidden='true')
-            user-menu-dropdown(v-if="isShowUserMenu" v-on:close="isShowUserMenu = false")
+            #dropdown-menu3.dropdown-menu(role='menu')
+              user-menu-dropdown(v-if="isShowUserMenu" v-on:close="isShowUserMenu = false")
 </template>
 
 <script>

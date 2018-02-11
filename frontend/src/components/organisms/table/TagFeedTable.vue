@@ -1,10 +1,6 @@
 <template lang="pug">
 .hero
-  .panel-block
-    .tagfeed-table-header
-      .panel-icon
-        i.fa.fa-tags.fa-2x.tags
-      .title.is-6 タグ・フィード
+  tag-feed-table-title
   post-with-tag-media(:profile-image-src='require("../../../assets/home/user/aimerald.png")',
        :tag-image-src='require("../../../assets/home/tag/Ruby.jpg")',
        tag='Ruby', when='15 minutes ago',
@@ -44,33 +40,20 @@
 </template>
 
 <script>
-import PostWithTagMedia from '../../molecules/media_object/PostWIthTagMedia.vue'
+import TagFeedTableTitle from '../../atoms/title/TagFeedTableTitle.vue'
+import PostWithTagMedia from '../../molecules/media_object/PostWithTagMedia.vue'
 
 export default {
   components: {
-    PostWithTagMedia
+    PostWithTagMedia,
+    TagFeedTableTitle
   }
 }
 </script>
 
 <style scoped lang="stylus">
-$theme_color = #0081C1
-
 .panel-block
   display: flex
   flex-direction: row
   align-items: center
-  background-color: $theme_color
-
-  .tagfeed-table-header
-    display: flex
-    flex-direction: row
-    align-items: center
-    width: 150px
-
-    .tags
-      color: white
-
-    .title
-      color: white
 </style>

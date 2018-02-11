@@ -13,7 +13,7 @@ export default {
   name: 'app',
   components: {
     SharedNavBar,
-    SharedFooter,
+    SharedFooter
   }
 }
 </script>

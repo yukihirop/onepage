@@ -1,7 +1,7 @@
 <template lang="pug">
 .panel-block
   .a-chat-media-left
-    .a-chat-media-image
+    .a-chat-media-left-image
       figure.image.is-64x64
         img(:src='profileImageSrc', alt='Placeholder image')
   .a-chat-media-right
@@ -16,16 +16,16 @@
       .a-chat-media-right-action-when
         b {{ when }}
     .a-chat-media-right-comment
-      div
+      .a-chat-media-right-comment-with-background
         p
           | {{ comment }}
     .a-chat-media-right-reference
-      div
+      .a-chat-media-right-reference-ref-title
         h3 
           b To: {{ refTitle }}
       .a-chat-media-right-reference-panel-icon
         i.fa.fa-comments
-      div
+      .a-chat-media-right-reference-ref-comments
         | {{ refComments }}
 </template>
 
@@ -91,11 +91,11 @@ ul
   background-color: $custome_white
   color: $theme_color
 
-.a-chat-media-image
-  width: 100px
-  figure
-    padding-top: 10px
-    padding-left: 10px
+  &-image
+    width: 100px
+    figure
+      padding-top: 10px
+      padding-left: 10px
 
 .a-chat-media-right
   display: flex
@@ -126,7 +126,7 @@ ul
   &-comment
     padding-left: 1.5em
     padding-right: 1.5em
-    div
+    &-with-background
       background-color: $custome_white
       p
         padding: 0.5em
@@ -142,6 +142,7 @@ ul
 
     &-panel-icon
       padding-left: 1.0em
-    div
-      padding-left: 1.25em
+    &-ref-tittle
+    &-ref-comments
+      padding-left: 0.25em
 </style>
