@@ -19,7 +19,7 @@ nav.panel
 </template>
 
 <script>
-import UserMedia from '../../atoms/media_object/UserMedia.vue'
+import UserMedia from '@/components/atoms/media_object/UserMedia.vue'
 
 export default {
   components: {

@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import AdvertisementFigure from '../../atoms/figure/AdvertisementFigure.vue'
-import UserMedia from '../../organisms/media_object/UserMedia.vue'
-import TagMedia from '../../organisms/media_object/TagMedia.vue'
+import AdvertisementFigure from '@/components/atoms/figure/AdvertisementFigure.vue'
+import UserMedia from '@/components/organisms/media_object/UserMedia.vue'
+import TagMedia from '@/components/organisms/media_object/TagMedia.vue'
 
 export default {
   components: {

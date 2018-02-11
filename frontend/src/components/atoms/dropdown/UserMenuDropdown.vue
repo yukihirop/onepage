@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import listener from '../../mixins/dropdown.js'
+import listener from '@/components/mixins/dropdown.js'
 
 export default {
   mixins: [listener],

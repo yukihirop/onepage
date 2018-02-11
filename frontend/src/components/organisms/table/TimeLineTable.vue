@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import TimeLineTableTitle from '../../atoms/title/TimeLineTableTitle.vue'
-import ChatMedia from '../../atoms/media_object/ChatMedia.vue'
-import PostWithLikeMedia from '../../molecules/media_object/PostWithLikeMedia.vue'
-import PostWithPostMedia from '../../molecules/media_object/PostWithPostMedia.vue'
+import TimeLineTableTitle from '@/components/atoms/title/TimeLineTableTitle.vue'
+import ChatMedia from '@/components/atoms/media_object/ChatMedia.vue'
+import PostWithLikeMedia from '@/components/molecules/media_object/PostWithLikeMedia.vue'
+import PostWithPostMedia from '@/components/molecules/media_object/PostWithPostMedia.vue'
 
 export default {
   components: {

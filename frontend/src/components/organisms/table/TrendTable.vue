@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import TrendTableTitle from '../../atoms/title/TrendTableTitle.vue'
-import PostMedia from '../../atoms/media_object/PostMedia.vue'
+import TrendTableTitle from '@/components/atoms/title/TrendTableTitle.vue'
+import PostMedia from '@/components/atoms/media_object/PostMedia.vue'
 
 export default {
   components: {

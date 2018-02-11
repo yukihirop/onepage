@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import TagFeedTableTitle from '../../atoms/title/TagFeedTableTitle.vue'
-import PostWithTagMedia from '../../molecules/media_object/PostWithTagMedia.vue'
+import TagFeedTableTitle from '@/components/atoms/title/TagFeedTableTitle.vue'
+import PostWithTagMedia from '@/components/molecules/media_object/PostWithTagMedia.vue'
 
 export default {
   components: {

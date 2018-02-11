@@ -12,7 +12,7 @@ nav.panel
 </template>
 
 <script>
-import RecommendUserMedia from '../../atoms/media_object/RecommendUserMedia.vue'
+import RecommendUserMedia from '@/components/atoms/media_object/RecommendUserMedia.vue'
 
 export default {
   components: {
