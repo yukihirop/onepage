@@ -2360,7 +2360,7 @@ content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
 
-convert-source-map@^1.4.0, convert-source-map@^1.5.0:
+convert-source-map@^1.2.0, convert-source-map@^1.4.0, convert-source-map@^1.5.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
 
@@ -2558,7 +2558,7 @@ cssesc@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
 
-cssnano@^3.10.0:
+cssnano@^3.10.0, cssnano@^3.3.2:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-3.10.0.tgz#4f38f6cea2b9b17fa01490f23f1dc68ea65c1c38"
   dependencies:
@@ -5390,7 +5390,7 @@ lru-cache@^3.2.0:
   dependencies:
     pseudomap "^1.0.1"
 
-lru-cache@^4.0.1, lru-cache@^4.1.1:
+lru-cache@^4.0.0, lru-cache@^4.0.1, lru-cache@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.1.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
   dependencies:
@@ -7914,6 +7914,12 @@ stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
 
+storybook-addon-vue-info@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/storybook-addon-vue-info/-/storybook-addon-vue-info-0.1.8.tgz#391764ca6575e9270eb54cce49a50256ef4e0728"
+  dependencies:
+    vueify "^9.4.1"
+
 storybook-router@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/storybook-router/-/storybook-router-0.3.2.tgz#cfa46a6fdea3ecc7c56e6447832ebdc391b8d8ec"
@@ -8577,7 +8583,7 @@ vue-class-component@^6.0.0:
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-6.1.2.tgz#87ac0265b0db71a3f49f10d90e4f69f9be9c2fbd"
 
-vue-hot-reload-api@^2.2.0, vue-hot-reload-api@^2.2.4:
+vue-hot-reload-api@^2.0.1, vue-hot-reload-api@^2.2.0, vue-hot-reload-api@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.2.4.tgz#683bd1d026c0d3b3c937d5875679e9a87ec6cd8f"
 
@@ -8643,14 +8649,14 @@ vue-style-loader@^3.0.1:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.4.4:
+vue-template-compiler@^2.0.0-alpha.8, vue-template-compiler@^2.4.4:
   version "2.5.13"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.5.13.tgz#12a2aa0ecd6158ac5e5f14d294b0993f399c3d38"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
 
-vue-template-es2015-compiler@^1.5.3, vue-template-es2015-compiler@^1.6.0:
+vue-template-es2015-compiler@^1.2.2, vue-template-es2015-compiler@^1.5.3, vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
@@ -8663,6 +8669,25 @@ vue-test-utils@^1.0.0-beta.11:
 vue@^2.4.4, vue@^2.5.11:
   version "2.5.13"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.13.tgz#95bd31e20efcf7a7f39239c9aa6787ce8cf578e1"
+
+vueify@^9.4.1:
+  version "9.4.1"
+  resolved "https://registry.yarnpkg.com/vueify/-/vueify-9.4.1.tgz#d29a9775a33c4b8a8601e186a85da2ab800ca0d6"
+  dependencies:
+    chalk "^1.1.1"
+    convert-source-map "^1.2.0"
+    cssnano "^3.3.2"
+    hash-sum "^1.0.2"
+    json5 "^0.5.1"
+    lru-cache "^4.0.0"
+    object-assign "^4.0.1"
+    postcss "^5.0.10"
+    postcss-selector-parser "^2.0.0"
+    source-map "^0.5.6"
+    through "^2.3.6"
+    vue-hot-reload-api "^2.0.1"
+    vue-template-compiler "^2.0.0-alpha.8"
+    vue-template-es2015-compiler "^1.2.2"
 
 vuex@^3.0.1:
   version "3.0.1"
