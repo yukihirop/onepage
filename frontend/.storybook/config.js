@@ -1,4 +1,16 @@
 import { configure } from '@storybook/vue'
+import { setOptions } from "@storybook/addon-options";
+
+setOptions({
+  name: "OnePage",
+  url: "https://github.com/yukihirop/onepage",
+  goFullScreen: false,
+  showStoriesPanel: true,
+  showAddonPanel: true,
+  showSearchBox: false,
+  addonPanelInRight: false,
+  sortStoriesByKind: true,
+});
 
 const loadStories = () => {
   // 参考
