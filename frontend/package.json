@@ -26,6 +26,8 @@
     "not ie <= 8"
   ],
   "devDependencies": {
+    "@storybook/addon-knobs": "^3.3.12",
+    "@storybook/addon-notes": "^3.3.12",
     "@storybook/addon-options": "^3.3.12",
     "@storybook/addon-viewport": "^3.3.12",
     "@storybook/vue": "^3.3.12",
