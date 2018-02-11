@@ -85,6 +85,14 @@
   version "3.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-3.3.12.tgz#d0f19936c2ca8ed4e900cf68760db4eeda24ce16"
 
+"@storybook/addon-viewport@^3.3.12":
+  version "3.3.12"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-3.3.12.tgz#cf1bc2d168249bc678e1a4bf6f1bb8c10e5c94ac"
+  dependencies:
+    "@storybook/components" "^3.3.12"
+    global "^4.3.2"
+    prop-types "^15.5.10"
+
 "@storybook/addons@^3.3.12":
   version "3.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.3.12.tgz#682927b5ac4baad796922eec505a7e956a3f79d9"
