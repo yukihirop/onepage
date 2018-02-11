@@ -1,6 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
+
 const bulma = {
   entry: __dirname + '/src/assets/css/mybulma.scss',
   output: {
@@ -103,10 +107,11 @@ const app = {
     ]
   },
   resolve: {
+    extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    },
-    extensions: ['*', '.js', '.vue', '.json']
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src')
+    }
   },
   devServer: {
     historyApiFallback: true,
