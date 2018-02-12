@@ -31,9 +31,12 @@
        title='Railsを学び現場に入るまで',
        organization='株式会社リクルートマーケティングパートナーズ',
        summary='現在、Railsを学ぶためにはRailsチュートリアルをこなしたり書籍などを利用すると思われる。しかし実際の現場で開発すると、アプリケーションの構成やRailsの罠に戸惑う事がある。本発表ではRails初学者が現場で開発する時に感じるであろうギャップをいくつか紹介する。')
+  li(v-for="post in posts")
+    p {{ post }}
 </template>
 
 <script>
+import axios from 'axios'
 import TrendTableTitle from '@/components/atoms/title/TrendTableTitle.vue'
 import PostMedia from '@/components/atoms/media_object/PostMedia.vue'
 
@@ -41,6 +44,39 @@ export default {
   components: {
     TrendTableTitle,
     PostMedia
+  },
+  data: () => {
+    return {
+      posts: [],
+      errors: []
+    }
+  },
+  mounted: function () {
+    alert('呼ばれたよー')
+    axios.get('http://127.0.0.1:3000/posts').then((response) => {
+        for(var i=0; i < response.data.length; i++) {
+          alert('hoge')
+          this.posts.push(response.data[i]);
+        }
+      }, (error) => {
+        this.errors.push(error);
+        console.log(error);
+      })
+    alert(this.posts)
+
+  },
+  methods: {
+    fetchPosts: function () {
+      axios.get('http://127.0.0.1:3000/posts').then((response) => {
+        for(var i=0; i < response.data.posts.length; i++) {
+          alert('hoge')
+          this.posts.push(response.data.posts[i]);
+        }
+      }, (error) => {
+        this.errors.push(error);
+        console.log(error);
+      })
+    },
   }
 }
 </script>
