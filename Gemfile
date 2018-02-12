@@ -29,6 +29,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'faker'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -43,6 +44,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :test do
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
 end
