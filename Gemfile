@@ -31,6 +31,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'faker'
   gem 'factory_bot_rails'
+  gem 'rails-erd'
 end
 
 group :development do
