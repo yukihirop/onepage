@@ -21,11 +21,17 @@ gem 'puma', '~> 3.7'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+  gem 'faker'
+  gem 'factory_bot_rails'
+  gem 'rails-erd'
 end
 
 group :development do
@@ -37,3 +43,14 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :test do
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'database_rewinder'
+end
+
+gem 'grape'                   # Grapeを使うときのGem
+gem 'grape-entity'            # 1対多のデータ構造を書くときに使う
+gem 'grape-swagger'           # Grapeで定義したAPIをSwagger形式でドキュメント化するために使う
+gem 'grape-swagger-entity'    # レスポンスモデルをSwaggerで見られる形式にするときに使う

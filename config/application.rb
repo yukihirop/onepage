@@ -16,6 +16,8 @@ require "action_view/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dir[File.expand_path('../support/*.rb', __FILE__)].each { |f| require f }
+
 module Onepage
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
