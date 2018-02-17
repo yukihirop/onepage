@@ -26,6 +26,7 @@ module API
 
       mount API::V1::Users
       mount API::V1::Posts
+      mount API::V1::Revisions
 
       add_swagger_documentation(
         info: {
