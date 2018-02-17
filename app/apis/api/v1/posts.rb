@@ -7,8 +7,19 @@ module API
           @current_uesr ||= User.find(id)
         end
 
-        def post_params
-          ActionController::Parameters.new(params).permit(:newest_revision_id)
+        def post_with_revision_params
+          ActionController::Parameters.new(params).permit(
+            :newest_revision_id,
+            revisions_attributes: %i[
+              title
+              summary
+              goal
+              comment
+              event_url
+              body
+              slide_url
+            ]
+          )
         end
 
         def set_post
@@ -53,7 +64,7 @@ module API
               requires :newest_revision_id, type: Integer, documentation: { param_type: 'body' }
             end
             post do
-              post = current_user.posts.build(post_params)
+              post = current_user.posts.build(post_with_revision_params)
               if post.save
                 post
               else
@@ -70,7 +81,7 @@ module API
             end
             patch':id' do
               set_post
-              if @post.update(post_params)
+              if @post.update(post_with_revision_params)
                 @post
               else
                 status 422
@@ -86,7 +97,7 @@ module API
             end
             put':id' do
               set_post
-              if @post.update(post_params)
+              if @post.update(post_with_revision_params)
                 @post
               else
                 status 422
