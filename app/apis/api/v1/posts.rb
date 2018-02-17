@@ -65,7 +65,7 @@ module API
             end
             post do
               post = current_user.posts.build(post_with_revision_params)
-              if post.save
+              if post.save && post.update(newest_revision_id: post.revisions.last.id)
                 post
               else
                 status 422
@@ -81,7 +81,7 @@ module API
             end
             patch':id' do
               set_post
-              if @post.update(post_with_revision_params)
+              if @post.update(post_with_revision_params) && @post.update(newest_revision_id: @post.revisions.last.id)
                 @post
               else
                 status 422

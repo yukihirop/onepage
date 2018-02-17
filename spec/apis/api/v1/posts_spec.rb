@@ -19,7 +19,7 @@ module API
       end
 
       describe 'POST /users/:user_id/posts' do
-        let(:post_params)                 { attributes_for(:post) }
+        let(:post_params)                 { attributes_for(:post, newest_revision_id: nil) }
         let(:revision_attributes_element) { { "1": attributes_for(:revision) } }
         let(:revisions_attributes)         { { revisions_attributes: revision_attributes_element } }
         let(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
@@ -38,6 +38,11 @@ module API
 
           it 'データベースにデータが作成されること' do
             expect { subject }.to change(Post, :count).by(1).and change(Revision, :count).by(1)
+          end
+
+          it '最新の改訂履歴を示すid(newest_revision_id)が更新されること' do
+            subject
+            expect(Post.last.newest_revision_id).to eq Post.last.revisions.last.id
           end
         end
 
@@ -111,6 +116,15 @@ module API
 
             it '改訂履歴のデータが新規に作成されること' do
               expect { subject }.to change(Revision, :count).by(1)
+            end
+
+            it '改定履歴のデータが新規に作成されること' do
+              expect { subject }.to change(Revision, :count).by(1)
+            end
+
+            it '最新の改訂履歴を示すid(newest_revision_id)が更新されること' do
+              subject
+              expect(Post.last.newest_revision_id).to eq Post.last.revisions.last.id
             end
           end
 
