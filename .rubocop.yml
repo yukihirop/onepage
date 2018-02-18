@@ -12,3 +12,7 @@ AllCops:
   TargetRubyVersion: 2.5
   # uncomment if use rails cops
   # TargetRailsVersion: 5.1
+  Exclude:
+    - 'frontend/**/*'
+    - 'vendor/**/*'
+    - 'db/schema.rb'
