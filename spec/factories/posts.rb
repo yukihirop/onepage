@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id                 :integer          not null, primary key
+#  user_id            :integer
+#  newest_revision_id :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
 FactoryBot.define do
   factory :post do
     newest_revision_id { Faker::Number.number(2).to_i }
@@ -10,6 +21,7 @@ FactoryBot.define do
 
       after(:create) do |post, evaluator|
         create_list(:revision, evaluator.revisions_count, post: post)
+        post.update(newest_revision_id: post.revisions.last.id)
       end
     end
   end
