@@ -10,6 +10,7 @@ FactoryBot.define do
 
       after(:create) do |post, evaluator|
         create_list(:revision, evaluator.revisions_count, post: post)
+        post.update(newest_revision_id: post.revisions.last.id)
       end
     end
   end
