@@ -41,6 +41,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'seed-fu'
   gem 'annotate'
+  gem 'rubocop'
+  gem 'onkcop', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
