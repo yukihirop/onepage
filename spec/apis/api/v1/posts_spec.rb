@@ -37,18 +37,18 @@ module API
           end
 
           it 'データベースにデータが作成されること' do
-            expect { subject }.to change(Post, :count).by(1).and change(Revision, :count).by(1)
+            expect { subject }.to change(::Post, :count).by(1).and change(Revision, :count).by(1)
           end
 
           it '最新の改訂履歴を示すid(newest_revision_id)が更新されること' do
             subject
-            expect(Post.last.newest_revision_id).to eq Post.last.revisions.last.id
+            expect(::Post.last.newest_revision_id).to eq ::Post.last.revisions.last.id
           end
         end
 
         context '正常に投稿が作成されていない場合' do
           before do
-            allow_any_instance_of(Post).to receive(:save).and_return(false)
+            allow_any_instance_of(::Post).to receive(:save).and_return(false)
           end
 
           it 'ステータス422(unprocessable_entity)が返ってくること' do
@@ -124,13 +124,13 @@ module API
 
             it '最新の改訂履歴を示すid(newest_revision_id)が更新されること' do
               subject
-              expect(Post.last.newest_revision_id).to eq Post.last.revisions.last.id
+              expect(::Post.last.newest_revision_id).to eq ::Post.last.revisions.last.id
             end
           end
 
           context '正常に投稿が更新されなかった場合' do
             before do
-              allow_any_instance_of(Post).to receive(:update).and_return(false)
+              allow_any_instance_of(::Post).to receive(:update).and_return(false)
             end
 
             it 'ステータス422(unprocessable_entity)が返ってくること' do
@@ -170,13 +170,13 @@ module API
             end
 
             it 'データベースからデータが削除されること' do
-              expect { subject }.to change(Post, :count).by(-1).and change(Revision, :count).by(-post.revisions.all.size)
+              expect { subject }.to change(::Post, :count).by(-1).and change(Revision, :count).by(-post.revisions.all.size)
             end
           end
 
           context '正常に投稿が削除されなかった場合' do
             before do
-              allow_any_instance_of(Post).to receive(:destroy).and_return(false)
+              allow_any_instance_of(::Post).to receive(:destroy).and_return(false)
             end
 
             it 'ステータス422(unprocessable_entity)が返ってくること' do
