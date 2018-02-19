@@ -7,7 +7,7 @@ module API
         end
 
         def set_user
-          @user = User.find(params[:id])
+          @user = ::User.find(params[:id])
         end
       end
 
@@ -15,7 +15,7 @@ module API
 
         desc 'ユーザー一覧を取得します'
         get do
-          User.all
+          ::User.all
         end
 
         desc 'idで指定されたユーザーを取得します'
@@ -23,7 +23,7 @@ module API
           requires :id, type: Integer
         end
         get ':id' do
-          User.find(params[:id])
+          ::User.find(params[:id])
         end
 
         desc 'ユーザーを作成します', {
@@ -36,7 +36,7 @@ module API
           requires :email, type: String, documentation: { param_type: 'body' }
         end
         post do
-          user = User.new(user_params)
+          user = ::User.new(user_params)
           if user.save
             user
           else

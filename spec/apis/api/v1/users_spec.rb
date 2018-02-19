@@ -29,7 +29,7 @@ module API
 
         context '正常にユーザーが作成される場合' do
           it 'データベースにユーザーが作成されること' do
-            expect { subject }.to change(User, :count).by(1)
+            expect { subject }.to change(::User, :count).by(1)
           end
 
           it 'ステータス201(created)が返されること' do
@@ -40,7 +40,7 @@ module API
 
         context '正常にユーザーが作成されない場合' do
           before do
-            allow_any_instance_of(User).to receive(:save).and_return(false)
+            allow_any_instance_of(::User).to receive(:save).and_return(false)
           end
 
           it 'ステータス422(unprocessable_entity)が返されること' do
@@ -103,7 +103,7 @@ module API
 
           context '正常にユーザーを更新できなかった場合' do
             before do
-              allow_any_instance_of(User).to receive(:update).and_return(false)
+              allow_any_instance_of(::User).to receive(:update).and_return(false)
             end
 
             it 'ステータス422(unprocessable_entity)が返ってくること' do
@@ -143,13 +143,13 @@ module API
             end
 
             it 'データベースからデータが削除されていること' do
-              expect { subject }.to change(User, :count).by(-1)
+              expect { subject }.to change(::User, :count).by(-1)
             end
           end
 
           context '正常にユーザーを削除できなかった場合' do
             before do
-              allow_any_instance_of(User).to receive(:destroy).and_return(false)
+              allow_any_instance_of(::User).to receive(:destroy).and_return(false)
             end
 
             it 'ステータス422(unprocessable_entity)が返ってくること' do

@@ -6,7 +6,7 @@ module API
           helpers do
             def current_user
               id = params[:user_id] || params[:id]
-              @current_uesr ||= User.find(id)
+              @current_uesr ||= ::User.find(id)
             end
 
             def post_like_params
