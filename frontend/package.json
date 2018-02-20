@@ -34,6 +34,7 @@
     "@storybook/addon-options": "^3.3.12",
     "@storybook/addon-viewport": "^3.3.12",
     "@storybook/vue": "^3.3.12",
+    "axios-mock-adapter": "^1.14.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
