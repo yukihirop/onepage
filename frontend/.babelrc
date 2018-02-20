@@ -13,6 +13,7 @@
       "presets": ["env", "stage-3"],
       "plugins": [
         "dynamic-import-node",
+        "transform-class-properties",
         ["module-resolver", {
           "root": ["./src"],
           "alias": {
