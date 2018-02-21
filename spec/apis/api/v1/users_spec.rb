@@ -127,7 +127,7 @@ module API
       end
 
       describe 'DELETE /users/:id' do
-        let!(:user) { create(:user) }
+        let!(:user) { create(:user, :with_profile_and_posts, posts_count: 5) }
 
         context 'ユーザーが存在する場合' do
           let(:path) { "/api/v1/users/#{user.id}" }
@@ -143,7 +143,7 @@ module API
             end
 
             it 'データベースからデータが削除されていること' do
-              expect { subject }.to change(::User, :count).by(-1)
+              expect { subject }.to change(::User, :count).by(-1).and change(::Post, :count).by(-5).and change(::Profile, :count).by(-1)
             end
           end
 

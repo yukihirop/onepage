@@ -9,6 +9,6 @@
 #
 
 class User < ApplicationRecord
-  has_many :posts
-  has_one :profile
+  has_many :posts, dependent: :destroy
+  has_one :profile, dependent: :destroy
 end
