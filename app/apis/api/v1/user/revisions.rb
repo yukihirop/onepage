@@ -50,7 +50,6 @@ module API
 
               route_param :post_id do
                 resource :revisions do
-
                   desc '改訂履歴一覧を取得します'
                   get do
                     set_post

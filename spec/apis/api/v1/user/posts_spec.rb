@@ -7,7 +7,7 @@ module API
         let!(:current_user) { create(:user) }
 
         describe 'GET /users/:user_id/posts' do
-          let(:posts) { create_list(:post, 5, user: current_user ) }
+          let(:posts) { create_list(:post, 5, user: current_user) }
           let(:path)  { "/api/v1/users/#{current_user.id}/posts" }
 
           before do
@@ -60,7 +60,7 @@ module API
         end
 
         describe 'GET /users/:user_id/posts/:id' do
-          let!(:post) { create(:post, user: current_user ) }
+          let!(:post) { create(:post, user: current_user) }
 
           context '正常に投稿が見つかった場合' do
             let(:path) { "/api/v1/users/#{current_user.id}/posts/#{post.id}" }
@@ -85,11 +85,10 @@ module API
               expect(response.status).to eq 404
             end
           end
-
         end
 
         describe 'PATCH/PUT /users/:user_id/posts/:id (posts#update)' do
-          let!(:post) { create(:post_with_revisions, user: current_user ) }
+          let!(:post) { create(:post_with_revisions, user: current_user) }
 
           let(:post_params)                 { attributes_for(:post) }
           let(:revision_attributes_element) { { "1": attributes_for(:revision, title: 'hogehoge') } }

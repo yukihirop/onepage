@@ -34,7 +34,6 @@ module API
 
           route_param :user_id do
             resource :profile do
-
               desc 'プロフィールを取得します'
               get do
                 set_profile

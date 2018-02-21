@@ -38,7 +38,7 @@ module API
         end
 
         describe 'GET /users/:user_id/profile' do
-          let!(:profile) { create(:profile, user: current_user ) }
+          let!(:profile) { create(:profile, user: current_user) }
 
           context '正常にプロフィールが見つかった場合' do
             let(:path) { "/api/v1/users/#{current_user.id}/profile" }
@@ -63,11 +63,10 @@ module API
               expect(response.status).to eq 404
             end
           end
-
         end
 
         describe 'PATCH/PUT /users/:user_id/profile' do
-          let!(:profile)       { create(:profile, user: current_user ) }
+          let!(:profile)       { create(:profile, user: current_user) }
           let(:profile_params) { attributes_for(:profile, name: 'update') }
 
           context '正常に投稿が見つかった場合' do
