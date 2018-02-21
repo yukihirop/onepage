@@ -6,7 +6,7 @@ class CreateProfiles < ActiveRecord::Migration[5.1]
       t.string :kana
       t.string :organization
       t.text :introduction
-      t.binary :image
+      t.binary :image, limit: 2.megabyte
 
       t.timestamps
     end
