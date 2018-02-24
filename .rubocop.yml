@@ -16,3 +16,12 @@ AllCops:
     - 'frontend/**/*'
     - 'vendor/**/*'
     - 'db/schema.rb'
+
+Layout/ExtraSpacing:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInLiteral:
+  Enabled: false

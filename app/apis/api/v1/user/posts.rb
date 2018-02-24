@@ -12,14 +12,14 @@ module API
             ActionController::Parameters.new(params).permit(
               :newest_revision_id,
               revisions_attributes: %i[
-              title
-              summary
-              goal
-              comment
-              event_url
-              body
-              slide_url
-            ]
+                title
+                summary
+                goal
+                comment
+                event_url
+                body
+                slide_url
+              ]
             )
           end
 
@@ -38,9 +38,7 @@ module API
           end
 
           route_param :user_id do
-
             resource :posts do
-
               desc '投稿一覧を取得します'
               get do
                 current_user.posts
@@ -80,7 +78,7 @@ module API
                 requires :id, type: Integer
                 optional :newest_revision_id, type: Integer, documentation: { param_type: 'body' }
               end
-              patch':id' do
+              patch ':id' do
                 set_post
                 if @post.update(post_with_revision_params) && @post.update(newest_revision_id: @post.revisions.last.id)
                   @post
@@ -96,7 +94,7 @@ module API
                 requires :id, type: Integer
                 optional :newest_revision_id, type: Integer, documentation: { param_type: 'body' }
               end
-              put':id' do
+              put ':id' do
                 set_post
                 if @post.update(post_with_revision_params)
                   @post

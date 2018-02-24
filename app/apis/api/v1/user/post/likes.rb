@@ -45,7 +45,6 @@ module API
 
                 route_param :post_id do
                   resource :post_likes do
-
                     desc '「いいね！」の一覧を取得します'
                     get do
                       set_post
