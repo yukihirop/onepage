@@ -7,7 +7,7 @@ module API
         let!(:current_user) { create(:user) }
 
         describe 'GET /users/:user_id/posts' do
-          let(:posts) { create_list(:post, 5, user: current_user) }
+          let!(:posts) { create_list(:post_with_revisions, 5, user: current_user) }
           let(:path)  { "/api/v1/users/#{current_user.id}/posts" }
 
           before do
@@ -16,6 +16,12 @@ module API
 
           it 'ステータス200(OK)が返されること' do
             expect(response.status).to eq 200
+          end
+
+          it '投稿一覧(内容もあり)がjsonで返ってくる' do
+            actual   = JSON.parse(response.body)
+            expected = posts.map { |post| post.revisions.last }.map { |el| JSON.parse(el.to_json) }
+            expect(actual).to include_json expected
           end
         end
 
@@ -67,7 +73,7 @@ module API
         end
 
         describe 'GET /users/:user_id/posts/:id' do
-          let!(:post) { create(:post, user: current_user) }
+          let!(:post) { create(:post_with_revisions, user: current_user) }
 
           context '正常に投稿が見つかった場合' do
             let(:path) { "/api/v1/users/#{current_user.id}/posts/#{post.id}" }
@@ -78,6 +84,13 @@ module API
 
             it 'ステータス200(OK)が返ってくること' do
               expect(response.status).to eq 200
+            end
+
+            it '投稿(内容あり)がjsonで返ってくる' do
+              subject
+              actual   = JSON.parse(response.body)
+              expected = JSON.parse(post.revisions.last.to_json)
+              expect(actual).to eq expected
             end
           end
 
@@ -185,6 +198,14 @@ module API
 
               it 'データベースからデータが削除されること' do
                 expect { subject }.to change(::Post, :count).by(-1).and change(Revision, :count).by(-post.revisions.all.size)
+              end
+
+              it '削除された投稿(内容あり)がjsonで返ってくる' do
+                newest_revision_of_post = post.revisions.last.dup
+                subject
+                actual   = JSON.parse(response.body)
+                expected = JSON.parse(newest_revision_of_post.to_json)
+                expect(actual).to eq expected
               end
             end
 

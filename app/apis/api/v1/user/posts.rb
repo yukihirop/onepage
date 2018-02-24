@@ -37,6 +37,12 @@ module API
             @post = current_user.posts.find(params[:id])
           end
 
+          def revisions_each_related_post
+            current_user.posts.map do |post|
+              post.revisions.last
+            end
+          end
+
           params :user_id do
             requires :user_id, type: Integer
           end
@@ -78,7 +84,7 @@ module API
             resource :posts do
               desc '投稿一覧を取得します'
               get do
-                current_user.posts
+                revisions_each_related_post
               end
 
               desc 'idで指定された投稿を取得します'
@@ -87,7 +93,7 @@ module API
               end
               get ':id' do
                 set_post
-                @post
+                @post.revisions.last
               end
 
               desc '投稿を作成します', {
@@ -145,8 +151,9 @@ module API
               end
               delete ':id' do
                 set_post
+                newest_revision_of_post = @post.revisions.last.dup
                 if @post.destroy
-                  @post
+                  newest_revision_of_post
                 else
                   status 422
                 end
