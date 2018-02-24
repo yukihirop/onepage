@@ -52,6 +52,7 @@ group :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'database_rewinder'
+  gem 'rspec-json_expectations'
 end
 
 gem 'grape'                   # Grapeを使うときのGem
