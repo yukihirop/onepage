@@ -9,8 +9,7 @@ module API
           end
 
           def post_with_revision_params
-            ActionController::Parameters.new(params).permit(
-              :newest_revision_id,
+            ActionController::Parameters.new(customize_params).permit(
               revisions_attributes: %i[
                 title
                 summary
@@ -23,12 +22,56 @@ module API
             )
           end
 
+          def customize_params
+            if params["revisions_attributes"].nil?
+              params
+            else
+              dup_params = params.dup
+              dup_params["revisions_attributes"] = {}
+              dup_params["revisions_attributes"]["1"] = params["revisions_attributes"].dup
+              dup_params
+            end
+          end
+
           def set_post
             @post = current_user.posts.find(params[:id])
           end
 
+          def revisions_each_related_post
+            current_user.posts.map do |post|
+              post.revisions.last
+            end
+          end
+
           params :user_id do
             requires :user_id, type: Integer
+          end
+
+          # 参考
+          # param_typeを指定しないとだめ
+          # https://qiita.com/gamerinshaft/items/5cddcd38869d1238e688
+          params :revisions_attributes do
+            requires :revisions_attributes, type: Hash do
+              requires :title,     type: String, documentation: { param_type: 'body' }
+              requires :summary,   type: String, documentation: { param_type: 'body' }
+              requires :goal,      type: String, documentation: { param_type: 'body' }
+              optional :comment,   type: String, documentation: { param_type: 'body' }
+              optional :event_url, type: String, documentation: { param_type: 'body' }
+              requires :body,      type: String, documentation: { param_type: 'body' }
+              optional :slide_url, type: String, documentation: { param_type: 'body' }
+            end
+          end
+
+          params :revisions_attributes_optional do
+            requires :revisions_attributes, type: Hash do
+              optional :title,     type: String, documentation: { param_type: 'body' }
+              optional :summary,   type: String, documentation: { param_type: 'body' }
+              optional :goal,      type: String, documentation: { param_type: 'body' }
+              optional :comment,   type: String, documentation: { param_type: 'body' }
+              optional :event_url, type: String, documentation: { param_type: 'body' }
+              optional :body,      type: String, documentation: { param_type: 'body' }
+              optional :slide_url, type: String, documentation: { param_type: 'body' }
+            end
           end
         end
 
@@ -41,7 +84,7 @@ module API
             resource :posts do
               desc '投稿一覧を取得します'
               get do
-                current_user.posts
+                revisions_each_related_post
               end
 
               desc 'idで指定された投稿を取得します'
@@ -50,22 +93,19 @@ module API
               end
               get ':id' do
                 set_post
-                @post
+                @post.revisions.last
               end
 
               desc '投稿を作成します', {
                 failure: [{ code: 422, message: 'Unprocessable Entity' }]
               }
               params do
-                # 参考
-                # param_typeを指定しないとだめ
-                # https://qiita.com/gamerinshaft/items/5cddcd38869d1238e688
-                requires :newest_revision_id, type: Integer, documentation: { param_type: 'body' }
+                use :revisions_attributes
               end
               post do
                 post = current_user.posts.build(post_with_revision_params)
                 if post.save && post.update(newest_revision_id: post.revisions.last.id)
-                  post
+                  post.revisions.last
                 else
                   status 422
                 end
@@ -76,12 +116,12 @@ module API
               }
               params do
                 requires :id, type: Integer
-                optional :newest_revision_id, type: Integer, documentation: { param_type: 'body' }
+                use :revisions_attributes_optional
               end
               patch ':id' do
                 set_post
                 if @post.update(post_with_revision_params) && @post.update(newest_revision_id: @post.revisions.last.id)
-                  @post
+                  @post.revisions.last
                 else
                   status 422
                 end
@@ -92,12 +132,12 @@ module API
               }
               params do
                 requires :id, type: Integer
-                optional :newest_revision_id, type: Integer, documentation: { param_type: 'body' }
+                use :revisions_attributes_optional
               end
               put ':id' do
                 set_post
                 if @post.update(post_with_revision_params)
-                  @post
+                  @post.revisions.last
                 else
                   status 422
                 end
@@ -111,8 +151,9 @@ module API
               end
               delete ':id' do
                 set_post
+                newest_revision_of_post = @post.revisions.last.dup
                 if @post.destroy
-                  @post
+                  newest_revision_of_post
                 else
                   status 422
                 end
