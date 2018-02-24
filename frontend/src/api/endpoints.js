@@ -15,9 +15,9 @@ export const post = {
 }
 
 export const revision = {
-  index: '/users/:user_id/posts/:post_id/revisions',
-  show: '/users/:user_id/posts/:post_id/revisions/:id',
-  create: '/users/:user_id/posts/:post_id/revisions',
-  update: '/users/:user_id/posts/:post_id/revisions/:id',
-  destroy: '/users/:user_id/posts/:post_id/revisions/:id'
+  index:  '/posts/:post_id/revisions',
+  show:   '/posts/:post_id/revisions/:id',
+  create: '/posts/:post_id/revisions',
+  update: '/posts/:post_id/revisions/:id',
+  destroy:'/posts/:post_id/revisions/:id'
 }
