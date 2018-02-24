@@ -20,12 +20,12 @@ module API
         end
 
         describe 'POST /users/:user_id/posts' do
-          let(:post_params)                 { attributes_for(:post, newest_revision_id: nil) }
-          let(:revision_attributes_element) { attributes_for(:revision) }
-          let(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
-          let(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
+          let!(:post_params)                 { attributes_for(:post, newest_revision_id: nil) }
+          let!(:revision_attributes_element) { attributes_for(:revision) }
+          let!(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
+          let!(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
 
-          let(:path)                        { "/api/v1/users/#{current_user.id}/posts" }
+          let(:path)                         { "/api/v1/users/#{current_user.id}/posts" }
 
           subject do
             post path, params: post_with_revision_params
@@ -44,6 +44,13 @@ module API
             it '最新の改訂履歴を示すid(newest_revision_id)が更新されること' do
               subject
               expect(::Post.last.newest_revision_id).to eq ::Post.last.revisions.last.id
+            end
+
+            it '投稿(改訂履歴)のjsonが返ってくること' do
+              subject
+              actual   = JSON.parse(response.body)
+              expected = revision_attributes_element
+              expect(actual).to include_json expected
             end
           end
 
@@ -90,10 +97,10 @@ module API
         describe 'PATCH/PUT /users/:user_id/posts/:id (posts#update)' do
           let!(:post) { create(:post_with_revisions, user: current_user) }
 
-          let(:post_params)                 { attributes_for(:post) }
-          let(:revision_attributes_element) { attributes_for(:revision, title: 'hogehoge') }
-          let(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
-          let(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
+          let!(:post_params)                 { attributes_for(:post) }
+          let!(:revision_attributes_element) { attributes_for(:revision, title: 'hogehoge') }
+          let!(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
+          let!(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
 
           context '正常に投稿が見つかった場合' do
             let(:path) { "/api/v1/users/#{current_user.id}/posts/#{post.id}" }
@@ -125,6 +132,13 @@ module API
               it '最新の改訂履歴を示すid(newest_revision_id)が更新されること' do
                 subject
                 expect(::Post.last.newest_revision_id).to eq ::Post.last.revisions.last.id
+              end
+
+              it '最新の改訂履歴のjsonが返ってくること' do
+                subject
+                actual   = JSON.parse(response.body)
+                expected = revision_attributes_element
+                expect(actual).to include_json expected
               end
             end
 
