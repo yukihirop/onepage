@@ -21,11 +21,11 @@ module API
 
         describe 'POST /users/:user_id/posts' do
           let(:post_params)                 { attributes_for(:post, newest_revision_id: nil) }
-          let(:revision_attributes_element) { { "1": attributes_for(:revision) } }
-          let(:revisions_attributes)         { { revisions_attributes: revision_attributes_element } }
+          let(:revision_attributes_element) { attributes_for(:revision) }
+          let(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
           let(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
 
-          let(:path)        { "/api/v1/users/#{current_user.id}/posts" }
+          let(:path)                        { "/api/v1/users/#{current_user.id}/posts" }
 
           subject do
             post path, params: post_with_revision_params
@@ -91,7 +91,7 @@ module API
           let!(:post) { create(:post_with_revisions, user: current_user) }
 
           let(:post_params)                 { attributes_for(:post) }
-          let(:revision_attributes_element) { { "1": attributes_for(:revision, title: 'hogehoge') } }
+          let(:revision_attributes_element) { attributes_for(:revision, title: 'hogehoge') }
           let(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
           let(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
 
