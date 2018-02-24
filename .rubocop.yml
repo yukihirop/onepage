@@ -25,3 +25,23 @@ Style/TrailingCommaInArguments:
 
 Style/TrailingCommaInLiteral:
   Enabled: false
+
+Metrics/ClassLength:
+  Exclude:
+    - 'app/apis/api/v1/**/*'
+    - 'spec/apis/api/v1/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'app/apis/api/v1/**/*'
+    - 'spec/apis/api/v1/**/*'
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'app/apis/api/v1/**/*'
+    - 'spec/apis/api/v1/**/*'
+
+Naming/FileName:
+  Exclude:
+    - 'spec/support/rspec-json_expectations.rb'
+
