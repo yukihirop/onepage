@@ -20,8 +20,9 @@ export default class Base {
     return Promise.reject(new ApiResponseError(error))
   }
 
-  index () {
-    const url = this.endpoints.index
+  index (params: Object) {
+    var endpoint = this.endpoints.index
+    var url = params ? pathToRegxp.compile(endpoint)(params) : endpoint
     return this.client.get(url).then(this.onFulFilled, this.onRejected)
   }
 

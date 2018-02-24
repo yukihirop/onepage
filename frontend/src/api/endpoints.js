@@ -7,11 +7,11 @@ export const user = {
 }
 
 export const post = {
-  index: '/users/:user_id/posts',
-  show: '/users/:user_id/posts/:id',
-  create: '/users/:user_id/posts',
-  update: '/users/:user_id/posts/:id',
-  destroy: '/users/:user_id/posts/:id'
+  index:  '/posts',
+  show:   '/posts/:id',
+  create: '/posts',
+  update: '/posts/:id',
+  destroy:'/posts/:id'
 }
 
 export const revision = {
