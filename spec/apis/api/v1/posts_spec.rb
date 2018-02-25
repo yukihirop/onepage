@@ -5,6 +5,16 @@ module API
     RSpec.describe Posts, type: :request do
       let!(:current_user) { create(:user) }
 
+      # helpersのメソッドのモックの仕方
+      # https://github.com/ruby-grape/grape/pull/397
+      before do
+        Grape::Endpoint.before_each do |endpoint|
+          endpoint.stub(:current_user).and_return current_user
+        end
+      end
+
+      after { Grape::Endpoint.before_each nil }
+
       describe 'GET /posts' do
         let!(:posts) { create_list(:post_with_revisions, 5, user: current_user) }
         let(:path)  { "/api/v1/posts" }
