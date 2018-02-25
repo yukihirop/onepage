@@ -28,7 +28,6 @@ module API
       mount API::V1::Posts
       mount API::V1::Revisions
       mount API::V1::Post::Likes
-      mount API::V1::User::Profiles
       mount API::V1::Setting::Profile
 
       add_swagger_documentation(
