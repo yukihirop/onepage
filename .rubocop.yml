@@ -45,3 +45,6 @@ Naming/FileName:
   Exclude:
     - 'spec/support/rspec-json_expectations.rb'
 
+Lint/UselessAssignment:
+  Exclude:
+    - 'app/apis/api/v1/**/*'
