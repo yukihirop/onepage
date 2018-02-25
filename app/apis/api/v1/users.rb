@@ -9,13 +9,17 @@ module API
         def set_user
           @user = ::User.find(params[:id])
         end
+
+        def profiles_each_related_user
+          ::User.all.map(&:profile)
+        end
       end
 
       resource :users do
 
         desc 'ユーザー一覧を取得します'
         get do
-          ::User.all
+          profiles_each_related_user
         end
 
         desc 'idで指定されたユーザーを取得します'
@@ -23,7 +27,7 @@ module API
           requires :id, type: Integer
         end
         get ':id' do
-          ::User.find(params[:id])
+          ::User.find(params[:id]).profile
         end
 
         desc 'ユーザーを作成します', {
@@ -84,8 +88,9 @@ module API
         end
         delete ':id' do
           set_user
+          profile_at_delete_uesr = @user.profile.dup
           if @user.destroy
-            @user
+            @user.profile
           else
             status 422
           end
