@@ -25,10 +25,10 @@ module API
       end
 
       mount API::V1::Users
-      mount API::V1::User::Posts
-      mount API::V1::User::Revisions
-      mount API::V1::User::Post::Likes
-      mount API::V1::User::Profiles
+      mount API::V1::Posts
+      mount API::V1::Revisions
+      mount API::V1::Post::Likes
+      mount API::V1::Setting::Profile
 
       add_swagger_documentation(
         info: {

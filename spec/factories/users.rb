@@ -12,6 +12,10 @@ FactoryBot.define do
   factory :user do
     email { Faker::Internet.email }
 
+    factory :user_with_profile do
+      association :profile, factory: :profile
+    end
+
     trait :with_profile_and_posts do
       association :profile, factory: :profile
 

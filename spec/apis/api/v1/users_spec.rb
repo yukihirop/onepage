@@ -5,7 +5,7 @@ module API
     RSpec.describe Users, type: :request do
 
       describe 'GET /users' do
-        let(:user) { create(:user) }
+        let!(:users) { create_list(:user_with_profile, 5) }
         let(:path) { '/api/v1/users' }
 
         before do
@@ -14,6 +14,13 @@ module API
 
         it 'ステータス200(OK)が返ってくること' do
           expect(response.status).to eq 200
+        end
+
+        it 'ユーザー一覧（内容あり)がjsonで返ってくる' do
+          profiles_each_related_user = users.map(&:profile)
+          actual   = JSON.parse(response.body)
+          expected = JSON.parse(profiles_each_related_user.to_json)
+          expect(actual).to include_json expected
         end
       end
 
@@ -51,7 +58,7 @@ module API
       end
 
       describe 'GET /users/:id' do
-        let!(:user) { create(:user) }
+        let!(:user) { create(:user_with_profile) }
 
         context 'ユーザーが存在する場合' do
           let(:path)  { "/api/v1/users/#{user.id}" }
@@ -63,6 +70,12 @@ module API
           it 'ステータス200(OK)が返ってくること' do
             expect(response.status).to eq 200
           end
+
+          it 'ユーザー(内容あり)がjsonで返ってくる' do
+            actual   = JSON.parse(response.body)
+            expected = JSON.parse(user.profile.to_json)
+            expect(actual).to eq expected
+          end
         end
 
         context 'ユーザーが存在しない場合' do
@@ -70,54 +83,6 @@ module API
 
           before do
             get path
-          end
-
-          it 'ステータス404(not_found)が返ってくること' do
-            expect(response.status).to eq 404
-          end
-        end
-      end
-
-      describe 'PATCH /users/:id' do
-        let!(:user) { create(:user) }
-
-        context 'ユーザーが存在する場合' do
-          let(:path) { "/api/v1/users/#{user.id}" }
-
-          subject do
-            patch path, params: { email: 'update@example.com' }
-          end
-
-          context '正常にユーザーを更新できた場合' do
-            it 'ステータス200(OK)が返ってくること' do
-              subject
-              expect(response.status).to eq 200
-            end
-
-            it 'データベースの値が更新されていること' do
-              subject
-              user.reload
-              expect(user.email).to eq 'update@example.com'
-            end
-          end
-
-          context '正常にユーザーを更新できなかった場合' do
-            before do
-              allow_any_instance_of(::User).to receive(:update).and_return(false)
-            end
-
-            it 'ステータス422(unprocessable_entity)が返ってくること' do
-              subject
-              expect(response.status).to eq 422
-            end
-          end
-        end
-
-        context 'ユーザーが存在しない場合' do
-          let(:path) { "/api/v1/users/0" }
-
-          before do
-            patch path, params: { email: 'update@example.com' }
           end
 
           it 'ステータス404(not_found)が返ってくること' do
@@ -144,6 +109,13 @@ module API
 
             it 'データベースからデータが削除されていること' do
               expect { subject }.to change(::User, :count).by(-1).and change(::Post, :count).by(-5).and change(::Profile, :count).by(-1)
+            end
+
+            it 'ユーザー(内容あり)のjsonが返ってくる' do
+              subject
+              actual   = JSON.parse(response.body)
+              expected = JSON.parse(user.profile.to_json)
+              expect(actual).to eq expected
             end
           end
 
