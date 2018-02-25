@@ -21,3 +21,10 @@ export const revision = {
   update: '/posts/:post_id/revisions/:id',
   destroy:'/posts/:post_id/revisions/:id'
 }
+
+export const setting = {
+  profile: {
+    show:   '/settings/profile',
+    update: '/settings/profile'
+  }
+}

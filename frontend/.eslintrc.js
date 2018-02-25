@@ -32,6 +32,8 @@ module.exports = {
       // ジェネレータ関数を示す*の前には空白を入れ、後には空白をいれないこと
       'generator-star-spacing': 0,
       // デバッガを使用しないこと(developmentでは使用する)
-      'no-debuger': process.env.NODE_ENV === 'production' ? 2 : 0
+      'no-debuger': process.env.NODE_ENV === 'production' ? 2 : 0,
+      // Keyの横のスペースを許可する
+      'key-spacing': 0
     }
 };
