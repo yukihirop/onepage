@@ -8,9 +8,19 @@ module API
           let(:current_user) { create(:user) }
           let(:current_post) { create(:post, user: current_user) }
 
-          describe 'GET /users/:user_id/posts/:post_id/post_likes' do
+          # helpersのメソッドのモックの仕方
+          # https://github.com/ruby-grape/grape/pull/397
+          before do
+            Grape::Endpoint.before_each do |endpoint|
+              endpoint.stub(:current_user).and_return current_user
+            end
+          end
+
+          after { Grape::Endpoint.before_each nil }
+
+          describe 'GET /posts/:post_id/post_likes' do
             let(:post_likes) { create_list(:post_likes, 5, post: current_post) }
-            let(:path)       { "/api/v1/users/#{current_user.id}/posts/#{current_post.id}/post_likes" }
+            let(:path)       { "/api/v1/posts/#{current_post.id}/post_likes" }
 
             before do
               get path
@@ -21,9 +31,9 @@ module API
             end
           end
 
-          describe 'POST /users/:user_id/posts/:post_id/post_likes' do
+          describe 'POST /posts/:post_id/post_likes' do
             let(:post_like_params) { attributes_for(:post_like) }
-            let(:path)             { "/api/v1/users/#{current_user.id}/posts/#{current_post.id}/post_likes" }
+            let(:path)             { "/api/v1/posts/#{current_post.id}/post_likes" }
 
             subject do
               post path, params: post_like_params
@@ -48,11 +58,11 @@ module API
             end
           end
 
-          describe 'DELETE /users/:user_id/posts/:post_id/post_likes/:id' do
+          describe 'DELETE /posts/:post_id/post_likes/:id' do
             let!(:post_like) { create(:post_like, post: current_post) }
 
             context '正常に「いいね！」が見つかった場合' do
-              let(:path) { "/api/v1/users/#{current_user.id}/posts/#{current_post.id}/post_likes/#{post_like.id}" }
+              let(:path) { "/api/v1/posts/#{current_post.id}/post_likes/#{post_like.id}" }
 
               subject do
                 delete path
@@ -82,7 +92,7 @@ module API
             end
 
             context '正常に「いいね！」が見つからなかった場合' do
-              let(:path) { "/api/v1/users/#{current_user.id}/posts/#{current_post.id}/post_likes/0" }
+              let(:path) { "/api/v1/posts/#{current_post.id}/post_likes/0" }
 
               before do
                 delete path
