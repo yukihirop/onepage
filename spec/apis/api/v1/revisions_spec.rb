@@ -6,9 +6,19 @@ module API
       let!(:current_user) { create(:user) }
       let!(:current_post) { create(:post, user: current_user) }
 
-      describe 'GET /users/:user_id/posts/:post_id/revisions' do
+      # helpersのメソッドのモックの仕方
+      # https://github.com/ruby-grape/grape/pull/397
+      before do
+        Grape::Endpoint.before_each do |endpoint|
+          endpoint.stub(:current_user).and_return current_user
+        end
+      end
+
+      after { Grape::Endpoint.before_each nil }
+
+      describe 'GET /posts/:post_id/revisions' do
         let(:revision) { create(:revision, post: current_post) }
-        let(:path)     { "/api/v1/users/#{current_user.id}/posts/#{current_post.id}/revisions" }
+        let(:path)     { "/api/v1/posts/#{current_post.id}/revisions" }
 
         before do
           get path
@@ -21,7 +31,7 @@ module API
 
       describe 'POST /users/:user_id/posts/:post_id/revisions' do
         let(:revision_params) { attributes_for(:revision) }
-        let(:path)            { "/api/v1/users/#{current_user.id}/posts/#{current_post.id}/revisions" }
+        let(:path)            { "/api/v1/posts/#{current_post.id}/revisions" }
 
         subject do
           post path, params: revision_params
@@ -50,7 +60,7 @@ module API
         let!(:revision) { create(:revision, post: current_post) }
 
         context '正常に改定履歴が見つかった場合' do
-          let(:path) { "/api/v1/users/#{current_user.id}/posts/#{current_post.id}/revisions/#{revision.id}" }
+          let(:path) { "/api/v1/posts/#{current_post.id}/revisions/#{revision.id}" }
 
           before do
             get path
@@ -62,7 +72,7 @@ module API
         end
 
         context '正常に改訂履歴が見つからなかった場合' do
-          let(:path) { "/api/v1/users/#{current_user.id}/posts/#{current_post.id}/revisions/0" }
+          let(:path) { "/api/v1/posts/#{current_post.id}/revisions/0" }
 
           before do
             get path
