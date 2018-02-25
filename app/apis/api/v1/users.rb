@@ -64,22 +64,6 @@ module API
           end
         end
 
-        desc 'idで指定されたユーザーの更新をします', {
-          failure: [{ code: 422, message: 'Unprocessable Entity' }]
-        }
-        params do
-          requires :id, type: Integer
-          optional :email, type: String, documentation: { param_type: 'body' }
-        end
-        put':id' do
-          set_user
-          if @user.update(user_params)
-            @user
-          else
-            status 422
-          end
-        end
-
         desc 'idで指定されたユーザーを削除します', {
           failure: [{ code: 422, message: 'Unprocessable Entity' }]
         }
