@@ -48,3 +48,7 @@ Naming/FileName:
 Lint/UselessAssignment:
   Exclude:
     - 'app/apis/api/v1/**/*'
+
+Layout/IndentationConsistency:
+  Exclude:
+    - 'app/apis/api/v1/**/*'
