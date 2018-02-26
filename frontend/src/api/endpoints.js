@@ -11,7 +11,12 @@ export const post = {
   show:   '/posts/:id',
   create: '/posts',
   update: '/posts/:id',
-  destroy:'/posts/:id'
+  destroy:'/posts/:id',
+  like: {
+    index:   'posts/:post_id/post_likes',
+    create:  'posts/:post_id/post_likes',
+    destroy: 'posts/:post_id/post_likes/:id'
+  }
 }
 
 export const revision = {
