@@ -11,4 +11,5 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_one :profile, dependent: :destroy
+  has_many :post_likes, class_name: 'Post::Like', dependent: :destroy
 end
