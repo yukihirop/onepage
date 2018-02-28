@@ -10,7 +10,8 @@
 
 FactoryBot.define do
   factory :user do
-    email { Faker::Internet.email }
+    mention_name { Faker::Lorem.characters(5) }
+    email        { Faker::Internet.email }
 
     factory :user_with_profile do
       association :profile, factory: :profile
