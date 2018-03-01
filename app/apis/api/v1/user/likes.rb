@@ -9,7 +9,7 @@ module API
           end
         end
 
-        route_param :mention_name do
+        route_param :mention_name, type: String do
           resource :post_likes do
             desc '「いいね！」の一覧を取得します'
             get do
