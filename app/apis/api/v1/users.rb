@@ -11,7 +11,9 @@ module API
         end
 
         def profiles_each_related_user
-          ::User.all.map(&:profile)
+          # joins.includesでprofilesの要素が取得できないrailsのバグの
+          # ためにselect文を使っている
+          ::User.joins(:profile).select('users.*, profiles.*')
         end
       end
 

@@ -17,7 +17,7 @@ module API
         end
 
         it 'ユーザー一覧（内容あり)がjsonで返ってくる' do
-          profiles_each_related_user = users.map(&:profile)
+          profiles_each_related_user = ::User.joins(:profile).select('users.*, profiles.*')
           actual   = JSON.parse(response.body)
           expected = JSON.parse(profiles_each_related_user.to_json)
           expect(actual).to include_json expected
