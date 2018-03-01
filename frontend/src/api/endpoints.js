@@ -3,7 +3,10 @@ export const user = {
   show: '/users/:id',
   create: '/users',
   update: '/users/:id',
-  destroy: '/users/:id'
+  destroy: '/users/:id',
+  like: {
+    index: '/:mention_name/likes'
+  }
 }
 
 export const post = {
