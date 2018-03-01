@@ -16,7 +16,7 @@ module API
           end
 
           params :account_params do
-            optional :email,         type: String, documentation: { param_type: 'body' }
+            optional :email,         type: String, documentation: { param_type: 'body' }, regexp: /.+@.+/
             optional :mention_name,  type: String, documentation: { param_type: 'body' }
           end
         end

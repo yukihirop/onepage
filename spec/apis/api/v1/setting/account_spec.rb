@@ -54,13 +54,30 @@ module API
             end
 
             context '正常にプロフィールが更新されなかった場合' do
-              before do
-                allow_any_instance_of(::User).to receive(:update).and_return(false)
-              end
+              context '更新時の失敗の時' do
+                before do
+                  allow_any_instance_of(::User).to receive(:update).and_return(false)
+                end
 
-              it 'ステータス422(unprocessable_entity)が返ってくること' do
-                subject
-                expect(response.status).to eq 422
+                it 'ステータス422(unprocessable_entity)が返ってくること' do
+                  subject
+                  expect(response.status).to eq 422
+                end
+              end
+              context 'emailのフォーマットが不正の時' do
+                let(:account_params) { attributes_for(:user, email: 'update') }
+
+                it 'メッセージ「email is invalid」が返ってくること' do
+                  subject
+                  actual = JSON.parse(response.body).first
+                  expect(actual['params']).to include 'email'
+                  expect(actual['messages']).to include 'is invalid'
+                end
+
+                it 'ステータス400(Bad Request)が返ってくること' do
+                  subject
+                  expect(response.status).to eq 400
+                end
               end
             end
           end
