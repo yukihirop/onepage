@@ -10,8 +10,8 @@ module API
         end
 
         route_param :mention_name, type: String do
-          resource :post_likes do
-            desc '「いいね！」の一覧を取得します'
+          resource :likes do
+            desc 'mention_nameで指定されたユーザーの「いいね！」の一覧を取得します'
             get do
               set_user
               # TODO: 現在は投稿に関する「いいね！」だけを考えているが、
