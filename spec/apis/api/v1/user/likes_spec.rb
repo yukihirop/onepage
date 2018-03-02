@@ -13,7 +13,7 @@ module API
             #       チャットに対しての「いいね！」も考えるようになったら、
             #       current_user.chat_likesも足すようにする。
             let!(:post_likes) { create_list(:post_like, 5, user: user, post: post) }
-            let(:path)       { "/api/v1/#{user.mention_name}/post_likes" }
+            let(:path)       { "/api/v1/#{user.mention_name}/likes" }
 
             before do
               get path
