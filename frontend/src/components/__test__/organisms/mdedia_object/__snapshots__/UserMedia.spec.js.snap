@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserMedia.vue レンダリングのテスト 1`] = `
+<nav class="panel">
+    <div class="panel-heading">
+        <div class="title is-6">ユーザー・ランキング</div>
+    </div>
+    <div class="panel-tabs">
+        <a class="is-active">週間</a>
+        <a>月間</a>
+        <a>全て</a>
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+    <div class="panel-block">
+        <!---->
+    </div>
+</nav>
+`;
