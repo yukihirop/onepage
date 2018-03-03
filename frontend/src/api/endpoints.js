@@ -3,21 +3,36 @@ export const user = {
   show: '/users/:id',
   create: '/users',
   update: '/users/:id',
-  destroy: '/users/:id'
+  destroy: '/users/:id',
+  like: {
+    index: '/:mention_name/likes'
+  }
 }
 
 export const post = {
-  index: '/users/:user_id/posts',
-  show: '/users/:user_id/posts/:id',
-  create: '/users/:user_id/posts',
-  update: '/users/:user_id/posts/:id',
-  destroy: '/users/:user_id/posts/:id'
+  index:  '/posts',
+  show:   '/posts/:id',
+  create: '/posts',
+  update: '/posts/:id',
+  destroy:'/posts/:id',
+  like: {
+    index:   'posts/:post_id/post_likes',
+    create:  'posts/:post_id/post_likes',
+    destroy: 'posts/:post_id/post_likes/:id'
+  }
 }
 
 export const revision = {
-  index: '/users/:user_id/posts/:post_id/revisions',
-  show: '/users/:user_id/posts/:post_id/revisions/:id',
-  create: '/users/:user_id/posts/:post_id/revisions',
-  update: '/users/:user_id/posts/:post_id/revisions/:id',
-  destroy: '/users/:user_id/posts/:post_id/revisions/:id'
+  index:  '/posts/:post_id/revisions',
+  show:   '/posts/:post_id/revisions/:id',
+  create: '/posts/:post_id/revisions',
+  update: '/posts/:post_id/revisions/:id',
+  destroy:'/posts/:post_id/revisions/:id'
+}
+
+export const setting = {
+  profile: {
+    show:   '/settings/profile',
+    update: '/settings/profile'
+  }
 }

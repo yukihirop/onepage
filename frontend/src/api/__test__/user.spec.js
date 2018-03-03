@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter'
 import client from '../client'
-import Base from '../model/base'
+import User from '../model/user'
 import * as endpoints from '../endpoints'
 import factoryUserParams from './factories/users'
 import '../../../env-config'
@@ -9,18 +9,18 @@ var faker = require('faker')
 faker.locale = 'ja'
 
 const mockAxios = new MockAdapter(client)
-const base = new Base(endpoints.user)
+const user = new User(endpoints.user)
 
 const { user1 } = factoryUserParams.user1
 
-describe('Base', () => {
+describe('User', () => {
   describe('.index', () => {
     describe('onFulFilled', () => {
       const users = [factoryUserParams.user1, factoryUserParams.user2]
       it('全てのユーザーを取得できる', () => {
         expect.assertions(1)
         mockAxios.onGet('/users').reply(200, users)
-        return base.index().then(res => {
+        return user.index().then(res => {
           expect(res.data).toEqual(users)
         })
       })
@@ -32,7 +32,7 @@ describe('Base', () => {
       it('idで指定されたユーザーを取得できる', () => {
         expect.assertions(1)
         mockAxios.onGet('users/1').reply(200, user1)
-        return base.show({id: 1}).then(res => {
+        return user.show({id: 1}).then(res => {
           expect(res.data).toEqual(user1)
         })
       })
@@ -40,7 +40,7 @@ describe('Base', () => {
     describe('onRejected', () => {
       it('Not Foundが返ってくる', () => {
         mockAxios.onGet('users/1').reply(404)
-        return base.show({id: 1}).catch(error => {
+        return user.show({id: 1}).catch(error => {
           expect(error.errors).toEqual(['Not Found'])
         })
       })
@@ -54,7 +54,7 @@ describe('Base', () => {
         const userParams = { id: 3, email: 'create@example.com' }
         const createdUser = { id: 3, email: 'create@example.com' }
         mockAxios.onPost('/users').reply(204, createdUser)
-        return base.create(userParams).then(res => {
+        return user.create(userParams).then(res => {
           expect(res.data).toEqual(createdUser)
         })
       })
@@ -63,7 +63,7 @@ describe('Base', () => {
       it('Unprocessable Entityが返ってくる', () => {
         const userParams = { id: 3, email: 'create@example.com' }
         mockAxios.onGet('/users').reply(422)
-        return base.create(userParams).catch(error => {
+        return user.create(userParams).catch(error => {
           expect(error.errors).toEqual(['Unprocessable Entity'])
         })
       })
@@ -77,7 +77,7 @@ describe('Base', () => {
         const updateParams = { id: 1, email: 'update@example.com' }
         const updatedUser = { id: 1, email: 'update@example.com' }
         mockAxios.onPut('/users/1').reply(200, updatedUser)
-        return base.update(updateParams).then(res => {
+        return user.update(updateParams).then(res => {
           expect(res.data).toEqual(updatedUser)
         })
       })
@@ -86,7 +86,7 @@ describe('Base', () => {
       it('Not Foundが返ってくる', () => {
         const updateParams = { id: 1, email: 'update@example.com' }
         mockAxios.onPut('/users/1').reply(404)
-        return base.update(updateParams).catch(error => {
+        return user.update(updateParams).catch(error => {
           expect(error.errors).toEqual(['Not Found'])
         })
       })
@@ -95,7 +95,7 @@ describe('Base', () => {
       it('Unprocessable Entityが返ってくる', () => {
         const updateParams = { id: 1, email: 'update@example.com' }
         mockAxios.onPut('/users/1').reply(422)
-        return base.update(updateParams).catch(error => {
+        return user.update(updateParams).catch(error => {
           expect(error.errors).toEqual(['Unprocessable Entity'])
         })
       })
@@ -107,7 +107,7 @@ describe('Base', () => {
       it('ユーザーが削除される', () => {
         expect.assertions(1)
         mockAxios.onDelete('/users/1').reply(200, user1)
-        return base.destroy({id: 1}).then(res => {
+        return user.destroy({id: 1}).then(res => {
           expect(res.data).toEqual(user1)
         })
       })
@@ -115,7 +115,7 @@ describe('Base', () => {
     describe('onRejected', () => {
       it('Not Foundが返ってくる', () => {
         mockAxios.onDelete('/users/1').reply(404)
-        return base.destroy({id: 1}).catch(error => {
+        return user.destroy({id: 1}).catch(error => {
           expect(error.errors).toEqual(['Not Found'])
         })
       })
@@ -123,7 +123,7 @@ describe('Base', () => {
     describe('onRejected', () => {
       it('Unprocessable Entityが返ってくる', () => {
         mockAxios.onDelete('/users/1').reply(422)
-        return base.destroy({id: 1}).catch(error => {
+        return user.destroy({id: 1}).catch(error => {
           expect(error.errors).toEqual(['Unprocessable Entity'])
         })
       })
