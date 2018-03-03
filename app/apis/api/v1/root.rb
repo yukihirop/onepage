@@ -25,9 +25,9 @@ module API
       end
 
       mount API::V1::Users
-      mount API::V1::Posts
-      mount API::V1::Revisions
-      mount API::V1::Likes
+      mount API::V1::CurrentUser::Posts
+      mount API::V1::CurrentUser::Likes
+      mount API::V1::CurrentUser::Post::Revisions
       mount API::V1::User::Likes
       mount API::V1::Post::Likes
       mount API::V1::Setting::Profile
