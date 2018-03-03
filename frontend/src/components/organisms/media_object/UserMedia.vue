@@ -47,7 +47,16 @@ export default {
       users: []
     }
   },
-  // mounted: () => {} では上手くいかない...
+  // NOTE: mounted: () => {} では上手くいかない...
+  // このコンポーネントが呼ばれる時に同期的に呼ばれるのだが、
+  // このフックメソッドの中で非同期処理を読んでも同期的には動かない
+  // なのでfetchUsersを非同期に実行したまま画面をレンダリングしてしまう
+  // これを回避する策は現在(2018/03/03)無い。
+  // 参考
+  // https://stackoverflow.com/questions/40243417/how-to-make-an-async-call-in-a-beforecreate-hook-of-a-vue-instance
+  // 上のリンクにも書いてあるようにskeletonで対応する
+  // skeletonの実装の仕方はココを参考にする
+  // https://kuroeveryday.blogspot.jp/2017/05/load-with-skeleton-screens-and-shimmer-effect.html
   mounted () {
     this.fetchUsers()
   },
