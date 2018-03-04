@@ -10,6 +10,6 @@
 #
 
 class Post::Tagging < ApplicationRecord
-  belongs_to :post
-  belongs_to :tag
+  belongs_to :post, optional: true
+  belongs_to :tag,  optional: true
 end

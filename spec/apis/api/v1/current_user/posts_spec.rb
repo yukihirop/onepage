@@ -191,7 +191,7 @@ module API
         end
 
         describe 'DELETE /posts/:id (users#destroy)' do
-          let!(:post) { create(:post_with_revisions, user: current_user) }
+          let!(:post) { create(:post_with_details, user: current_user) }
 
           context '正常に投稿が見つかった場合' do
             let(:path) { "/api/v1/posts/#{post.id}" }
@@ -207,7 +207,9 @@ module API
               end
 
               it 'データベースからデータが削除されること' do
-                expect { subject }.to change(::Post, :count).by(-1).and change(Revision, :count).by(-post.revisions.all.size)
+                expect { subject }.to change(::Post, :count).by(-1)
+                expect { subject }.to change(Revision, :count).by(-post.revisions.all.size)
+                expect { subject }.to change(::Post::Tagging, :count).by(-post.post_taggings.all.size)
               end
 
               it '削除された投稿(内容あり)がjsonで返ってくる' do
