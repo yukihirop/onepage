@@ -12,7 +12,7 @@ module API
             # TODO: 現在は投稿に関する「いいね！」だけを考えているが、
             #       チャットに対しての「いいね！」も考えるようになったら、
             #       current_user.chat_likesも足すようにする。
-            let!(:post_likes) { create_list(:post_like, 5, user: user, post: post) }
+            let!(:post_likings) { create_list(:post_liking, 5, user: user, post: post) }
             let(:path)       { "/api/v1/#{user.mention_name}/likes" }
 
             before do
@@ -25,7 +25,7 @@ module API
 
             it 'ユーザーの「いいね！」一覧がjsonで返ってくる' do
               actual   = JSON.parse(response.body)
-              expected = JSON.parse(post_likes.to_json)
+              expected = JSON.parse(post_likings.to_json)
               expect(actual).to include_json expected
             end
           end

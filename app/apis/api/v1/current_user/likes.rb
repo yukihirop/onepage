@@ -14,7 +14,7 @@ module API
             # TODO: 現在は投稿に関する「いいね！」だけを考えているが、
             #       チャットに対しての「いいね！」も考えるようになったら、
             #       current_user.chat_likesも足すようにする。
-            current_user.post_likes
+            current_user.post_likings
           end
         end
       end

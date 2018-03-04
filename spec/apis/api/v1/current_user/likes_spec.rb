@@ -21,7 +21,7 @@ module API
           # TODO: 現在は投稿に関する「いいね！」だけを考えているが、
           #       チャットに対しての「いいね！」も考えるようになったら、
           #       current_user.chat_likesも足すようにする。
-          let!(:likes) { create_list(:post_like, 5, user: current_user, post: post) }
+          let!(:likes) { create_list(:post_liking, 5, user: current_user, post: post) }
           let(:path)  { "/api/v1/likes" }
 
           before do
