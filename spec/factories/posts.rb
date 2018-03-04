@@ -24,5 +24,18 @@ FactoryBot.define do
         post.update(newest_revision_id: post.revisions.last.id)
       end
     end
+
+    factory :post_with_details do
+      transient do
+        revisions_count 5
+        post_taggings_count 5
+      end
+
+      after(:create) do |post, evaluator|
+        create_list(:revision, evaluator.revisions_count, post: post)
+        post.update(newest_revision_id: post.revisions.last.id)
+        create_list(:post_tagging, evaluator.post_taggings_count, post: post)
+      end
+    end
   end
 end
