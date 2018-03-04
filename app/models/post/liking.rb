@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: post_likes
+# Table name: post_likings
 #
 #  id           :integer          not null, primary key
 #  post_id      :integer
@@ -10,7 +10,7 @@
 #  user_id      :integer
 #
 
-class Post::Like < ApplicationRecord
+class Post::Liking < ApplicationRecord
   belongs_to :post, optional: true
   belongs_to :user, optional: true
 end

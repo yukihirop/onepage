@@ -19,7 +19,7 @@ module API
           after { Grape::Endpoint.before_each nil }
 
           describe 'GET /posts/:post_id/post_likes' do
-            let(:post_likes) { create_list(:post_likes, 5, post: current_post) }
+            let(:post_likings) { create_list(:post_likings, 5, post: current_post) }
             let(:path)       { "/api/v1/posts/#{current_post.id}/post_likes" }
 
             before do
@@ -32,11 +32,11 @@ module API
           end
 
           describe 'POST /posts/:post_id/post_likes' do
-            let(:post_like_params) { attributes_for(:post_like) }
+            let(:post_liking_params) { attributes_for(:post_liking) }
             let(:path)             { "/api/v1/posts/#{current_post.id}/post_likes" }
 
             subject do
-              post path, params: post_like_params
+              post path, params: post_liking_params
             end
 
             context '正常に「いいね！」ができた時' do
@@ -48,7 +48,7 @@ module API
 
             context '正常に「いいね！」ができなかった場合' do
               before do
-                allow_any_instance_of(::Post::Like).to receive(:save).and_return(false)
+                allow_any_instance_of(::Post::Liking).to receive(:save).and_return(false)
               end
 
               it 'ステータス422(unprocessable_entity)が返ってくること' do
@@ -59,10 +59,10 @@ module API
           end
 
           describe 'DELETE /posts/:post_id/post_likes/:id' do
-            let!(:post_like) { create(:post_like, post: current_post) }
+            let!(:post_liking) { create(:post_liking, post: current_post) }
 
             context '正常に「いいね！」が見つかった場合' do
-              let(:path) { "/api/v1/posts/#{current_post.id}/post_likes/#{post_like.id}" }
+              let(:path) { "/api/v1/posts/#{current_post.id}/post_likes/#{post_liking.id}" }
 
               subject do
                 delete path
@@ -75,13 +75,13 @@ module API
                 end
 
                 it 'データベースからデータが削除されること' do
-                  expect { subject }.to change(::Post::Like, :count).by(-1)
+                  expect { subject }.to change(::Post::Liking, :count).by(-1)
                 end
               end
 
               context '正常に「いいね！」が削除されなかった場合' do
                 before do
-                  allow_any_instance_of(::Post::Like).to receive(:destroy).and_return(false)
+                  allow_any_instance_of(::Post::Liking).to receive(:destroy).and_return(false)
                 end
 
                 it 'ステータス422(unprocessable_entity)が返ってくること' do

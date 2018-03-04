@@ -11,4 +11,3 @@ module Pg
     end
   end
 end
-

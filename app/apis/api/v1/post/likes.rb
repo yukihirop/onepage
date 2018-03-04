@@ -8,7 +8,7 @@ module API
 
         helpers API::V1::Helpers::SessionHelper
         helpers do
-          def post_like_params
+          def post_liking_params
             ActionController::Parameters.new(params).permit(
               :from_user_id
             )
@@ -18,8 +18,8 @@ module API
             @post = current_user.posts.find(params[:post_id])
           end
 
-          def set_post_like
-            @post_like = @post.post_likes.find(params[:id])
+          def set_post_liking
+            @post_liking = @post.post_likings.find(params[:id])
           end
 
           params :post_id do
@@ -37,7 +37,7 @@ module API
               desc '「いいね！」の一覧を取得します'
               get do
                 set_post
-                @post.post_likes
+                @post.post_likings
               end
 
               desc '「いいね！」を作成します', {
@@ -51,9 +51,9 @@ module API
               end
               post do
                 set_post
-                post_like = @post.post_likes.build(post_like_params)
-                if post_like.save
-                  post_like
+                post_liking = @post.post_likings.build(post_liking_params)
+                if post_liking.save
+                  post_liking
                 else
                   status 422
                 end
@@ -67,9 +67,9 @@ module API
               end
               delete ':id' do
                 set_post
-                set_post_like
-                if @post_like.destroy
-                  @post_like
+                set_post_liking
+                if @post_liking.destroy
+                  @post_liking
                 else
                   status 422
                 end

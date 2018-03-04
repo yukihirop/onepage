@@ -5,9 +5,9 @@ module Onepage
         allow do
           origins 'http://localhost:8081', 'http://localhost:5000'
           resource '*',
-            :headers => :any,
-            :methods => [:get, :post, :put, :patch, :delete, :options],
-            :credentials => true
+                   :headers => :any,
+                   :methods => [:get, :post, :put, :patch, :delete, :options],
+                   :credentials => true
         end
       end
     else
