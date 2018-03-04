@@ -1,9 +1,9 @@
-import User from './model/user'
+import User from '@/api/model/user'
 import CurrentUserPost from '@/api/model/current_user/post'
 import CurrentUserRevision from '@/api/model/current_user/revision'
-import SettingProfile from './model/setting/profile'
-import PostLike from './model/post/like'
-import UserLike from './model/user/like'
+import SettingProfile from '@/api/model/setting/profile'
+import PostLike from '@/api/model/post/like'
+import UserLike from '@/api/model/user/like'
 import * as currentUserEndpoints from '@/api/endpoints/current_user/index'
 import * as endpoints from '@/api/endpoints/index'
 
