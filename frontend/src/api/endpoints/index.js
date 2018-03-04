@@ -16,10 +16,3 @@ export const post = {
     destroy: 'posts/:post_id/post_likes/:id'
   }
 }
-
-export const setting = {
-  profile: {
-    show:   '/settings/profile',
-    update: '/settings/profile'
-  }
-}
