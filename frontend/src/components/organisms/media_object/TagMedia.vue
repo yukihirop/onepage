@@ -6,24 +6,53 @@ nav.panel
     a.is-active 週間
     a 月間
     a 全て
-  tag-media(rank=1, :tag-image-src='require("../../../assets/home/tag/Python.jpg")', tagname='Python',     posts=99999)
-  tag-media(rank=2, :tag-image-src='require("../../../assets/home/tag/JavaScript.jpg")', tagname='JavaScript', posts=9999)
-  tag-media(rank=3, :tag-image-src='require("../../../assets/home/tag/Ruby.jpg")', tagname='Ruby',       posts=8888)
-  tag-media(rank=4, :tag-image-src='require("../../../assets/home/tag/AWS.jpg")', tagname='AWS',        posts=7777)
-  tag-media(rank=5, :tag-image-src='require("../../../assets/home/tag/Android.jpg")', tagname='Android',    posts=6666)
-  tag-media(rank=6, :tag-image-src='require("../../../assets/home/tag/Docker.png")', tagname='Docker',     posts=5555)
-  tag-media(rank=7, :tag-image-src='require("../../../assets/home/tag/Swift.png")', tagname='Swift',      posts=4444)
-  tag-media(rank=8, :tag-image-src='require("../../../assets/home/tag/iOS.png")', tagname='iOS',        posts=333)
-  tag-media(rank=9, :tag-image-src='require("../../../assets/home/tag/Rails.jpg")', tagname='Rails',      posts=22)
-  tag-media(rank=10,:tag-image-src='require("../../../assets/home/tag/PHP.jpg")', tagname='PHP',       posts=1)
+  .panel-block(v-for='(tag, index) in tags')
+    tag-media(:rank="index+1",
+              :tag-image-src='tagImageSrcs[index]',
+              :tagname="tag.name",
+              :posts="tag.post_count")
 </template>
 
 <script>
 import TagMedia from '@/components/atoms/media_object/TagMedia.vue'
+import { tag } from '@/api/index'
 
 export default {
   components: {
     TagMedia
+  },
+  data() {
+    return {
+      // TODO: このやり方は一時しのぎであって実際はDBから取得するようにしたい
+      tagImageSrcs: [
+        require("@/assets/home/tag/Python.jpg"),
+        require("@/assets/home/tag/JavaScript.jpg"),
+        require("@/assets/home/tag/Ruby.jpg"),
+        require("@/assets/home/tag/AWS.jpg"),
+        require("@/assets/home/tag/Android.jpg"),
+        require("@/assets/home/tag/Docker.png"),
+        require("@/assets/home/tag/Swift.png"),
+        require("@/assets/home/tag/iOS.png"),
+        require("@/assets/home/tag/Rails.jpg"),
+        require("@/assets/home/tag/PHP.jpg")
+      ],
+      tags: []
+    }
+  },
+  mounted() {
+    this.fetchTags()
+  },
+  methods: {
+    fetchTags() {
+      tag.index().then(response => {
+        response.data.forEach( (tag, index) => {
+          var result = { name: tag.name, post_count: tag.post_count }
+          this.tags.push(result)
+        })
+      }).catch(error => {
+        console.error(error)
+      })
+    }
   }
 }
 </script>
@@ -47,4 +76,7 @@ nav.panel
   padding-bottom: 0px
   margin-bottom: 0px
   background-color: $custome_white
+
+.panel-block
+  background-color: white
 </style>
