@@ -10,11 +10,6 @@ export const user = {
 }
 
 export const post = {
-  index:  '/posts',
-  show:   '/posts/:id',
-  create: '/posts',
-  update: '/posts/:id',
-  destroy:'/posts/:id',
   like: {
     index:   'posts/:post_id/post_likes',
     create:  'posts/:post_id/post_likes',
