@@ -10,7 +10,7 @@
 #  user_id      :integer
 #
 
-class Post::Like < ApplicationRecord
+class Post::Liking < ApplicationRecord
   belongs_to :post, optional: true
   belongs_to :user, optional: true
 end

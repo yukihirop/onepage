@@ -16,6 +16,6 @@ class Post < ApplicationRecord
   has_many :revisions, dependent: :destroy
   accepts_nested_attributes_for :revisions
 
-  has_many :post_likes, class_name: 'Post::Like', dependent: :destroy
+  has_many :post_likes, class_name: 'Post::Liking', dependent: :destroy
   has_many :post_taggings, class_name: 'Post::Tagging', dependent: :destroy
 end
