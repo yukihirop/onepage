@@ -13,3 +13,10 @@ export const revision = {
   update: '/current_user/posts/:post_id/revisions/:id',
   destroy:'/current_user/posts/:post_id/revisions/:id'
 }
+
+export const setting = {
+  profile: {
+    show:   '/current_user/settings/profile',
+    update: '/current_user/settings/profile'
+  }
+}
