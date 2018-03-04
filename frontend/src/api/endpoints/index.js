@@ -16,3 +16,7 @@ export const post = {
     destroy: 'posts/:post_id/post_likes/:id'
   }
 }
+
+export const tag = {
+  index: '/tags'
+}
