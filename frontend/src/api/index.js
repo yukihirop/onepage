@@ -5,7 +5,7 @@ import SettingProfile from './model/setting/profile'
 import PostLike from './model/post/like'
 import UserLike from './model/user/like'
 import * as currentUserEndpoints from '@/api/endpoints/current_user/index'
-import * as endpoints from './endpoints'
+import * as endpoints from '@/api/endpoints/index'
 
 export const user = new User(endpoints.user)
 export const currentUserPost = new CurrentUserPost(currentUserEndpoints.post)

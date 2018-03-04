@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter'
 import client from '../../client'
 import UserLike from '../../model/user/like'
-import * as endpoints from '../../endpoints'
+import * as endpoints from '@/api/endpoints/index'
 import factoryUser from '../factories/user/likes'
 import '../../../../env-config'
 
