@@ -17,14 +17,6 @@ export const post = {
   }
 }
 
-export const revision = {
-  index:  '/posts/:post_id/revisions',
-  show:   '/posts/:post_id/revisions/:id',
-  create: '/posts/:post_id/revisions',
-  update: '/posts/:post_id/revisions/:id',
-  destroy:'/posts/:post_id/revisions/:id'
-}
-
 export const setting = {
   profile: {
     show:   '/settings/profile',
