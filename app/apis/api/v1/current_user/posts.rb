@@ -71,81 +71,83 @@ module API
           end
         end
 
-        resource :posts do
-          desc '投稿一覧を取得します'
-          get do
-            revisions_each_related_post
-          end
-
-          desc 'idで指定された投稿を取得します'
-          params do
-            requires :id, type: Integer
-          end
-          get ':id' do
-            set_post
-            @post.revisions.last
-          end
-
-          desc '投稿を作成します', {
-            failure: [{ code: 422, message: 'Unprocessable Entity' }]
-          }
-          params do
-            use :revisions_attributes
-          end
-          post do
-            post = current_user.posts.build(post_with_revision_params)
-            if post.save && post.update(newest_revision_id: post.revisions.last.id)
-              post.revisions.last
-            else
-              status 422
+        namespace 'current_user' do
+          resource :posts do
+            desc 'カレントユーザーの投稿一覧を取得します'
+            get do
+              revisions_each_related_post
             end
-          end
 
-          desc 'idで指定された投稿の更新をします', {
-            failure: [{ code: 422, message: 'Unprocessable Entity' }]
-          }
-          params do
-            requires :id, type: Integer
-            use :revisions_attributes_optional
-          end
-          patch ':id' do
-            set_post
-           if @post.update(post_with_revision_params) && @post.update(newest_revision_id: @post.revisions.last.id)
-             @post.revisions.last
-           else
-             status 422
-           end
-          end
-
-          desc 'idで指定された投稿の更新をします', {
-            failure: [{ code: 422, message: 'Unprocessable Entity' }]
-          }
-          params do
-            requires :id, type: Integer
-            use :revisions_attributes_optional
-          end
-          put ':id' do
-            set_post
-            if @post.update(post_with_revision_params)
+            desc 'カレントユーザーのidで指定された投稿を取得します'
+            params do
+              requires :id, type: Integer
+            end
+            get ':id' do
+              set_post
               @post.revisions.last
-            else
-              status 422
             end
-          end
 
-          desc 'idで指定された投稿を削除します', {
-            failure: [{ code: 422, message: 'Unprocessable Entity' }]
-          }
-          params do
-            requires :id, type: Integer
-          end
-          delete ':id' do
-            set_post
-            newest_revision_of_post = @post.revisions.last.dup
-            if @post.destroy
-              newest_revision_of_post
-            else
-              status 422
+            desc 'カレントユーザーの投稿を作成します', {
+              failure: [{ code: 422, message: 'Unprocessable Entity' }]
+            }
+            params do
+              use :revisions_attributes
+            end
+            post do
+              post = current_user.posts.build(post_with_revision_params)
+              if post.save && post.update(newest_revision_id: post.revisions.last.id)
+                post.revisions.last
+              else
+                status 422
+              end
+            end
+
+            desc 'カレントユーザーのidで指定された投稿の更新をします', {
+              failure: [{ code: 422, message: 'Unprocessable Entity' }]
+            }
+            params do
+              requires :id, type: Integer
+              use :revisions_attributes_optional
+            end
+            patch ':id' do
+              set_post
+             if @post.update(post_with_revision_params) && @post.update(newest_revision_id: @post.revisions.last.id)
+               @post.revisions.last
+             else
+               status 422
+             end
+            end
+
+            desc 'カレントユーザーのidで指定された投稿の更新をします', {
+              failure: [{ code: 422, message: 'Unprocessable Entity' }]
+            }
+            params do
+              requires :id, type: Integer
+              use :revisions_attributes_optional
+            end
+            put ':id' do
+              set_post
+              if @post.update(post_with_revision_params)
+                @post.revisions.last
+              else
+                status 422
+              end
+            end
+
+            desc 'カレントユーザーのidで指定された投稿を削除します', {
+              failure: [{ code: 422, message: 'Unprocessable Entity' }]
+            }
+            params do
+              requires :id, type: Integer
+            end
+            delete ':id' do
+              set_post
+              newest_revision_of_post = @post.revisions.last.dup
+              if @post.destroy
+                newest_revision_of_post
+              else
+                status 422
+              end
             end
           end
         end

@@ -16,9 +16,9 @@ module API
 
         after { Grape::Endpoint.before_each nil }
 
-        describe 'GET /posts' do
+        describe 'GET /current_user/posts' do
           let!(:posts) { create_list(:post_with_revisions, 5, user: current_user) }
-          let(:path)  { "/api/v1/posts" }
+          let(:path)  { "/api/v1/current_user/posts" }
 
           before do
             get path
@@ -35,13 +35,13 @@ module API
           end
         end
 
-        describe 'POST /posts' do
+        describe 'POST /current_user/posts' do
           let!(:post_params)                 { attributes_for(:post, newest_revision_id: nil) }
           let!(:revision_attributes_element) { attributes_for(:revision) }
           let!(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
           let!(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
 
-          let(:path)                         { "/api/v1/posts" }
+          let(:path)                         { "/api/v1/current_user/posts" }
 
           subject do
             post path, params: post_with_revision_params
@@ -82,11 +82,11 @@ module API
           end
         end
 
-        describe 'GET /posts/:id' do
+        describe 'GET /current_user/posts/:id' do
           let!(:post) { create(:post_with_revisions, user: current_user) }
 
           context '正常に投稿が見つかった場合' do
-            let(:path) { "/api/v1/posts/#{post.id}" }
+            let(:path) { "/api/v1/current_user/posts/#{post.id}" }
 
             before do
               get path
@@ -105,7 +105,7 @@ module API
           end
 
           context '正常に投稿が見つからなかった場合' do
-            let(:path) { "/api/v1/posts/0" }
+            let(:path) { "/api/v1/current_user/posts/0" }
 
             before do
               get path
@@ -117,7 +117,7 @@ module API
           end
         end
 
-        describe 'PATCH/PUT /posts/:id (posts#update)' do
+        describe 'PATCH/PUT /current_user/posts/:id (posts#update)' do
           let!(:post) { create(:post_with_revisions, user: current_user) }
 
           let!(:post_params)                 { attributes_for(:post) }
@@ -126,7 +126,7 @@ module API
           let!(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
 
           context '正常に投稿が見つかった場合' do
-            let(:path) { "/api/v1/posts/#{post.id}" }
+            let(:path) { "/api/v1/current_user/posts/#{post.id}" }
 
             subject do
               patch path, params: post_with_revision_params
@@ -178,7 +178,7 @@ module API
           end
 
           context '正常に投稿が見つからなかった場合' do
-            let(:path) { "/api/v1/posts/0" }
+            let(:path) { "/api/v1/current_user/posts/0" }
 
             before do
               patch path, params: post_with_revision_params
@@ -190,11 +190,11 @@ module API
           end
         end
 
-        describe 'DELETE /posts/:id (users#destroy)' do
+        describe 'DELETE /current_user/posts/:id (users#destroy)' do
           let!(:post) { create(:post_with_details, user: current_user) }
 
           context '正常に投稿が見つかった場合' do
-            let(:path) { "/api/v1/posts/#{post.id}" }
+            let(:path) { "/api/v1/current_user/posts/#{post.id}" }
 
             subject do
               delete path
@@ -234,7 +234,7 @@ module API
           end
 
           context '正常に投稿が見つからなかった場合' do
-            let(:path) { "/api/v1/posts/0" }
+            let(:path) { "/api/v1/current_user/posts/0" }
 
             before do
               delete path
