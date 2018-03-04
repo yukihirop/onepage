@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: post_likes
+# Table name: post_likings
 #
 #  id           :integer          not null, primary key
 #  post_id      :integer
