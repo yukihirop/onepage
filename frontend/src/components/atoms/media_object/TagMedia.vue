@@ -1,18 +1,17 @@
 <template lang="pug">
-.panel-block
-  .a-tag-media
-    .a-tag-media-rank
-      p(style="margin-top: 10px;") {{ rank }}
-    .a-tag-media-image(style="width: 64px;")
-      img(:src='tagImageSrc', style="width: 32px;margin-top: 10px;")
-    .a-tag-media-name
-      b
-        | {{ tagname }}
-    .a-tag-media-post
-      .a-tag-media-post-posts
-        b {{ posts }}
-      .a-tag-media-post-label
-        small posts
+.a-tag-media
+  .a-tag-media-rank
+    p(style="margin-top: 10px;") {{ rank }}
+  .a-tag-media-image(style="width: 64px;")
+    img(:src='tagImageSrc', style="width: 32px;margin-top: 10px;")
+  .a-tag-media-name
+    b
+      | {{ tagname }}
+  .a-tag-media-post
+    .a-tag-media-post-posts
+      b {{ posts }}
+    .a-tag-media-post-label
+      small posts
 </template>
 
 <script>
@@ -45,9 +44,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.panel-block
-  background-color: white
-
 .a-tag-media
   display: flex
   flex-direction: row
