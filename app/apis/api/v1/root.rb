@@ -30,6 +30,7 @@ module API
       mount API::V1::CurrentUser::Likes
       mount API::V1::CurrentUser::Post::Revisions
       mount API::V1::CurrentUser::Setting::Account
+      mount API::V1::CurrentUser::Setting::Profile
       mount API::V1::User::Likes
       mount API::V1::Post::Likes
       mount API::V1::Setting::Profile
