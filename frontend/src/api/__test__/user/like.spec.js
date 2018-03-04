@@ -1,9 +1,8 @@
 import MockAdapter from 'axios-mock-adapter'
-import client from '../../client'
-import UserLike from '../../model/user/like'
+import client from '@/api/client'
+import UserLike from '@/api/model/user/like'
 import * as endpoints from '@/api/endpoints/index'
-import factoryUser from '../factories/user/likes'
-import '../../../../env-config'
+import factoryUser from '@/api/__test__/factories/user/likes'
 
 var faker = require('faker')
 faker.locale = 'ja'
