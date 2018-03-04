@@ -1,7 +1,7 @@
 // @flow
 import pathToRegxp from 'path-to-regexp'
-import client from '../client'
-import ApiResponseError from '../api_response_error'
+import client from '@/api/client'
+import ApiResponseError from '@/api/api_response_error'
 
 export default class Base {
   endpoints: Object

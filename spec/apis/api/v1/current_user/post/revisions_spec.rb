@@ -18,9 +18,9 @@ module API
 
           after { Grape::Endpoint.before_each nil }
 
-          describe 'GET /posts/:post_id/revisions' do
+          describe 'GET /current_user/posts/:post_id/revisions' do
             let(:revision) { create(:revision, post: current_post) }
-            let(:path)     { "/api/v1/posts/#{current_post.id}/revisions" }
+            let(:path)     { "/api/v1/current_user/posts/#{current_post.id}/revisions" }
 
             before do
               get path
@@ -31,9 +31,9 @@ module API
             end
           end
 
-          describe 'POST /users/:user_id/posts/:post_id/revisions' do
+          describe 'POST /current_user/posts/:post_id/revisions' do
             let(:revision_params) { attributes_for(:revision) }
-            let(:path)            { "/api/v1/posts/#{current_post.id}/revisions" }
+            let(:path)            { "/api/v1/current_user/posts/#{current_post.id}/revisions" }
 
             subject do
               post path, params: revision_params
@@ -58,11 +58,11 @@ module API
             end
           end
 
-          describe 'GET /users/:user_id/posts/:post_id/revisions/:id' do
+          describe 'GET /current_user/posts/:post_id/revisions/:id' do
             let!(:revision) { create(:revision, post: current_post) }
 
             context '正常に改定履歴が見つかった場合' do
-              let(:path) { "/api/v1/posts/#{current_post.id}/revisions/#{revision.id}" }
+              let(:path) { "/api/v1/current_user/posts/#{current_post.id}/revisions/#{revision.id}" }
 
               before do
                 get path
@@ -74,7 +74,7 @@ module API
             end
 
             context '正常に改訂履歴が見つからなかった場合' do
-              let(:path) { "/api/v1/posts/#{current_post.id}/revisions/0" }
+              let(:path) { "/api/v1/current_user/posts/#{current_post.id}/revisions/0" }
 
               before do
                 get path

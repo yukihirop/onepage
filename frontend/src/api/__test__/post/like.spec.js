@@ -1,9 +1,8 @@
 import MockAdapter from 'axios-mock-adapter'
-import client from '../../client'
-import PostLike from '../../model/post/like'
-import * as endpoints from '../../endpoints'
-import factoryPost from '../factories/post/likes'
-import '../../../../env-config'
+import client from '@/api/client'
+import PostLike from '@/api/model/post/like'
+import * as endpoints from '@/api/endpoints/index'
+import factoryPost from '@/api/__test__/factories/post/likes'
 
 var faker = require('faker')
 faker.locale = 'ja'
