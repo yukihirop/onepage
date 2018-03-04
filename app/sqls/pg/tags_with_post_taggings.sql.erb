@@ -1,0 +1,21 @@
+WITH
+post_taggings_group_by_tag AS (
+  SELECT
+   tag_id,
+   array_to_json(array_agg(post_taggings))AS details
+  FROM
+   post_taggings
+  GROUP BY
+   tag_id
+  ORDER BY
+   tag_id
+)
+
+SELECT
+  tags.*,
+  post_taggings_group_by_tag.details AS post_taggings,
+  json_array_length(post_taggings_group_by_tag.details) AS post_count
+FROM
+  tags
+  LEFT JOIN post_taggings_group_by_tag
+    ON tags.id = post_taggings_group_by_tag.tag_id
