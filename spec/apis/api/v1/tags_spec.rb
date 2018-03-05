@@ -8,7 +8,6 @@ module API
 
       describe 'GET /tags' do
         let!(:post_tagggings) { create_list(:post_tagging, 5, post: post, tag: tag) }
-        let(:tag_with_post_tags) { tag.to_json.merge({ 'post_taggings': post_tagggings.map(&:to_json) }) }
         let(:path) { '/api/v1/tags' }
 
         before do
@@ -20,9 +19,9 @@ module API
         end
 
         it 'タグ一覧がjsonで返ってくる' do
-          tags_with_post_taggings = ::Pg::TagsWithPostTaggings.new.result
+          serialized_tags = ActiveModel::Serializer::CollectionSerializer.new(::Tag.all, serializer: TagSerializer).to_json
           actual   = JSON.parse(response.body)
-          expected = tags_with_post_taggings
+          expected = JSON.parse(serialized_tags)
           expect(actual).to eq expected
         end
       end

@@ -9,4 +9,5 @@
 #
 
 class Tag < ApplicationRecord
+  has_many :post_taggings, class_name: 'Post::Tagging'
 end

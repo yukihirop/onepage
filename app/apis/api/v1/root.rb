@@ -5,6 +5,11 @@ module API
       default_format :json
       version 'v1'
 
+      # active_model_serializerを使うために必要な設定
+      use Grape::Middleware::Globals
+      require 'grape/active_model_serializers'
+      include Grape::ActiveModelSerializers
+
       # 例外バンドル 400
       rescue_from ActiveRecord::RecordNotFound do |e|
         rack_response({ message: e.message, status: 404 }.to_json, 404)
