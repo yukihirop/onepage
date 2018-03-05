@@ -59,3 +59,5 @@ gem 'grape'                   # Grapeを使うときのGem
 gem 'grape-entity'            # 1対多のデータ構造を書くときに使う
 gem 'grape-swagger'           # Grapeで定義したAPIをSwagger形式でドキュメント化するために使う
 gem 'grape-swagger-entity'    # レスポンスモデルをSwaggerで見られる形式にするときに使う
+
+gem 'active_model_serializers'
