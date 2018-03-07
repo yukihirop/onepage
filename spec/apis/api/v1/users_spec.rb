@@ -17,10 +17,10 @@ module API
         end
 
         it 'ユーザー一覧（内容あり)がjsonで返ってくる' do
-          profiles_each_related_user = ::User.joins(:profile).select('users.*, profiles.*')
+          serialized_users = ActiveModel::Serializer::CollectionSerializer.new(::User.all, serializer: UserSerializer).to_json
           actual   = JSON.parse(response.body)
-          expected = JSON.parse(profiles_each_related_user.to_json)
-          expect(actual).to include_json expected
+          expected = JSON.parse(serialized_users)
+          expect(actual).to eq expected
         end
       end
 
