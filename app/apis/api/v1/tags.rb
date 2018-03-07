@@ -1,9 +1,12 @@
 module API
   module V1
     class Tags < Grape::API
+      use Grape::Middleware::Globals
+      include Grape::ActiveModelSerializers
+
       helpers do
         def tags_with_post_taggings
-          ::Pg::TagsWithPostTaggings.new.result
+          ::Tag.all
         end
       end
 

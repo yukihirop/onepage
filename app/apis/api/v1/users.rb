@@ -6,10 +6,8 @@ module API
           ActionController::Parameters.new(params).permit(:email)
         end
 
-        def profiles_each_related_user
-          # joins.includesでprofilesの要素が取得できないrailsのバグの
-          # ためにselect文を使っている
-          ::User.joins(:profile).select('users.*, profiles.*')
+        def users_with_profile
+          ::User.all
         end
       end
 
@@ -17,7 +15,7 @@ module API
 
         desc 'ユーザー一覧を取得します'
         get do
-          profiles_each_related_user
+          users_with_profile
         end
 
         desc 'ユーザーを作成します', {
