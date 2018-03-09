@@ -53,6 +53,7 @@ group :test do
   gem 'spring-commands-rspec'
   gem 'database_rewinder'
   gem 'rspec-json_expectations'
+  gem 'shoulda-matchers'
 end
 
 gem 'grape'                   # Grapeを使うときのGem

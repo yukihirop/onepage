@@ -15,6 +15,10 @@
 #  comment    :text
 #
 
-class RevisionSerializer < ActiveModel::Serializer
-  attributes :id, :post_id, :title, :summary, :goal, :event_url, :body, :slide_url, :created_at, :updated_at
+require 'rails_helper'
+
+RSpec.describe Revision, type: :model do
+  describe 'association' do
+    it { is_expected.to belong_to(:post) }
+  end
 end

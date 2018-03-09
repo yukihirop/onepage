@@ -10,6 +10,11 @@
 #  user_id      :integer
 #
 
-class Post::LikingSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :post_id, :from_user_id, :created_at, :updated_at
+require 'rails_helper'
+
+RSpec.describe Post::Liking, type: :model do
+  describe 'association' do
+    it { is_expected.to belong_to(:post) }
+    it { is_expected.to belong_to(:user) }
+  end
 end

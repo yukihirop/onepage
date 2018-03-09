@@ -8,8 +8,10 @@
 #  updated_at :datetime         not null
 #
 
-class TagSerializer < ActiveModel::Serializer
-  attributes :id, :name, :created_at, :updated_at
+require 'rails_helper'
 
-  has_many :post_taggings
+RSpec.describe Tag, type: :model do
+  describe 'association' do
+    it { is_expected.to have_many(:post_taggings) }
+  end
 end
