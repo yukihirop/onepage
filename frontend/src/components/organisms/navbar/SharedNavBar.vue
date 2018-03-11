@@ -3,7 +3,7 @@ nav.navbar.is-primary.is-fixed-top
   .container
     .navbar-brand
       a.navbar-item(href='https://bulma.io')
-        img(src='../../../assets/OnePage.png', alt='OnePage', width='160', height='30')
+        img(src='@/assets/OnePage.png', alt='OnePage', width='160', height='30')
       .navbar-burger.burger(data-target='navbarExampleTransparentExample')
         span
         span
