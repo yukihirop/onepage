@@ -1,0 +1,23 @@
+language: ruby
+
+ruby:
+  - 2.4.1
+
+services:
+  - postgresql
+
+addons:
+  postgresql: '9.6'
+
+gemfile:
+  - Gemfile
+
+bundler_args: "--without development --deployment"
+cache: bundler
+
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:create db:migrate
+
+script:
+  - bundle exec rspec spec
