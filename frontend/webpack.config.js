@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const CaseSensitivePathPlugin = require('case-sensitive-paths-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, dir)
@@ -121,7 +122,10 @@ const app = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new CaseSensitivePathPlugin()
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
