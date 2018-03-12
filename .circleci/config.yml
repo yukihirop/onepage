@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/onepage/frontend
+    working_directory: ~/onepage
     docker:
       - image: circleci/node:8
     steps:
