@@ -1,7 +1,6 @@
 import Vuex from 'vuex'
 import { shallow, createLocalVue } from 'vue-test-utils'
 import TagMedia from '@/components/organisms/media_object/TagMedia.vue'
-import ChildTagMedia from '/components/atoms/media_object/TagMedia.vue'
 import factoryTags from '@/components/__test__/factories/tags'
 
 const localVue = createLocalVue()
@@ -26,10 +25,6 @@ describe('TagMedia.vue', () => {
           type: String,
           required: false
         }
-      },
-      // 効果無いような気がすうる
-      stubs: {
-        'child-tag-media': ChildTagMedia
       }
     })
     wrapper.setData(factoryTags.data())
