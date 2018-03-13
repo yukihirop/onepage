@@ -18,7 +18,7 @@ jobs:
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
-            - frontend/node_modules
+            - ~/onepage/frontend/node_modules
       - run:
           shell: /bin/bash
           command: |
