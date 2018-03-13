@@ -1,7 +1,6 @@
 import Vuex from 'vuex'
 import { shallow, createLocalVue } from 'vue-test-utils'
 import UserMedia from '@/components/organisms/media_object/UserMedia.vue'
-import ChildUserMedia from '/components/atoms/media_object/UserMedia.vue'
 import factoryUsers from '@/components/__test__/factories/users'
 
 const localVue = createLocalVue()
@@ -26,10 +25,6 @@ describe('UserMedia.vue', () => {
           type: String,
           required: false
         }
-      },
-      // 効果無いような気がすうる
-      stubs: {
-        'child-user-media': ChildUserMedia
       }
     })
     wrapper.setData(factoryUsers.data())
