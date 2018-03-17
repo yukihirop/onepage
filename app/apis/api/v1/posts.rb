@@ -6,7 +6,7 @@ module API
 
       helpers do
         def posts_with_user
-          ::Post.all
+          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(::Post.all, serializer: API::V1::PostSerializer).to_json)
         end
       end
 
