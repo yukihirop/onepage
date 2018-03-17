@@ -11,7 +11,7 @@ nav.panel
                :profile-image-src='profileImageSrcs[index]',
                :username="user.name",
                :mentionname="user.mention_name",
-               :likes="user.userLikeCount")
+               :likes="user.post_likings_count")
 </template>
 
 <script>
@@ -61,20 +61,11 @@ export default {
     this.fetchUsers()
   },
   methods: {
-    fetchUserLike (user, index, params) {
-      userLike.index(params).then(response => {
-        var userLikeCount = response.data.length
-        var result = Object.assign(user, { userLikeCount: userLikeCount })
-        this.users.push(result)
-      }).catch(error => {
-        console.error(error)
-      })
-    },
     fetchUsers () {
       user.index().then(response => {
         response.data.forEach((user, index) => {
-          var params = { mention_name: user.mention_name }
-          this.fetchUserLike(user, index, params)
+          var result = { name: user.profile.name, mention_name: user.mention_name, post_likings_count: user.post_likings_count }
+          this.users.push(result)
         })
       }).catch(error => {
         console.error(error)
