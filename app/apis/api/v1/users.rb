@@ -6,8 +6,9 @@ module API
           ActionController::Parameters.new(params).permit(:email)
         end
 
-        def users_with_profile
-          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(::User.all, serializer: API::V1::UserSerializer).to_json)
+        # profileとpost_likingsを持つ
+        def serialized_users
+          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(API::V1::All::User.all, serializer: API::V1::UserSerializer).to_json)
         end
       end
 
@@ -15,7 +16,7 @@ module API
 
         desc 'ユーザー一覧を取得します'
         get do
-          users_with_profile
+          serialized_users
         end
 
         desc 'ユーザーを作成します', {
@@ -28,7 +29,7 @@ module API
           requires :email, type: String, documentation: { param_type: 'body' }
         end
         post do
-          user = ::User.new(user_params)
+          user = API::V1::All::User.new(user_params)
           if user.save
             user
           else

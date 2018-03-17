@@ -5,7 +5,7 @@ module API
     RSpec.describe Users, type: :request do
 
       describe 'GET /users' do
-        let!(:users) { create_list(:user, 5, :with_profile_and_post_likings) }
+        let!(:users) { create_list(:api_v1_user, 5, :with_profile_and_post_likings) }
         let(:path) { '/api/v1/users' }
 
         before do
@@ -17,7 +17,7 @@ module API
         end
 
         it 'ユーザー一覧（内容あり)がjsonで返ってくる' do
-          serialized_users = ActiveModel::Serializer::CollectionSerializer.new(::User.all, serializer: UserSerializer).to_json
+          serialized_users = ActiveModel::Serializer::CollectionSerializer.new(API::V1::All::User.all, serializer: API::V1::UserSerializer).to_json
           actual   = JSON.parse(response.body)
           expected = JSON.parse(serialized_users)
           expect(actual).to eq expected
@@ -25,7 +25,7 @@ module API
       end
 
       describe 'POST /users' do
-        let(:user_params) { attributes_for(:user) }
+        let(:user_params) { attributes_for(:api_v1_user) }
         let(:path)        { '/api/v1/users' }
 
         subject do
