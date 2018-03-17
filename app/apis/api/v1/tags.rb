@@ -6,7 +6,7 @@ module API
 
       helpers do
         def tags_with_post_taggings
-          ::Tag.all
+          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(::Tag.all, serializer: API::V1::TagSerializer).to_json)
         end
       end
 

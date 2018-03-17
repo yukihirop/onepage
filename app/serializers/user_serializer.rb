@@ -10,12 +10,5 @@
 #
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :mention_name, :created_at, :updated_at, :post_likings_count
-
-  has_one :profile
-  has_many :post_likings
-
-  def post_likings_count
-    object.post_likings.size
-  end
+  attributes :id, :email, :mention_name, :created_at, :updated_at
 end
