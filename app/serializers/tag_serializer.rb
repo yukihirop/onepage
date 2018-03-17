@@ -9,11 +9,5 @@
 #
 
 class TagSerializer < ActiveModel::Serializer
-  attributes :id, :name, :created_at, :updated_at, :post_taggings_count
-
-  has_many :post_taggings
-
-  def post_taggings_count
-    object.post_taggings.size
-  end
+  attributes :id, :name, :created_at, :updated_at
 end
