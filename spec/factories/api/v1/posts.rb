@@ -4,7 +4,7 @@ FactoryBot.define do
 
     # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#associations
     factory :api_v1_post_with_revision_and_post_likings_and_user, class: API::V1::All::Post do
-      association :user, factory: :user
+      association :user, factory: :api_v1_user
 
       transient do
         revisions_count 5
@@ -12,9 +12,9 @@ FactoryBot.define do
       end
 
       after(:create) do |post, evaluator|
-        create_list(:revision, evaluator.revisions_count, post: post)
+        create_list(:api_v1_revision, evaluator.revisions_count, post: post)
         post.update(newest_revision_id: post.revisions.last.id)
-        create_list(:post_liking, evaluator.post_likings_count, post: post)
+        create_list(:api_v1_post_liking, evaluator.post_likings_count, post: post)
       end
     end
   end

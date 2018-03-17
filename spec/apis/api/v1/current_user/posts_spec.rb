@@ -4,7 +4,7 @@ module API
   module V1
     module CurrentUser
       RSpec.describe Posts, type: :request do
-        let!(:current_user) { create(:user) }
+        let!(:current_user) { create(:api_v1_current_user_user) }
 
         # helpersのメソッドのモックの仕方
         # https://github.com/ruby-grape/grape/pull/397
@@ -17,7 +17,7 @@ module API
         after { Grape::Endpoint.before_each nil }
 
         describe 'GET /current_user/posts' do
-          let!(:posts) { create_list(:post_with_revisions, 5, user: current_user) }
+          let!(:posts) { create_list(:api_v1_current_user_post_with_revisions, 5, user: current_user) }
           let(:path)  { "/api/v1/current_user/posts" }
 
           before do
@@ -36,7 +36,7 @@ module API
         end
 
         describe 'POST /current_user/posts' do
-          let!(:post_params)                 { attributes_for(:post, newest_revision_id: nil) }
+          let!(:post_params)                 { attributes_for(:api_v1_current_user_post, newest_revision_id: nil) }
           let!(:revision_attributes_element) { attributes_for(:revision) }
           let!(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
           let!(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
@@ -59,7 +59,7 @@ module API
 
             it '最新の改訂履歴を示すid(newest_revision_id)が更新されること' do
               subject
-              expect(::Post.last.newest_revision_id).to eq ::Post.last.revisions.last.id
+              expect(API::V1::CurrentUser::All::Post.last.newest_revision_id).to eq API::V1::CurrentUser::All::Post.last.revisions.last.id
             end
 
             it '投稿(改訂履歴)のjsonが返ってくること' do
@@ -83,7 +83,7 @@ module API
         end
 
         describe 'GET /current_user/posts/:id' do
-          let!(:post) { create(:post_with_revisions, user: current_user) }
+          let!(:post) { create(:api_v1_current_user_post_with_revisions, user: current_user) }
 
           context '正常に投稿が見つかった場合' do
             let(:path) { "/api/v1/current_user/posts/#{post.id}" }
@@ -118,9 +118,9 @@ module API
         end
 
         describe 'PATCH/PUT /current_user/posts/:id (posts#update)' do
-          let!(:post) { create(:post_with_revisions, user: current_user) }
+          let!(:post) { create(:api_v1_current_user_post_with_revisions, user: current_user) }
 
-          let!(:post_params)                 { attributes_for(:post) }
+          let!(:post_params)                 { attributes_for(:api_v1_current_user_post) }
           let!(:revision_attributes_element) { attributes_for(:revision, title: 'hogehoge') }
           let!(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
           let!(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
@@ -154,7 +154,7 @@ module API
 
               it '最新の改訂履歴を示すid(newest_revision_id)が更新されること' do
                 subject
-                expect(::Post.last.newest_revision_id).to eq ::Post.last.revisions.last.id
+                expect(API::V1::CurrentUser::All::Post.last.newest_revision_id).to eq API::V1::CurrentUser::All::Post.last.revisions.last.id
               end
 
               it '最新の改訂履歴のjsonが返ってくること' do
@@ -167,7 +167,7 @@ module API
 
             context '正常に投稿が更新されなかった場合' do
               before do
-                allow_any_instance_of(::Post).to receive(:update).and_return(false)
+                allow_any_instance_of(API::V1::CurrentUser::All::Post).to receive(:update).and_return(false)
               end
 
               it 'ステータス422(unprocessable_entity)が返ってくること' do
@@ -191,7 +191,7 @@ module API
         end
 
         describe 'DELETE /current_user/posts/:id (users#destroy)' do
-          let!(:post) { create(:post_with_revisions_and_post_taggings, user: current_user) }
+          let!(:post) { create(:api_v1_current_user_post_with_revisions_and_post_taggings, user: current_user) }
 
           context '正常に投稿が見つかった場合' do
             let(:path) { "/api/v1/current_user/posts/#{post.id}" }
@@ -207,9 +207,9 @@ module API
               end
 
               it 'データベースからデータが削除されること' do
-                expect { subject }.to change(::Post, :count).by(-1)
-                expect { subject }.to change(Revision, :count).by(-post.revisions.all.size)
-                expect { subject }.to change(::Post::Tagging, :count).by(-post.post_taggings.all.size)
+                expect { subject }.to change(API::V1::CurrentUser::All::Post, :count).by(-1)
+                expect { subject }.to change(API::V1::CurrentUser::All::Revision, :count).by(-post.revisions.all.size)
+                expect { subject }.to change(API::V1::CurrentUser::All::Post::Tagging, :count).by(-post.post_taggings.all.size)
               end
 
               it '削除された投稿(内容あり)がjsonで返ってくる' do
@@ -223,7 +223,7 @@ module API
 
             context '正常に投稿が削除されなかった場合' do
               before do
-                allow_any_instance_of(::Post).to receive(:destroy).and_return(false)
+                allow_any_instance_of(API::V1::CurrentUser::All::Post).to receive(:destroy).and_return(false)
               end
 
               it 'ステータス422(unprocessable_entity)が返ってくること' do
