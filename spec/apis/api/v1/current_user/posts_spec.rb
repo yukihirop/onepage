@@ -191,7 +191,7 @@ module API
         end
 
         describe 'DELETE /current_user/posts/:id (users#destroy)' do
-          let!(:post) { create(:post_with_details, user: current_user) }
+          let!(:post) { create(:post_with_revisions_and_post_taggings, user: current_user) }
 
           context '正常に投稿が見つかった場合' do
             let(:path) { "/api/v1/current_user/posts/#{post.id}" }

@@ -25,7 +25,7 @@ FactoryBot.define do
       end
     end
 
-    factory :post_with_details do
+    factory :post_with_revisions_and_post_taggings do
       transient do
         revisions_count 5
         post_taggings_count 5
