@@ -7,7 +7,7 @@ module API
         end
 
         def users_with_profile
-          ::User.all
+          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(::User.all, serializer: API::V1::UserSerializer).to_json)
         end
       end
 
