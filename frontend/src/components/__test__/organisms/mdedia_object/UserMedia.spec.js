@@ -32,4 +32,20 @@ describe('UserMedia.vue', () => {
     const template = wrapper.html()
     expect(template).toMatchSnapshot()
   })
+
+  it('defaultのdata()のテスト', () => {
+    expect(typeof UserMedia.data).toBe('function')
+    const defaultData = UserMedia.data()
+    // assetsTransformerによって画像名に変換されてしまう。
+    expect(defaultData.profileImageSrcs).toEqual(["aimerald.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "yukihirop.jpg"])
+    expect(defaultData.users).toEqual([])
+  })
+
+  it('子コンポーネント以外のテキストが正しく表示されること', () => {
+    const wrapper = shallow(UserMedia)
+    expect(wrapper.text()).toEqual(expect.stringMatching(/ユーザー・ランキング/))
+    expect(wrapper.text()).toEqual(expect.stringMatching(/週間/))
+    expect(wrapper.text()).toEqual(expect.stringMatching(/月間/))
+    expect(wrapper.text()).toEqual(expect.stringMatching(/全て/))
+  })
 })
