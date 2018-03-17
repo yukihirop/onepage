@@ -5,15 +5,16 @@ module API
       include Grape::ActiveModelSerializers
 
       helpers do
-        def posts_with_user
-          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(::Post.all, serializer: API::V1::PostSerializer).to_json)
+        # userとrevisionとpost_likingsを持つ
+        def serialized_posts
+          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(API::V1::All::Post.all, serializer: API::V1::PostSerializer).to_json)
         end
       end
 
       resource :posts do
         desc '投稿一覧を取得します'
         get do
-          posts_with_user
+          serialized_posts
         end
       end
     end
