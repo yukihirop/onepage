@@ -5,7 +5,7 @@ module API
     RSpec.describe Users, type: :request do
 
       describe 'GET /users' do
-        let!(:users) { create_list(:user_with_profile, 5) }
+        let!(:users) { create_list(:user, 5, :with_profile_and_post_likings) }
         let(:path) { '/api/v1/users' }
 
         before do
