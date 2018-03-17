@@ -7,7 +7,7 @@ module API
         let(:path) { '/api/v1/tags' }
 
         before do
-          create(:tag_with_post_taggings)
+          create(:api_v1_tag_with_post_taggings)
           get path
         end
 
@@ -16,7 +16,7 @@ module API
         end
 
         it 'タグ一覧がjsonで返ってくる' do
-          serialized_tags = ActiveModel::Serializer::CollectionSerializer.new(::Tag.all, serializer: TagSerializer).to_json
+          serialized_tags = ActiveModel::Serializer::CollectionSerializer.new(API::V1::All::Tag.all, serializer: TagSerializer).to_json
           actual   = JSON.parse(response.body)
           expected = JSON.parse(serialized_tags)
           expect(actual).to eq expected

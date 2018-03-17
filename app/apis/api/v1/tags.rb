@@ -5,15 +5,16 @@ module API
       include Grape::ActiveModelSerializers
 
       helpers do
-        def tags_with_post_taggings
-          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(::Tag.all, serializer: API::V1::TagSerializer).to_json)
+        # post_taggingsを持つ
+        def serialized_tags
+          JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(API::V1::All::Tag.all, serializer: API::V1::TagSerializer).to_json)
         end
       end
 
       resource :tags do
         desc 'タグ一覧を取得します'
         get do
-          tags_with_post_taggings
+          serialized_tags
         end
       end
     end
