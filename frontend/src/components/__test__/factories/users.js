@@ -15,144 +15,54 @@ export default {
         ],
         users: [
         {
-          "id": 1,
-          "email": "update@example.com",
-          "created_at": "2018-02-28T13:36:30.067Z",
-          "updated_at": "2018-02-28T13:36:30.067Z",
           "mention_name": "uupax",
-          "user_id": 1,
           "name": "Madison Veum",
-          "kana": "Ernestina Miller Sr.",
-          "organization": "Kunze LLC",
-          "introduction": "lc9mdom7gd8mcbiph5q0qf2z35lz91ylvj6n79o391qcb89wbpbx7e1vm6sglvoi4rnguw0087z4ryjm",
-          "image": "#<File:0x007fa0f8ff3660>",
-          "userLikeCount": 10
+          "post_likings_count": 10
         },
         {
-          "id": 2,
-          "email": "adolf@ryan.com",
-          "created_at": "2018-02-28T13:36:30.070Z",
-          "updated_at": "2018-02-28T13:36:30.070Z",
           "mention_name": "cdwn2",
-          "user_id": 2,
           "name": "Nia Larkin",
-          "kana": "Emil Yost",
-          "organization": "Boehm, Jakubowski and Cremin",
-          "introduction": "h4anoirvro7s8je2my0q4nefxvfvkn2ou1aenzai9r5xaitzmh2nap7v5kwyg4hgaic6ilxw2cu8prk3",
-          "image": "#<File:0x007fa0f9936240>",
-          "userLikeCount": 20
+          "post_likings_count": 20
         },
         {
-          "id": 3,
-          "email": "madisen.swift@oconnell.co",
-          "created_at": "2018-02-28T13:36:30.074Z",
-          "updated_at": "2018-02-28T13:36:30.074Z",
           "mention_name": "a9boc",
-          "user_id": 3,
           "name": "Bethel Trantow",
-          "kana": "Jennie Hane",
-          "organization": "Schimmel, Bosco and Stanton",
-          "introduction": "ah3jffzm98psqf2sya5lhhiizbtt7drwg4ho9fg67h7erfua8lky0yhwx6xzulhv9j2krs30nepxc6c1",
-          "image": "#<File:0x007fa0f8bd8df0>",
-          "userLikeCount": 30
+          "post_likings_count": 30
         },
         {
-          "id": 4,
-          "email": "valentin.harris@braun.name",
-          "created_at": "2018-02-28T13:36:30.078Z",
-          "updated_at": "2018-02-28T13:36:30.078Z",
           "mention_name": "8qezc",
-          "user_id": 4,
           "name": "Ricky Kerluke",
-          "kana": "Mike Price II",
-          "organization": "Keeling, Bartoletti and Welch",
-          "introduction": "si1zflaftvwzymo63sxjformnvlff40si51qasiy63sq9i0h5behq2f7xr0o8h5ctn7qgpexph4o0vou",
-          "image": "#<File:0x007fa0f8b50d38>",
-          "userLikeCount": 40
+          "post_likings_count": 40
         },
         {
-          "id": 5,
-          "email": "katelyn.casper@prosacco.org",
-          "created_at": "2018-02-28T13:36:30.082Z",
-          "updated_at": "2018-02-28T13:36:30.082Z",
           "mention_name": "tzfcb",
-          "user_id": 5,
           "name": "Tyler Labadie",
-          "kana": "Josie VonRueden",
-          "organization": "Schimmel-Breitenberg",
-          "introduction": "l5w7peccyhu8awnuwv4bdtqe3qousaqs1cboajgjha9391skqadyq19by54hlidbplhnvgs0y1o0ugka",
-          "image": "#<File:0x007fa0f8ac8348>",
-          "userLikeCount": 50
+          "post_likings_count": 50
         },
         {
-          "id": 6,
-          "email": "jany@nicolas.info",
-          "created_at": "2018-02-28T13:36:30.085Z",
-          "updated_at": "2018-02-28T13:36:30.085Z",
           "mention_name": "jtcwf",
-          "user_id": 6,
           "name": "Stephany Cole",
-          "kana": "Mrs. Jermaine Terry",
-          "organization": "Pouros-Muller",
-          "introduction": "ofjg1jgalxrj5t89k6qcy56nzl7p801ke36adgn36rdgdng2c8934j0iwk5d2quxknhlrxprul9klizj",
-          "image": "#<File:0x007fa0f621e500>",
-          "userLikeCount": 60
+          "post_likings_count": 60
         },
         {
-          "id": 7,
-          "email": "glenna@medhurstbernhard.info",
-          "created_at": "2018-02-28T13:36:30.088Z",
-          "updated_at": "2018-02-28T13:36:30.088Z",
           "mention_name": "czofn",
-          "user_id": 7,
           "name": "Elnora Gusikowski",
-          "kana": "Karli Reichel II",
-          "organization": "Tillman LLC",
-          "introduction": "zgwihqevbljw2n41ud8589759047xhgiedcvnwlosqftxizfms96r9g8gxd6ya5esckrw3gzrmeacz96",
-          "image": "#<File:0x007fa0f579c208>",
-          "userLikeCount": 70
+          "post_likings_count": 70
         },
         {
-          "id": 8,
-          "email": "april.hodkiewicz@langschumm.name",
-          "created_at": "2018-02-28T13:36:30.101Z",
-          "updated_at": "2018-02-28T13:36:30.101Z",
           "mention_name": "dylt4",
-          "user_id": 8,
           "name": "Letitia Brekke",
-          "kana": "Neha Koch",
-          "organization": "Heaney, Bahringer and Leffler",
-          "introduction": "rixsm478deq6r243po4vpbef47njmvx2ew9m80a2hfy5n5ova0xgj41aofa3lzf947cwaykq7z5d8mw5",
-          "image": "#<File:0x007fa0fe952d00>",
-          "userLikeCount": 80
+          "post_likings_count": 80
         },
         {
-          "id": 9,
-          "email": "albertha_nolan@kemmerkris.org",
-          "created_at": "2018-02-28T13:36:30.104Z",
-          "updated_at": "2018-02-28T13:36:30.104Z",
           "mention_name": "8r2gf",
-          "user_id": 9,
           "name": "Tomasa Davis",
-          "kana": "Alysson Hodkiewicz",
-          "organization": "Reilly, Berge and Hoppe",
-          "introduction": "zr7l33qn5vqvw75k1fjynyvxz6i4qo1anmkr2wffvs69x949j1qim4szux1mzv00x57hlu0svazvmg7e",
-          "image": "#<File:0x007fa0fdd98c58>",
-          "userLikeCount": 90
+          "post_likings_count": 90
         },
         {
-          "id": 10,
-          "email": "tomas_goodwin@heidenreich.name",
-          "created_at": "2018-02-28T13:36:30.106Z",
-          "updated_at": "2018-02-28T13:36:30.106Z",
           "mention_name": "0im83",
-          "user_id": 10,
           "name": "Mr. Shayne Abshire",
-          "kana": "Mellie Walsh",
-          "organization": "Lindgren-Mosciski",
-          "introduction": "ofaqhnw7vu5m04ozuwhg7lwr1bd8j70evk3fhl7tmd4jpu9wbn2i494tz1t4co01wp6u6zd8qasgrek0",
-          "image": "#<File:0x007fa0fdd72f08>",
-          "userLikeCount": 100
+          "post_likings_count": 100
         }
       ]
     }

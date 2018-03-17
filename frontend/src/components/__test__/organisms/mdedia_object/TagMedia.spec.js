@@ -32,4 +32,20 @@ describe('TagMedia.vue', () => {
     const template = wrapper.html()
     expect(template).toMatchSnapshot()
   })
+
+  it('defaultのdata()のテスト', () => {
+    expect(typeof TagMedia.data).toBe('function')
+    const defaultData = TagMedia.data()
+    // assetsTransformerによって画像名に変換されてしまう。
+    expect(defaultData.tagImageSrcs).toEqual(["Python.jpg", "JavaScript.jpg", "Ruby.jpg", "AWS.jpg", "Android.jpg", "Docker.png", "Swift.png", "iOS.png", "Rails.jpg", "PHP.jpg"])
+    expect(defaultData.tags).toEqual([])
+  })
+
+  it('子コンポーネント以外のテキストが正しく表示されること', () => {
+    const wrapper = shallow(TagMedia)
+    expect(wrapper.text()).toEqual(expect.stringMatching(/タグ・ランキング/))
+    expect(wrapper.text()).toEqual(expect.stringMatching(/週間/))
+    expect(wrapper.text()).toEqual(expect.stringMatching(/月間/))
+    expect(wrapper.text()).toEqual(expect.stringMatching(/全て/))
+  })
 })

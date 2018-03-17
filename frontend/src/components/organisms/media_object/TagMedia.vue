@@ -10,7 +10,7 @@ nav.panel
     tag-media(:rank="index+1",
               :tag-image-src='tagImageSrcs[index]',
               :tagname="tag.name",
-              :posts="tag.post_count")
+              :posts="tag.post_taggings_count")
 </template>
 
 <script>
@@ -46,7 +46,7 @@ export default {
     fetchTags() {
       tag.index().then(response => {
         response.data.forEach( (tag, index) => {
-          var result = { name: tag.name, post_count: tag.post_count }
+          var result = { name: tag.name, post_taggings_count: tag.post_taggings_count }
           this.tags.push(result)
         })
       }).catch(error => {

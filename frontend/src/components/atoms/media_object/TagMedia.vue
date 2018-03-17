@@ -37,7 +37,7 @@ export default {
   // https://kuroeveryday.blogspot.jp/2017/10/img-src-data-binding-vuejs.html
   data () {
     return {
-      src: require(this.a - tag - mediaImageSrc)
+      src: require(this.tagImageSrc)
     }
   }
 }

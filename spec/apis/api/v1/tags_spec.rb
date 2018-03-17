@@ -3,14 +3,11 @@ require 'rails_helper'
 module API
   module V1
     RSpec.describe Tags, type: :request do
-      let!(:post) { create(:post) }
-      let!(:tag)  { create(:tag)  }
-
       describe 'GET /tags' do
-        let!(:post_tagggings) { create_list(:post_tagging, 5, post: post, tag: tag) }
         let(:path) { '/api/v1/tags' }
 
         before do
+          create(:tag_with_post_taggings)
           get path
         end
 
