@@ -5,14 +5,13 @@ module API
     module Post
       RSpec.describe Likes, type: :request do
         context 'ユーザーがいる場合' do
-          let!(:user) { create(:user) }
-          let!(:post) { create(:post) }
+          let!(:user) { create(:api_v1_user_user) }
 
           describe 'GET /:mention_name/post_likes' do
             # TODO: 現在は投稿に関する「いいね！」だけを考えているが、
             #       チャットに対しての「いいね！」も考えるようになったら、
             #       current_user.chat_likesも足すようにする。
-            let!(:post_likings) { create_list(:post_liking, 5, user: user, post: post) }
+            let!(:post_likings) { create_list(:api_v1_user_post_liking, 5, user: user) }
             let(:path)       { "/api/v1/#{user.mention_name}/likes" }
 
             before do
