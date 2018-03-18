@@ -5,8 +5,8 @@ module API
     module CurrentUser
       module Post
         RSpec.describe Revisions, type: :request do
-          let!(:current_user) { create(:user) }
-          let!(:current_post) { create(:post, user: current_user) }
+          let!(:current_user) { create(:api_v1_current_user_post_user) }
+          let!(:current_post) { create(:api_v1_current_user_post_post, user: current_user) }
 
           # helpersのメソッドのモックの仕方
           # https://github.com/ruby-grape/grape/pull/397
@@ -19,7 +19,7 @@ module API
           after { Grape::Endpoint.before_each nil }
 
           describe 'GET /current_user/posts/:post_id/revisions' do
-            let(:revision) { create(:revision, post: current_post) }
+            let(:revision) { create(:api_v1_current_user_post_revision, post: current_post) }
             let(:path)     { "/api/v1/current_user/posts/#{current_post.id}/revisions" }
 
             before do
@@ -32,7 +32,7 @@ module API
           end
 
           describe 'POST /current_user/posts/:post_id/revisions' do
-            let(:revision_params) { attributes_for(:revision) }
+            let(:revision_params) { attributes_for(:api_v1_current_user_post_revision) }
             let(:path)            { "/api/v1/current_user/posts/#{current_post.id}/revisions" }
 
             subject do
@@ -48,7 +48,7 @@ module API
 
             context '正常に改定履歴が作成されていない場合' do
               before do
-                allow_any_instance_of(Revision).to receive(:save).and_return(false)
+                allow_any_instance_of(::API::V1::CurrentUser::All::Revision).to receive(:save).and_return(false)
               end
 
               it 'ステータス422(unprocessable_entity)が返ってくること' do
@@ -59,7 +59,7 @@ module API
           end
 
           describe 'GET /current_user/posts/:post_id/revisions/:id' do
-            let!(:revision) { create(:revision, post: current_post) }
+            let!(:revision) { create(:api_v1_current_user_post_revision, post: current_post) }
 
             context '正常に改定履歴が見つかった場合' do
               let(:path) { "/api/v1/current_user/posts/#{current_post.id}/revisions/#{revision.id}" }
