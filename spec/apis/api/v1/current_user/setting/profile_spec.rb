@@ -5,7 +5,7 @@ module API
     module CurrentUser
       module Setting
         RSpec.describe Profile, type: :request do
-          let!(:current_user) { create(:user) }
+          let!(:current_user) { create(:api_v1_current_user_user) }
 
           # helpersのメソッドのモックの仕方
           # https://github.com/ruby-grape/grape/pull/397
@@ -18,7 +18,7 @@ module API
           after { Grape::Endpoint.before_each nil }
 
           describe 'GET /current_user/settings/profile' do
-            let!(:profile) { create(:profile, user: current_user) }
+            let!(:profile) { create(:api_v1_current_user_profile, user: current_user) }
 
             context '正常にプロフィールが見つかった場合' do
               let(:path) { "/api/v1/current_user/settings/profile" }
@@ -34,8 +34,8 @@ module API
           end
 
           describe 'PATCH/PUT /current_user/settings/profile' do
-            let!(:profile)       { create(:profile, user: current_user) }
-            let(:profile_params) { attributes_for(:profile, name: 'update') }
+            let!(:profile)       { create(:api_v1_current_user_profile, user: current_user) }
+            let(:profile_params) { attributes_for(:api_v1_current_user_profile, name: 'update') }
 
             context '正常に投稿が見つかった場合' do
               let(:path) { "/api/v1/current_user/settings/profile" }

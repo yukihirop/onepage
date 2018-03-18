@@ -5,7 +5,7 @@ module API
     module CurrentUser
       module Setting
         RSpec.describe Account, type: :request do
-          let!(:current_user) { create(:user) }
+          let!(:current_user) { create(:api_v1_current_user_setting_user) }
 
           # helpersのメソッドのモックの仕方
           # https://github.com/ruby-grape/grape/pull/397
@@ -32,7 +32,7 @@ module API
           end
 
           describe 'PATCH/PUT /current_user/settings/account' do
-            let(:account_params) { attributes_for(:user, email: 'update@example.com') }
+            let(:account_params) { attributes_for(:api_v1_current_user_setting_user, email: 'update@example.com') }
 
             context '正常に投稿が見つかった場合' do
               let(:path) { "/api/v1/current_user/settings/account" }
@@ -66,7 +66,7 @@ module API
                   end
                 end
                 context 'emailのフォーマットが不正の時' do
-                  let(:account_params) { attributes_for(:user, email: 'update') }
+                  let(:account_params) { attributes_for(:api_v1_current_user_setting_user, email: 'update') }
 
                   it 'メッセージ「email is invalid」が返ってくること' do
                     subject
