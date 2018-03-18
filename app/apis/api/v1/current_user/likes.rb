@@ -6,7 +6,7 @@ module API
         # https://stackoverflow.com/questions/35344117/why-does-session-doesnt-work-in-grape-rails
         use ActionDispatch::Session::CookieStore, key: 'user_id'
 
-        helpers API::V1::Helpers::SessionHelper
+        helpers API::V1::CurrentUser::Helpers::SessionHelper
 
         namespace 'current_user' do
           resource :likes do
