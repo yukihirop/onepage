@@ -37,7 +37,7 @@ module API
 
         describe 'POST /current_user/posts' do
           let!(:post_params)                 { attributes_for(:api_v1_current_user_post, newest_revision_id: nil) }
-          let!(:revision_attributes_element) { attributes_for(:revision) }
+          let!(:revision_attributes_element) { attributes_for(:api_v1_current_user_revision) }
           let!(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
           let!(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
 
@@ -121,7 +121,7 @@ module API
           let!(:post) { create(:api_v1_current_user_post_with_revisions, user: current_user) }
 
           let!(:post_params)                 { attributes_for(:api_v1_current_user_post) }
-          let!(:revision_attributes_element) { attributes_for(:revision, title: 'hogehoge') }
+          let!(:revision_attributes_element) { attributes_for(:api_v1_current_user_revision, title: 'hogehoge') }
           let!(:revisions_attributes)        { { revisions_attributes: revision_attributes_element } }
           let!(:post_with_revision_params)   { post_params.merge(revisions_attributes) }
 
