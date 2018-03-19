@@ -4,8 +4,8 @@ module API
   module V1
     module CurrentUser
       RSpec.describe Likes, type: :request do
-        let!(:current_user) { create(:user) }
-        let!(:post)         { create(:post) }
+        let!(:current_user) { create(:api_v1_current_user_user) }
+        let!(:post)         { create(:api_v1_current_user_post) }
 
         # helpersのメソッドのモックの仕方
         # https://github.com/ruby-grape/grape/pull/397
@@ -21,7 +21,7 @@ module API
           # TODO: 現在は投稿に関する「いいね！」だけを考えているが、
           #       チャットに対しての「いいね！」も考えるようになったら、
           #       current_user.chat_likesも足すようにする。
-          let!(:likes) { create_list(:post_liking, 5, user: current_user, post: post) }
+          let!(:likes) { create_list(:api_v1_current_user_post_liking, 5, user: current_user, post: post) }
           let(:path)  { "/api/v1/current_user/likes" }
 
           before do
