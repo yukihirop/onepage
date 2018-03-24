@@ -36,7 +36,7 @@ module API
 
           context '正常に「いいね！」ができなかった場合' do
             before do
-              allow_any_instance_of(::Post::Liking).to receive(:save).and_return(false)
+              allow_any_instance_of(API::V1::Post::PostLiking).to receive(:save).and_return(false)
             end
 
             it 'ステータス422(unprocessable_entity)が返ってくること' do
@@ -63,13 +63,13 @@ module API
               end
 
               it 'データベースからデータが削除されること' do
-                expect { subject }.to change(::Post::Liking, :count).by(-1)
+                expect { subject }.to change(API::V1::Post::PostLiking, :count).by(-1)
               end
             end
 
             context '正常に「いいね！」が削除されなかった場合' do
               before do
-                allow_any_instance_of(::Post::Liking).to receive(:destroy).and_return(false)
+                allow_any_instance_of(API::V1::Post::PostLiking).to receive(:destroy).and_return(false)
               end
 
               it 'ステータス422(unprocessable_entity)が返ってくること' do

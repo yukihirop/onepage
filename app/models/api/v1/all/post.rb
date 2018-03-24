@@ -5,5 +5,5 @@ class API::V1::All::Post < Post
   has_many :revisions, dependent: :destroy
   accepts_nested_attributes_for :revisions
 
-  has_many :post_likings, class_name: 'Post::Liking', dependent: :destroy
+  has_many :post_likings, class_name: 'PostLiking', dependent: :destroy
 end
