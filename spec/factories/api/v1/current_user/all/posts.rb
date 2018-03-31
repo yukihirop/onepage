@@ -23,7 +23,7 @@ FactoryBot.define do
       after(:create) do |post, evaluator|
         create_list(:api_v1_current_user_revision, evaluator.revisions_count, post: post)
         post.update(newest_revision_id: post.revisions.last.id)
-        create_list(:post_tagging, evaluator.post_taggings_count, post: post)
+        create_list(:api_v1_current_user_post_tagging, evaluator.post_taggings_count, post: post)
       end
     end
   end
