@@ -32,8 +32,8 @@ module API
       mount API::V1::All::Users
       mount API::V1::All::Tags
       mount API::V1::All::Posts
-      mount API::V1::CurrentUser::Posts
-      mount API::V1::CurrentUser::Likes
+      mount API::V1::CurrentUser::All::Posts
+      mount API::V1::CurrentUser::All::Likes
       mount API::V1::CurrentUser::Post::Revisions
       mount API::V1::CurrentUser::Setting::Account
       mount API::V1::CurrentUser::Setting::Profile
