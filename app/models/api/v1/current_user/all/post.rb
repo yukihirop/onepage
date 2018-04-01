@@ -5,5 +5,5 @@ class API::V1::CurrentUser::All::Post < Post
   has_many :revisions, dependent: :destroy
   accepts_nested_attributes_for :revisions
 
-  has_many :post_taggings, class_name: 'Post::Tagging', dependent: :destroy
+  has_many :post_taggings, dependent: :destroy
 end

@@ -209,7 +209,7 @@ module API
               it 'データベースからデータが削除されること' do
                 expect { subject }.to change(API::V1::CurrentUser::All::Post, :count).by(-1)
                 expect { subject }.to change(API::V1::CurrentUser::All::Revision, :count).by(-post.revisions.all.size)
-                expect { subject }.to change(API::V1::CurrentUser::All::Post::Tagging, :count).by(-post.post_taggings.all.size)
+                expect { subject }.to change(API::V1::CurrentUser::All::PostTagging, :count).by(-post.post_taggings.all.size)
               end
 
               it '削除された投稿(内容あり)がjsonで返ってくる' do
