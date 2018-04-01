@@ -5,7 +5,7 @@ module API
         helpers do
           def set_user
             # https://github.com/ruby-grape/grape#Current Route and Endpoint
-            @user = ::User.find_by(mention_name: params[:mention_name])
+            @user = API::V1::User::User.find_by(mention_name: params[:mention_name])
           end
         end
 
