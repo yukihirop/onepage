@@ -29,9 +29,9 @@ module API
         end
       end
 
-      mount API::V1::Users
-      mount API::V1::Tags
-      mount API::V1::Posts
+      mount API::V1::All::Users
+      mount API::V1::All::Tags
+      mount API::V1::All::Posts
       mount API::V1::CurrentUser::Posts
       mount API::V1::CurrentUser::Likes
       mount API::V1::CurrentUser::Post::Revisions
