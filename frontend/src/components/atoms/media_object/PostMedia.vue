@@ -86,6 +86,7 @@ ul
   display: inline-flex
   flex-direction: row
   align-items: stretch
+  width: 100%
 
 .a-post-media-left
   background-color: $custome_white
