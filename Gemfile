@@ -65,3 +65,5 @@ gem 'grape-swagger-entity'    # レスポンスモデルをSwaggerで見られ�
 
 gem 'active_model_serializers'
 gem 'kaminari'
+gem 'kaminari-grape'
+gem 'grape-kaminari'
