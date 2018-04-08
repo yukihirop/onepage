@@ -2,7 +2,7 @@ var faker = require('faker')
 faker.locale = 'ja'
 
 export default {
-  post1: {
+  revision1: {
     id: 1,
     post_id: 1,
     title:      faker.lorem.sentence(),
@@ -15,7 +15,7 @@ export default {
     created_at: faker.date.recent(),
     updated_at: faker.date.recent()
   },
-  post2: {
+  revision2: {
     id: 2,
     post_id: 2,
     title:      faker.lorem.sentence(),

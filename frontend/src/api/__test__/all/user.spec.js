@@ -1,11 +1,8 @@
 import MockAdapter from 'axios-mock-adapter'
 import client from '@/api/client'
-import User from '@/api/model/user'
+import User from '@/api/model/all/user'
 import * as endpoints from '@/api/endpoints/index'
-import factoryUserParams from '@/api/__test__/factories/users'
-
-var faker = require('faker')
-faker.locale = 'ja'
+import factoryUserParams from '@/api/__test__/factories/all/users'
 
 const mockAxios = new MockAdapter(client)
 const user = new User(endpoints.user)

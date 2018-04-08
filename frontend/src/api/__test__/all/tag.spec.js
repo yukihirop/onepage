@@ -1,11 +1,8 @@
 import MockAdapter from 'axios-mock-adapter'
 import client from '@/api/client'
-import Tag from '@/api/model/tag'
+import Tag from '@/api/model/all/tag'
 import * as endpoints from '@/api/endpoints/index'
-import factoryTag from '@/api/__test__/factories/tags'
-
-var faker = require('faker')
-faker.locale = 'ja'
+import factoryTag from '@/api/__test__/factories/all/tags'
 
 const mockAxios = new MockAdapter(client)
 const tag = new Tag(endpoints.tag)

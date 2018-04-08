@@ -1,11 +1,8 @@
 import MockAdapter from 'axios-mock-adapter'
 import client from '@/api/client'
-import CurrentUserPost from '@/api/model/current_user/post'
+import CurrentUserPost from '@/api/model/current_user/all/post'
 import * as currentUserEndpoints from '@/api/endpoints/current_user/index'
-import factoryPost from '@/api/__test__/factories/posts'
-
-var faker = require('faker')
-faker.locale = 'ja'
+import factoryPost from '@/api/__test__/factories/current_user/all/posts'
 
 const mockAxios = new MockAdapter(client)
 const currentUserPost = new CurrentUserPost(currentUserEndpoints.post)
