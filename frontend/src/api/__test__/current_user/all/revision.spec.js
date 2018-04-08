@@ -4,9 +4,6 @@ import CurrentUserRevision from '@/api/model/current_user/all/revision'
 import * as currentUserEndpoints from '@/api/endpoints/current_user/index'
 import factoryRevision from '@/api/__test__/factories/current_user/all/revisions'
 
-var faker = require('faker')
-faker.locale = 'ja'
-
 const mockAxios = new MockAdapter(client)
 const currentUserRevision = new CurrentUserRevision(currentUserEndpoints.revision)
 

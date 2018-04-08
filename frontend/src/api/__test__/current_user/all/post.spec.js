@@ -4,9 +4,6 @@ import CurrentUserPost from '@/api/model/current_user/all/post'
 import * as currentUserEndpoints from '@/api/endpoints/current_user/index'
 import factoryPost from '@/api/__test__/factories/current_user/all/posts'
 
-var faker = require('faker')
-faker.locale = 'ja'
-
 const mockAxios = new MockAdapter(client)
 const currentUserPost = new CurrentUserPost(currentUserEndpoints.post)
 

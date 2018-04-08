@@ -4,9 +4,6 @@ import CurrentUserSettingProfile from '@/api/model/current_user/setting/profile'
 import * as currentUserEndpoints from '@/api/endpoints/current_user/index'
 import factorySetting from '@/api/__test__/factories/setting/profiles'
 
-var faker = require('faker')
-faker.locale = 'ja'
-
 const mockAxios = new MockAdapter(client)
 const currentUserProfile = new CurrentUserSettingProfile(currentUserEndpoints.setting.profile)
 

@@ -4,9 +4,6 @@ import User from '@/api/model/all/user'
 import * as endpoints from '@/api/endpoints/index'
 import factoryUserParams from '@/api/__test__/factories/all/users'
 
-var faker = require('faker')
-faker.locale = 'ja'
-
 const mockAxios = new MockAdapter(client)
 const user = new User(endpoints.user)
 
