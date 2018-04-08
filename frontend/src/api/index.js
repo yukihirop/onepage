@@ -1,5 +1,5 @@
-import User from '@/api/model/user'
-import Tag from '@/api/model/tag'
+import User from '@/api/model/all/user'
+import Tag from '@/api/model/all/tag'
 import CurrentUserPost from '@/api/model/current_user/post'
 import CurrentUserRevision from '@/api/model/current_user/revision'
 import CurrentUserSettingProfile from '@/api/model/current_user/setting/profile'
