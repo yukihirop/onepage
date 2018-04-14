@@ -21,7 +21,7 @@
     "vue-affix": "^0.2.4",
     "vue-bulma": "^0.0.35",
     "vue-router": "^3.0.1",
-    "vuejs-paginate": "^1.9.0",
+    "vuejs-paginate": "git+https://github.com/yukihirop/vuejs-paginate.git#v1.9.1",
     "vuex": "^3.0.1"
   },
   "browserslist": [

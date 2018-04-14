@@ -8837,9 +8837,9 @@ vueify@^9.4.1:
     vue-template-compiler "^2.0.0-alpha.8"
     vue-template-es2015-compiler "^1.2.2"
 
-vuejs-paginate@^1.9.0:
+"vuejs-paginate@git+https://github.com/yukihirop/vuejs-paginate.git#v1.9.1":
   version "1.9.0"
-  resolved "https://registry.yarnpkg.com/vuejs-paginate/-/vuejs-paginate-1.9.0.tgz#b71c9383e821b1645c604fde76fa2e1ef8ae2ddc"
+  resolved "git+https://github.com/yukihirop/vuejs-paginate.git#d39a84c575b6b7423559d7bbac3e8813d4163701"
 
 vuex@^3.0.1:
   version "3.0.1"
