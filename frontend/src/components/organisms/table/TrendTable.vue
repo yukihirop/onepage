@@ -10,6 +10,21 @@
                :organization="post.organization",
                :summary="post.summary"
                )
+  br
+  nav.pagination.is-centered(role='navigation' arial-label='pagination')
+    paginate(
+      :page-count="headers['page-count']"
+      :margin-pages="0"
+      :page-range="5"
+      :initial-page="0"
+      :click-handler="fetchPosts"
+      :container-class="'pagination-list'"
+      :page-link-class="'pagination-link'"
+      :prev-link-class="'pagination-previous'"
+      :next-link-class="'pagination-next'"
+      :active-class="'is-current'"
+      :first-last-button="true"
+    )
 </template>
 
 <script>
@@ -37,30 +52,42 @@ export default {
         require("@/assets/home/user/YumaInaura.png"),
         require("@/assets/home/user/yukihirop.jpg")
           ],
-      posts: []
+      posts: [],
+      headers: {}
     }
   },
   mounted(){
     this.fetchPosts()
   },
   methods: {
-    fetchPosts(){
-      post.index().then(response => {
-        response.data["data"].forEach( post => {
-          var postDecorator = new PostDecorator(post)
-          var result = {
-            who: postDecorator.who(),
-            when: postDecorator.when(),
-            likes: postDecorator.likes(),
-            title: postDecorator.title(),
-            organization: postDecorator.organization(),
-            summary: postDecorator.summary()
-          }
-          this.posts.push(result)
-        })
+    fetchPosts(pageNum){
+      this.headers = {}
+      this.posts = []
+      var params = typeof pageNum !== 'undefined' ? '\?page=' + pageNum : null
+      post.index_at_page(params).then(response => {
+        this.parseResponseHeaders(response)
+        this.parseResponseData(response)
       }).catch(error => {
         console.error(error)
       })
+    },
+    parseResponseData(response){
+      response.data["data"].forEach( post => {
+        var postDecorator = new PostDecorator(post)
+        var result = {
+          who: postDecorator.who(),
+          when: postDecorator.when(),
+          likes: postDecorator.likes(),
+          title: postDecorator.title(),
+          organization: postDecorator.organization(),
+          summary: postDecorator.summary()
+        }
+        this.posts.push(result)
+      })
+    },
+    parseResponseHeaders(response){
+      var headers = response.headers
+      this.headers['page-count'] = headers['x-total-pages']
     }
   }
 }
