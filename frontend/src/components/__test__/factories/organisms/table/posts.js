@@ -19,7 +19,7 @@ export default {
           "organization": "Watsica-Lind",
           "summary": "nsykn4mq",
           "title":"fs01xn60",
-          "when": "2018-03-03T12:28:30.196Z",
+          "when": "a month ago",
           "who": "0gm98"
         },
         {
@@ -27,7 +27,7 @@ export default {
           "organization": "Watsica-Lind",
           "summary": "sujim2m7",
           "title": "leadznnd",
-          "when": "2018-03-03T12:28:30.231Z",
+          "when": "a month ago",
           "who": "0gm98"
         },
         {
@@ -35,7 +35,7 @@ export default {
           "organization": "Kunde, Labadie and Metz",
           "summary": "dlt2xsdd",
           "title": "qw3oyjze",
-          "when": "2018-03-03T12:28:30.271Z",
+          "when": "a month ago",
           "who": "qhu70"
         }
       ],

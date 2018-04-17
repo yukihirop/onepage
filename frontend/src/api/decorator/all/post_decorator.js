@@ -1,3 +1,5 @@
+var moment = require('moment')
+
 // @flow
 export default class PostDecorator {
   resource: Object
@@ -11,7 +13,9 @@ export default class PostDecorator {
   }
 
   when() {
-    return this.resource.attributes.revision.created_at
+    var created_at = this.resource.attributes.revision.created_at
+    var formatted_created_at = moment(created_at).fromNow()
+    return formatted_created_at
   }
 
   likes() {
