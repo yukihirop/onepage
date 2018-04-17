@@ -26,6 +26,12 @@ export default class Base {
     return this.client.get(url).then(this.onFulFilled, this.onRejected)
   }
 
+  index_at_page(params: Object) {
+    var endpoint = this.endpoints.index
+    var url = params ? endpoint + params : endpoint
+    return this.client.get(url).then(this.onFulFilled, this.onRejected)
+  }
+
   show (params: Object) {
     const url = pathToRegxp.compile(this.endpoints.show)(params)
     return this.client.get(url).then(this.onFulFilled, this.onRejected)

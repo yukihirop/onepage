@@ -20,4 +20,15 @@ describe('Post', () => {
       })
     })
   })
+
+  describe('.index_at_page', () => {
+    const posts = [factoryPost.data]
+    it('投稿一覧の1ページ目を取得できる', () => {
+      expect.assertions(1)
+      mockAxios.onGet('/posts?page=1').reply(200, posts)
+      return post.index_at_page('\?page=1').then(res => {
+        expect(res.data).toEqual(posts)
+      })
+    })
+  })
 })

@@ -26,6 +26,19 @@ describe('Base', () => {
     })
   })
 
+  describe('.index_at_page', () => {
+    describe('onFulFilled', () => {
+      const users = [factoryUserParams.user1, factoryUserParams.user2]
+      it('全てのユーザーの内最初の1ページ目を習得できる', () => {
+        expect.assertions(1)
+        mockAxios.onGet('/users?page=1').reply(200, users)
+        return base.index_at_page('\?page=1').then(res => {
+          expect(res.data).toEqual(users)
+        })
+      })
+    })
+  })
+
   describe('.show', () => {
     describe('onFulFilled', () => {
       it('idで指定されたユーザーを取得できる', () => {
