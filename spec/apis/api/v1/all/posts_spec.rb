@@ -4,6 +4,16 @@ module API
   module V1
     module All
       RSpec.describe Posts, type: :request do
+        # helpersのメソッドのモックの仕方
+        # https://github.com/ruby-grape/grape/pull/397
+        before do
+          Grape::Endpoint.before_each do |endpoint|
+            endpoint.stub(:paginated_posts).and_return Post.all
+          end
+        end
+
+        after { Grape::Endpoint.before_each nil }
+
         describe 'GET /posts' do
           let(:path) { '/api/v1/posts' }
 
@@ -17,9 +27,14 @@ module API
           end
 
           it 'タグ一覧がjsonで返ってくる' do
-            serialized_posts = ActiveModel::Serializer::CollectionSerializer.new(API::V1::All::Post.all, serializer: PostSerializer).to_json
+            resource = ActiveModelSerializers::SerializableResource.new(
+              Post.all,
+              each_serializer: API::V1::PostSerializer,
+              adapter: :json_api,
+              serialization_context: ActiveModelSerializers::SerializationContext.new(request)
+            )
             actual   = JSON.parse(response.body)
-            expected = JSON.parse(serialized_posts)
+            expected = JSON.parse(resource.to_json)
             expect(actual).to eq expected
           end
         end

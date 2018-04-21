@@ -16,11 +16,13 @@
   "dependencies": {
     "axios": "^0.17.1",
     "bulma": "^0.6.2",
+    "momentjs": "^2.0.0",
     "path-to-regexp": "^2.1.0",
     "vue": "^2.5.11",
     "vue-affix": "^0.2.4",
     "vue-bulma": "^0.0.35",
     "vue-router": "^3.0.1",
+    "vuejs-paginate": "git+https://github.com/yukihirop/vuejs-paginate.git#v1.9.1",
     "vuex": "^3.0.1"
   },
   "browserslist": [

@@ -10,6 +10,7 @@ export const user = {
 }
 
 export const post = {
+  index: '/posts',
   like: {
     index:   'posts/:post_id/post_likes',
     create:  'posts/:post_id/post_likes',

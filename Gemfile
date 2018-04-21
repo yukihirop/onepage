@@ -64,3 +64,6 @@ gem 'grape-swagger'           # Grapeで定義したAPIをSwagger形式でドキ
 gem 'grape-swagger-entity'    # レスポンスモデルをSwaggerで見られる形式にするときに使う
 
 gem 'active_model_serializers'
+gem 'kaminari'
+gem 'kaminari-grape'
+gem 'grape-kaminari'

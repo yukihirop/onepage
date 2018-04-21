@@ -1,8 +1,15 @@
 class API::V1::PostSerializer < PostSerializer
-  attributes :revision, :post_likings_count
+  attributes :user, :profile, :revision, :post_likings_count
 
   has_many :post_likings
-  belongs_to :user
+
+  def user
+    object.user
+  end
+
+  def profile
+    object.user.profile
+  end
 
   def revision
     object.revisions.find(object.newest_revision_id)
