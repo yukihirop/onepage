@@ -10,12 +10,16 @@ module API
           # userとrevisionとpost_likingsを持つ
           def serialized_posts
             resource = ActiveModelSerializers::SerializableResource.new(
-              paginate(Post.all),
+              paginated_posts,
               each_serializer: API::V1::PostSerializer,
               adapter: :json_api,
               serialization_context: ActiveModelSerializers::SerializationContext.new(request)
             )
             JSON.parse(resource.to_json)
+          end
+
+          def paginated_posts
+            paginate(Post.all)
           end
 
           params :query_params do
