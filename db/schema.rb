@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304040852) do
+ActiveRecord::Schema.define(version: 20180421053353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 20180304040852) do
     t.index ["post_id"], name: "index_revisions_on_post_id"
   end
 
+  create_table "tag_followings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_tag_followings_on_tag_id"
+    t.index ["user_id"], name: "index_tag_followings_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -90,4 +99,6 @@ ActiveRecord::Schema.define(version: 20180304040852) do
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "revisions", "posts"
+  add_foreign_key "tag_followings", "tags"
+  add_foreign_key "tag_followings", "users"
 end
