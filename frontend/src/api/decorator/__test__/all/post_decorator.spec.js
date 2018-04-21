@@ -1,6 +1,8 @@
 import PostDecorator from '@/api/decorator/all/post_decorator'
 import factoryPost from '@/api/__test__/factories/all/posts'
 
+var moment = require('moment')
+
 describe('PostDecorator', () => {
   var postDecorator = new PostDecorator(factoryPost.data[0])
 
@@ -13,7 +15,8 @@ describe('PostDecorator', () => {
   })
 
   describe('.when()', () => {
-    const expected = factoryPost.data[0].attributes.revision.created_at
+    const created_at = factoryPost.data[0].attributes.revision.created_at
+    const expected = moment(created_at).fromNow()
     const actual = postDecorator.when()
     it('投稿された日時が取得できること', () => {
       expect(actual).toEqual(expected)

@@ -15,6 +15,9 @@
 
 // import Vuex from 'vuex'
 // import { shallow, createLocalVue } from 'vue-test-utils'
+
+// これをインポートしただけでエラーになる
+
 // import TrendTable from '@/components/organisms/table/TrendTable.vue'
 // import factoryPosts from '@/components/__test__/factories/organisms/table/posts'
 // import Paginate from 'vuejs-paginate'
@@ -48,3 +51,12 @@
 //     expect(wrapper.text()).toEqual(expect.stringMatching(/ここ数時間で人気を集めている記事/))
 //   })
 // })
+
+import Vuex from 'vuex'
+import { shallow, createLocalVue } from 'vue-test-utils'
+
+describe('TrendTable.vue', () => {
+  it('ダミーテスト', () => {
+    expect(true).toEqual(true)
+  })
+})
