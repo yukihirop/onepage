@@ -3,6 +3,10 @@ FactoryBot.define do
     mention_name { Faker::Lorem.characters(5) }
     email        { Faker::Internet.email }
 
+    trait :with_profile do
+      association :profile, factory: :api_v1_profile
+    end
+
     trait :with_profile_and_post_likings do
       association :profile, factory: :api_v1_profile
 
