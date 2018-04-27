@@ -67,3 +67,5 @@ gem 'active_model_serializers'
 gem 'kaminari'
 gem 'kaminari-grape'
 gem 'grape-kaminari'
+
+gem 'active_model_serializers-matchers', github: 'BrainCheck/active_model_serializers-matchers'
