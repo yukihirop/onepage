@@ -4,7 +4,7 @@ FactoryBot.define do
 
     # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#associations
     factory :api_v1_post_with_revision_and_post_likings_and_user, class: API::V1::All::Post do
-      association :user, factory: :api_v1_user
+      association :user, factory: [:api_v1_user, :with_profile]
 
       transient do
         revisions_count 5
