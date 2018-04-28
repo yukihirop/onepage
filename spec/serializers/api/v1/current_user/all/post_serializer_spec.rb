@@ -1,0 +1,1 @@
+post_serializer_spec.rb

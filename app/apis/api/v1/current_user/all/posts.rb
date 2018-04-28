@@ -6,12 +6,51 @@ module API
           # 参考
           # https://stackoverflow.com/questions/35344117/why-does-session-doesnt-work-in-grape-rails
           use ActionDispatch::Session::CookieStore, key: 'user_id'
-
           helpers API::V1::CurrentUser::Helpers::SessionHelper
+
+          use Grape::Middleware::Globals
+          include Grape::ActiveModelSerializers
+          include Grape::Kaminari
+
           helpers do
+            def seiralized_posts
+              resource = ActiveModelSerializers::SerializableResource.new(
+                            paginated_posts,
+                            each_serializer: serializer,
+                            adapter: :json_api,
+                            serialization_context: ActiveModelSerializers::SerializationContext.new(request)
+                          )
+              JSON.parse(resource.to_json)
+            end
+
+            def paginated_posts
+              paginate(filtered_posts)
+            end
+
+            def filtered_posts
+              if post_with_revision_params[:following_tags]
+                current_user_tag_ids = current_user.tag_followings.pluck(:tag_id)
+                API::V1::All::Post.where_filtered_by_tags(current_user_tag_ids)
+              else
+                Post.all
+              end
+            end
+
+            def serializer
+              if post_with_revision_params[:following_tags]
+                FollowingTagsPostSerializer
+              else
+                PostSerializer
+              end
+            end
+
             def post_with_revision_params
               ActionController::Parameters.new(customize_params).permit(
-                revisions_attributes: %i[
+                :page,
+                :per_page,
+                :offset,
+                :following_tags,
+                revisions_attributes_optional_attributes: %i[
                   title
                   summary
                   goal
