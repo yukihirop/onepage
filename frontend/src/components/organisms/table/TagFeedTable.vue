@@ -1,6 +1,11 @@
 <template lang="pug">
 .hero
   tag-feed-table-title
+  span(v-for='(post, index) in posts')
+    post-with-tag-media(:profile-image-src='profileImageSrcs[index]',
+                        :tag-image-src='tagImageSrcs[index]',
+                        :tag=''
+    )
   post-with-tag-media(:profile-image-src='require("@/assets/home/user/aimerald.png")',
        :tag-image-src='require("@/assets/home/tag/Ruby.jpg")',
        tag='Ruby', when='15 minutes ago',
@@ -47,6 +52,67 @@ export default {
   components: {
     PostWithTagMedia,
     TagFeedTableTitle
+  },
+  data(){
+    return {
+      profileImageSrcs: [
+        require("@/assets/home/user/aimerald.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/yukihirop.jpg")
+          ],
+      tagImageSrcs: [
+        require("@/assets/home/tag/Ruby.jpg"),
+        require("@/assets/home/tag/Rails.jpg"),
+        require("@/assets/home/tag/PHP.jpg"),
+        require("@/assets/home/tag/Docker.png"),
+        require("@/assets/home/tag/JavaScript.jpg"),
+        'https://bulma.io/images/placeholders/64x64.png'
+      ],
+      posts: [],
+      headers: {}
+    }
+  },
+  mounted(){
+    this.fetchPosts()
+  },
+  methods: {
+    fetchPosts(pageNum){
+      this.headers = {}
+      this.posts = []
+      var params = typeof pageNum !== 'undefined' ? '\?page=' + pageNum : null
+      var customize_params = params !== null ? params + '&\?current_user_tag=true' : '\?current_user_tag=true'
+      post.index_at_page(customize_params).then(response => {
+        this.parseResponseHeaders(response)
+        this.parseResponseData(response)
+      }).catch(error => {
+        console.error(error)
+      })
+    },    
+    parseResponseData(response){
+      response.data["data"].forEach( post => {
+        var postDecorator = new PostDecorator(post)
+        var result = {
+          who: postDecorator.who(),
+          when: postDecorator.when(),
+          likes: postDecorator.likes(),
+          title: postDecorator.title(),
+          organization: postDecorator.organization(),
+          summary: postDecorator.summary()
+        }
+        this.posts.push(result)
+      })
+    },
+    parseResponseHeaders(response){
+      var headers = response.headers
+      this.headers['page-count'] = headers['x-total-pages']
+    }
   }
 }
 </script>

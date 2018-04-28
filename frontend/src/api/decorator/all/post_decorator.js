@@ -33,4 +33,8 @@ export default class PostDecorator {
   summary() {
     return this.resource.attributes.revision.summary
   }
+
+  tag() {
+    return this.resource.attributes.tags.first.name
+  }
 }
