@@ -6,6 +6,14 @@ var moment = require('moment')
 describe('PostDecorator', () => {
   var postDecorator = new PostDecorator(factoryPost.data[0])
 
+  describe('.data()', () => {
+    const expected = { "likes": 10, "organization": "Watsica-Lind", "summary": "nsykn4mq", "title": "fs01xn60", "when": "2 months ago", "who": "0gm98" }
+    const actual = postDecorator.data()
+    it ('デコレータされたデータが連想配列で返ってくる', () => {
+      expect(actual).toEqual(expected)
+    })
+  })
+
   describe('.who()', () => {
     const expected = factoryPost.data[0].attributes.user.mention_name
     const actual = postDecorator.who()

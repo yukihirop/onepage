@@ -63,15 +63,7 @@ export default {
     parseResponseData(response){
       response.data["data"].forEach( post => {
         var postDecorator = new PostDecorator(post)
-        var result = {
-          who: postDecorator.who(),
-          when: postDecorator.when(),
-          likes: postDecorator.likes(),
-          title: postDecorator.title(),
-          organization: postDecorator.organization(),
-          summary: postDecorator.summary()
-        }
-        this.posts.push(result)
+        this.posts.push(postDecorator.data())
       })
     },
     parseResponseHeaders(response){

@@ -8,6 +8,17 @@ export default class PostDecorator {
     this.resource = resource
   }
 
+  data() {
+    return {
+      who: this.who(),
+      when: this.when(),
+      likes: this.likes(),
+      title: this.title(),
+      organization: this.organization(),
+      summary: this.summary()
+    }
+  }
+
   who() {
     return this.resource.attributes.user.mention_name
   }
