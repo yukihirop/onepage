@@ -1,7 +1,7 @@
 var moment = require('moment')
 
 // @flow
-export default class PostDecorator {
+export default class CurrentUserFollowingTagsPostDecorator {
   resource: Object
 
   constructor (resource: Object) {
@@ -10,27 +10,22 @@ export default class PostDecorator {
 
   data() {
     return {
-      who: this.who(),
+      tag: this.tag(),
       when: this.when(),
-      likes: this.likes(),
       title: this.title(),
       organization: this.organization(),
       summary: this.summary()
     }
   }
 
-  who() {
-    return this.resource.attributes.user.mention_name
+  tag() {
+    return this.resource.attributes.tags[0].name
   }
 
   when() {
     var created_at = this.resource.attributes.revision.created_at
     var formatted_created_at = moment(created_at).fromNow()
     return formatted_created_at
-  }
-
-  likes() {
-    return this.resource.attributes["post-likings-count"]
   }
 
   title() {

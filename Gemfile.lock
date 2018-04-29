@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/BrainCheck/active_model_serializers-matchers.git
+  revision: 25cd66e0b431ca4c6631f3445446585cc917efef
+  specs:
+    active_model_serializers-matchers (0.5.2)
+      active_model_serializers (>= 0.8.1)
+      rspec (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -194,6 +202,10 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -263,6 +275,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  active_model_serializers-matchers!
   annotate
   byebug
   database_rewinder

@@ -7,8 +7,8 @@ FactoryBot.define do
         post_taggings_count 5
       end
 
-      after(:create) do |tag, evaluator|
-        create_list(:api_v1_post_tagging, evaluator.post_taggings_count, tag: tag)
+      after(:create) do |_, evaluator|
+        create_list(:api_v1_post_tagging, evaluator.post_taggings_count)
       end
     end
   end

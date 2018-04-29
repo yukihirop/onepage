@@ -1,0 +1,2 @@
+class TagFollowing < ApplicationRecord
+end
