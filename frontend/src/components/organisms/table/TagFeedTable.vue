@@ -1,52 +1,104 @@
 <template lang="pug">
 .hero
   tag-feed-table-title
-  post-with-tag-media(:profile-image-src='require("@/assets/home/user/aimerald.png")',
-       :tag-image-src='require("@/assets/home/tag/Ruby.jpg")',
-       tag='Ruby', when='15 minutes ago',
-       title='rubyでLispの処理系を書いた話',
-       organization='株式会社Aiming',
-       summary='Lispっていいですよね。何と言ってもインタプリタシンプルですよね。これrubyでも書けそうな気がしたんでかいてみました。少しでもLispに興味を盛ってくれる人が増えたら嬉しいなと思って作ってみました。')
-  post-with-tag-media(:profile-image-src='require("@/assets/home/user/YumaInaura.png")',
-       :tag-image-src='require("@/assets/home/tag/Rails.jpg")',
-       tag='Rails', when='1 hours ago',
-       title='瞑想がプログラマに与える効果に関して',
-       organization='株式会社Aiming',
-       summary='Googleも取り入れている瞑想意外と知らない瞑想の効果そんな瞑想の効果を1年間自分でやってみた経験を踏まえ話してみたいと思います。この資料をみて瞑想を生活習慣に取り入れてくれる人が増えたらいいな')
-  post-with-tag-media(:profile-image-src='require("@/assets/home/user/KojiMiyake.png")',
-       :tag-image-src='require("@/assets/home/tag/PHP.jpg")',
-       tag='PHP', when='2 hours ago',
-       title='PHPを学び現場に入るまで',
-       organization='株式会社リクルートマーケティングパートナーズ',
-       summary='現在、PHPを学ぶためにはPHPチュートリアルをこなしたり書籍などを利用すると思われる。しかし実際の現場で開発すると、アプリケーションの構成やPHPの罠に戸惑う事がある。本発表ではPHP初学者が現場で開発する時に感じるであろうギャップをいくつか紹介する。')
-  post-with-tag-media(:profile-image-src='require("@/assets/home/user/yuemori.png")',
-       :tag-image-src='require("@/assets/home/tag/Docker.png")',
-       tag='Docker', when='1 week ago',
-       title='Rails on Dockerとの戦い',
-       organization='株式会社Aiming',
-       summary='Docker使っていますか？Rails on Dockerの事例は増えつつありますが、導入方法や構成について語られる事が多く、苦しみやすい・難しい点について語られることはあまりないように思います。今回はRuby/RailsでDockerを使ってきて戦った点とその解決方法について話します。')
-  post-with-tag-media(:profile-image-src='require("@/assets/home/user/skuroki.jpg")',
-       :tag-image-src='require("@/assets/home/tag/JavaScript.jpg")',
-       tag='JavaScript', when='1 months ago',
-       title='新人プログラマとペアプロしてわかったこと',
-       organization='株式会社Aiming',
-       summary='毎年、新しいメンバーが参画し、ペアプロで指導しています。今まで色んな人とペアプロしてきてわかったことがありま  す。その中でコツというかわかった事があったので資料にしてみました。背景知識がない人に以下に教えるか？相手の性格に焦点を当てて語りたいと思います。')
-  post-with-tag-media(:profile-image-src='require("@/assets/home/user/yukihirop.jpg")',
-       tagImageSrc='https://bulma.io/images/placeholders/64x64.png',
-       tag='WEB', when='1 months ago',
-       title='OnePageというWEBサービスを作った話',
-       organization='株式会社Aiming',
-       summary='OnePageとは一言でいれば、プログラマのためのプレゼン資料共有ツールです。完成したプレゼンの資料を共有するのではなく、計画書(ブレスト)を共有し互いにレビューすることで構造的プレゼン資料を作成できるように習慣づけるサービスです。')
+  span(v-for='(post, index) in posts')
+    post-with-tag-media(:profile-image-src='profileImageSrcs[index]',
+                        :tag-image-src='tagImageSrcs[index]',
+                        :tag="post.tag",
+                        :when="post.when",
+                        :title="post.title",
+                        :organization="post.organization",
+                        :summary="post.summary"
+    )
+  br
+  nav.pagination.is-centered(role='navigation' arial-label='pagination')
+    paginate(
+      :page-count="headers['page-count']"
+      :margin-pages="0"
+      :page-range="5"
+      :initial-page="0"
+      :click-handler="fetchPosts"
+      :container-class="'pagination-list'"
+      :page-link-class="'pagination-link'"
+      :prev-link-class="'pagination-previous'"
+      :next-link-class="'pagination-next'"
+      :active-class="'is-current'"
+      :first-last-button="true"
+    )
 </template>
 
 <script>
 import TagFeedTableTitle from '@/components/atoms/title/TagFeedTableTitle.vue'
 import PostWithTagMedia from '@/components/molecules/media_object/PostWithTagMedia.vue'
+import { post } from '@/api/index'
+import CurrentUserFollowingTagsPostDecorator from '@/api/decorator/all/current_user_following_tags_post_decorator'
 
 export default {
   components: {
     PostWithTagMedia,
     TagFeedTableTitle
+  },
+  data(){
+    return {
+      profileImageSrcs: [
+        require("@/assets/home/user/aimerald.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/YumaInaura.png"),
+        require("@/assets/home/user/yukihirop.jpg")
+          ],
+      tagImageSrcs: [],
+      posts: [],
+      headers: {}
+    }
+  },
+  mounted(){
+    this.fetchPosts()
+  },
+  methods: {
+    fetchPosts(pageNum){
+      this.headers = {}
+      this.posts = []
+      post.index_at_page(this.customize_params(pageNum)).then(response => {
+        this.parseResponseHeaders(response)
+        this.parseResponseData(response)
+      }).catch(error => {
+        console.error(error)
+      })
+    },
+    parseResponseData(response){
+      response.data["data"].forEach( post => {
+        var postDecorator = new CurrentUserFollowingTagsPostDecorator(post)
+        var result = {
+          tag: postDecorator.tag(),
+          when: postDecorator.when(),
+          title: postDecorator.title(),
+          organization: postDecorator.organization(),
+          summary: postDecorator.summary()
+        }
+        this.posts.push(result)
+        this.createTagImageSrcs(result)
+      })
+    },
+    parseResponseHeaders(response){
+      var headers = response.headers
+      this.headers['page-count'] = headers['x-total-pages']
+    },
+    customize_params(pageNum){
+      var params = typeof pageNum !== 'undefined' ? '\?page=' + pageNum : null
+      var customize_params = params !== null ? params + '&current_user_following_tags=true' : '\?current_user_following_tags=true'
+      return customize_params
+    },
+    // ゆくゆくは、Amazon S3から画像を習得するようにしたい。
+    createTagImageSrcs(post){
+      var tagImageSrc = require("@/assets/home/tag/" + post.tag + ".jpg")
+      this.tagImageSrcs.push(tagImageSrc)
+    }
   }
 }
 </script>
