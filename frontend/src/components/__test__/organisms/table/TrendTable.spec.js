@@ -10,7 +10,8 @@
 //     Error
 //       No script available to transform
 
-
+// 関連してそうなPR
+// https://github.com/vire/jest-vue-preprocessor/issues/49
 
 
 // import Vuex from 'vuex'
