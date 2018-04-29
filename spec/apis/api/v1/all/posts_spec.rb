@@ -45,11 +45,11 @@ module API
 
         describe ' GET /posts?current_user_following_tags=true' do
           let!(:current_user_following_tags) { create_list(:api_v1_current_user_tag_following, 5, user: current_user,) }
-          let!(:posts_when_current_user_follow_tags) { create_list(:api_v1_post_with_revision_and_post_likings_and_user, 2, user: current_user) }
           let!(:filtered_posts) { API::V1::All::Post.where_filtered_by_tags(current_user_following_tags.pluck(:tag_id)) }
           let(:path) { '/api/v1/posts?current_user_following_tags=true' }
 
           before do
+            create_list(:api_v1_post_with_revision_and_post_likings_and_user, 2, user: current_user)
             # ダミーデータを用意する
             create_list(:api_v1_post_with_revision_and_post_likings_and_user, 5)
             get path
