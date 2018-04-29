@@ -8,6 +8,16 @@ export default class CurrentUserFollowingTagsPostDecorator {
     this.resource = resource
   }
 
+  data() {
+    return {
+      tag: this.tag(),
+      when: this.when(),
+      title: this.title(),
+      organization: this.organization(),
+      summary: this.summary()
+    }
+  }
+
   tag() {
     return this.resource.attributes.tags[0].name
   }

@@ -63,15 +63,8 @@ export default {
     parseResponseData(response){
       response.data["data"].forEach( post => {
         var postDecorator = new CurrentUserFollowingTagsPostDecorator(post)
-        var result = {
-          tag: postDecorator.tag(),
-          when: postDecorator.when(),
-          title: postDecorator.title(),
-          organization: postDecorator.organization(),
-          summary: postDecorator.summary()
-        }
-        this.posts.push(result)
-        this.createTagImageSrcs(result)
+        this.posts.push(postDecorator.data())
+        this.createTagImageSrcs(postDecorator.data())
       })
     },
     parseResponseHeaders(response){

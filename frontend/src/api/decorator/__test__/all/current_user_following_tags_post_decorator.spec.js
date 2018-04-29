@@ -6,6 +6,14 @@ var moment = require('moment')
 describe('CurrentUserFollowingTagsPostDecorator', () => {
   var postDecorator = new CurrentUserFollowingTagsPostDecorator(factoryPost.data[0])
 
+  describe('.data()', () => {
+    const expected = { "organization": "Watsica-Lind", "summary": "nsykn4mq", "tag": "Python", "title": "fs01xn60", "when": "2 months ago" }
+    const actual = postDecorator.data()
+    it('デコレータされたデータが連想配列で返ってくる', () => {
+      expect(actual).toEqual(expected)
+    })
+  })
+
   describe('.tag()', () => {
     const expected = factoryPost.data[0].attributes.tags[0].name
     const actual = postDecorator.tag()
