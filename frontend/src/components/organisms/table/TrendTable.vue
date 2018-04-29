@@ -11,32 +11,21 @@
                :summary="post.summary"
                )
   br
-  nav.pagination.is-centered(role='navigation' arial-label='pagination')
-    paginate(
-      :page-count="headers['page-count']"
-      :margin-pages="0"
-      :page-range="5"
-      :initial-page="0"
-      :click-handler="fetchPosts"
-      :container-class="'pagination-list'"
-      :page-link-class="'pagination-link'"
-      :prev-link-class="'pagination-previous'"
-      :next-link-class="'pagination-next'"
-      :active-class="'is-current'"
-      :first-last-button="true"
-    )
+  pagination(:page-count="headers['page-count']", :click-hander="fetchPosts")
 </template>
 
 <script>
 import TrendTableTitle from '@/components/atoms/title/TrendTableTitle.vue'
 import PostMedia from '@/components/atoms/media_object/PostMedia.vue'
+import Pagination from '@/components/atoms/pagination/Pagination.vue'
 import { post } from '@/api/index'
 import PostDecorator from '@/api/decorator/all/post_decorator'
 
 export default {
   components: {
     TrendTableTitle,
-    PostMedia
+    PostMedia,
+    Pagination
   },
   data() {
     return {
