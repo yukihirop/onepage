@@ -7,6 +7,7 @@ RSpec.describe API::V1::All::Post, type: :model do
     it { is_expected.to accept_nested_attributes_for(:revisions) }
     it { is_expected.to have_many(:post_likings).dependent(:destroy) }
     it { is_expected.to have_many(:post_taggings).dependent(:destroy) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
   end
 
   describe '.where_filtered_by_tags' do
