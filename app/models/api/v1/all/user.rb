@@ -3,4 +3,5 @@ class API::V1::All::User < User
   has_many :posts, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_many :post_likings, class_name: 'PostLiking', dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
