@@ -29,8 +29,11 @@ module API
 
           def filtered_posts
             if post_params[:current_user_following_tags]
-              current_user_tag_ids = current_user.tag_followings.pluck(:tag_id)
-              API::V1::All::Post.where_filtered_by_tags(current_user_tag_ids)
+              current_user_follows_tag_ids = current_user.tag_followings.pluck(:tag_id)
+              API::V1::All::Post.where_filtered_by_tags(current_user_follows_tag_ids)
+            elsif post_params[:current_user_following_users]
+              current_user_follows_user_ids = current_user.follows.pluck(:to_user_id)
+              API::V1::All::Post.where(user_id: current_user_follows_user_ids)
             else
               API::V1::All::Post.all
             end
@@ -39,6 +42,8 @@ module API
           def serializer
             if post_params[:current_user_following_tags]
               CurrentUserFollowingTagsPostSerializer
+            elsif post_params[:current_user_following_users]
+              CurrentUserFollowingUsersPostSerializer
             else
               PostSerializer
             end
@@ -49,7 +54,8 @@ module API
               :page,
               :per_page,
               :offset,
-              :current_user_following_tags
+              :current_user_following_tags,
+              :current_user_following_users
             )
           end
 
@@ -58,6 +64,7 @@ module API
             optional :per_page, type: Integer, documentation: { params_type: 'query' }
             optional :offset,   type: Integer, documentation: { params_type: 'query' }
             optional :current_user_following_tags, type: Boolean, documentation: { params_type: 'query' }
+            optional :current_user_following_users, type: Boolean, documentation: { params_type: 'query' }
           end
         end
 

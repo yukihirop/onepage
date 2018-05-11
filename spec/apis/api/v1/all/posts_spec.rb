@@ -43,8 +43,8 @@ module API
           end
         end
 
-        describe ' GET /posts?current_user_following_tags=true' do
-          let!(:current_user_following_tags) { create_list(:api_v1_current_user_tag_following, 5, user: current_user,) }
+        describe 'GET /posts?current_user_following_tags=true' do
+          let!(:current_user_following_tags) { create_list(:api_v1_current_user_tag_following, 5, user: current_user) }
           let!(:filtered_posts) { API::V1::All::Post.where_filtered_by_tags(current_user_following_tags.pluck(:tag_id)) }
           let(:path) { '/api/v1/posts?current_user_following_tags=true' }
 
@@ -63,6 +63,36 @@ module API
             resource = ActiveModelSerializers::SerializableResource.new(
               @instance.paginate(filtered_posts),
               each_serializer: API::V1::All::CurrentUserFollowingTagsPostSerializer,
+              adapter: :json_api,
+              serialization_context: ActiveModelSerializers::SerializationContext.new(request)
+            )
+            actual = JSON.parse(response.body)
+            expected = JSON.parse(resource.to_json)
+            expect(actual).to eq expected
+          end
+        end
+
+        describe 'GET /posts?current_user_following_users=true' do
+          let!(:current_user_follows) { create_list(:api_v1_current_user_follow, 5, user: current_user) }
+          let(:current_user_followings_user) { create(:api_v1_user, id: current_user_follows.sample.to_user_id) }
+          let(:filtered_posts) { API::V1::All::Post.where(user_id: current_user_follows.pluck(:to_user_id)) }
+          let(:path) { '/api/v1/posts?current_user_following_users=true' }
+
+          before do
+            create_list(:api_v1_post_with_revision_and_post_likings_and_user, 2, user: current_user_followings_user)
+            # ダミーデータを用意する
+            create_list(:api_v1_post_with_revision_and_post_likings_and_user, 5)
+            get path
+          end
+
+          it 'ステータス200(OK)が返ってくること' do
+            expect(response.status).to eq 200
+          end
+
+          it 'current_userがフォローしているユーザーの投稿一覧がjsonで返ってくる' do
+            resource = ActiveModelSerializers::SerializableResource.new(
+              @instance.paginate(filtered_posts),
+              each_serializer: API::V1::All::CurrentUserFollowingUsersPostSerializer,
               adapter: :json_api,
               serialization_context: ActiveModelSerializers::SerializationContext.new(request)
             )
