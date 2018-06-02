@@ -10,4 +10,6 @@ class API::V1::All::Post < Post
   has_many :comments, dependent: :destroy
 
   scope :where_filtered_by_tags, ->(tag_ids) { where(id: API::V1::All::PostTagging.filtered_post_ids_by(tag_ids)) }
+
+  attr_accessor :action_type
 end
