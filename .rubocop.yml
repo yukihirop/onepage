@@ -52,3 +52,6 @@ Lint/UselessAssignment:
 Layout/IndentationConsistency:
   Exclude:
     - 'app/apis/api/v1/**/*'
+
+Metrics/BlockLength:
+  Enabled: false
