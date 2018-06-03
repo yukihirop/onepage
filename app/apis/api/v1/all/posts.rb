@@ -12,7 +12,6 @@ module API
         helpers API::V1::CurrentUser::Helpers::SessionHelper
 
         helpers do
-          # userとrevisionとpost_likingsを持つ
           def serialized_posts
             resource = ActiveModelSerializers::SerializableResource.new(
               paginated_posts,
@@ -33,7 +32,7 @@ module API
               API::V1::All::Post.where_filtered_by_tags(current_user_follows_tag_ids)
             elsif post_params[:current_user_following_users]
               current_user_follows_user_ids = current_user.follows.pluck(:to_user_id)
-              API::V1::All::Post.where(user_id: current_user_follows_user_ids)
+              API::V1::All::CurrentUserFollowingUsers::PostWithActionType.with_action_type(current_user_follows_user_ids)
             else
               API::V1::All::Post.all
             end

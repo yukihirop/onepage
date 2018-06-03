@@ -73,15 +73,30 @@ module API
         end
 
         describe 'GET /posts?current_user_following_users=true' do
-          let!(:current_user_follows) { create_list(:api_v1_current_user_follow, 5, user: current_user) }
-          let(:current_user_followings_user) { create(:api_v1_user, id: current_user_follows.sample.to_user_id) }
-          let(:filtered_posts) { API::V1::All::Post.where(user_id: current_user_follows.pluck(:to_user_id)) }
+          let!(:current_user_followings_users) { create_list(:api_v1_user, 5) }
+          let!(:current_user_follows) do
+            current_user_followings_users.map(&:id).map { |to_user_id| create(:api_v1_current_user_follow, user: current_user, to_user_id: to_user_id) }
+          end
+          let!(:posts) do
+            current_user_followings_users.map { |user| create(:api_v1_post, :with_revision, user: user) }
+          end
+          let(:filtered_posts) { API::V1::All::CurrentUserFollowingUsers::PostWithActionType.with_action_type(current_user_follows.pluck(:to_user_id)) }
+          # rubocop:enable Metrics/LineLength
           let(:path) { '/api/v1/posts?current_user_following_users=true' }
 
+          # TODO: 後でいい感じにしたい
           before do
-            create_list(:api_v1_post_with_revision_and_post_likings_and_user, 2, user: current_user_followings_user)
-            # ダミーデータを用意する
-            create_list(:api_v1_post_with_revision_and_post_likings_and_user, 5)
+            # コメントといいね！のデータを生成するタイミングをsleepでずらす
+            sleep 1
+            post = posts[1]
+            sleep 1
+            create(:api_v1_comment, post: post, user: current_user_followings_users.sample)
+
+            sleep 1
+            post = posts[0]
+            sleep 1
+            create(:api_v1_post_liking, post: post, user: current_user_followings_users.sample)
+
             get path
           end
 
