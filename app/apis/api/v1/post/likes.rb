@@ -4,7 +4,7 @@ module API
       helpers do
         def post_liking_params
           ActionController::Parameters.new(params).permit(
-            :from_user_id
+            :to_user_id
           )
         end
 
@@ -41,7 +41,7 @@ module API
               # 参考
               # param_typeを指定しないとだめ
               # https://qiita.com/gamerinshaft/items/5cddcd38869d1238e688
-              requires :from_user_id, type: Integer, documentation: { param_type: 'body' }
+              requires :to_user_id, type: Integer, documentation: { param_type: 'body' }
             end
             post do
               set_post
