@@ -9,7 +9,7 @@
     notification-chat-media(:profile-image-src='require("@/assets/home/user/gorilla.png")',
              who="gorilla",    postTitle="OnePageというWEB...",    when="2019/12/31 17:50")
     notification-chat-media(:profile-image-src='require("@/assets/home/user/neko_8.png")',
-             who="Yuma Inaura", postTitle="rubyでLispの処理系を...", when="2019/12/25 18:00")
+             who="neko_8", postTitle="rubyでLispの処理系を...", when="2019/12/25 18:00")
     notification-edit-media(:profile-image-src='require("@/assets/home/user/gorilla.png")',
              who="gorilla",    postTitle="rubyでLispの処理系を...", when="2019/12/03 11:40")
     notification-chat-media(:profile-image-src='require("@/assets/home/user/panda.jpg")',

@@ -25,7 +25,7 @@ storiesOf('molecules/MediaObject', module)
     components: { PostWithPostMedia },
     template: `<post-with-post-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
-                  who='Yuma Inaura'
+                  who='neko_8'
                   when='1 day ago'
                   title='瞑想がプログラマに与える効果に関して'
                   organization='株式会社Aiming'

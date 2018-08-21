@@ -19,7 +19,7 @@ storiesOf('atoms/MediaObject', module)
     components: { ChatMedia },
     template: `<chat-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
-                  who='Yuma Inaura' what='コメント'
+                  who='neko_8' what='コメント'
                   when='1 hour ago'
                   comment='とっても聞いてみたいと思いました。'
                   refTitle='コードレビューで気をつけていること'
