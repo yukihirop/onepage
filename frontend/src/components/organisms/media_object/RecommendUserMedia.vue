@@ -2,7 +2,7 @@
 nav.panel
   .panel-heading
     .title.is-6 おすすめのユーザー
-  recommend-user-media(:profile-image-src='require("@/assets/home/user/neko_5.png")',        username='海野 弘成',       mentionname='neko_5', introduction='Qiita,Qiita:Team(Ruby on Rails)やKobito(Objective-C)の開発をしています.')
+  recommend-user-media(:profile-image-src='require("@/assets/home/user/neko_5.png")',        username='neko_5',       mentionname='neko_5', introduction='Qiita,Qiita:Team(Ruby on Rails)やKobito(Objective-C)の開発をしています.')
   recommend-user-media(:profile-image-src='require("@/assets/home/user/neko_4.png")',     username='Takanori Yokoi', mentionname='neko_4', introduction='Co-Founder.COO at Qiita (Increments.inc)')
   recommend-user-media(:profile-image-src='require("@/assets/home/user/neko_7.png")', username='まつもと ゆきひろ', mentionname='neko_7',introduction='Rubyのパパ')
   recommend-user-media(:profile-image-src='require("@/assets/home/user/neko_9.png")',      username='Yuji Takaesu',   mentionname='neko_9',  introduction='')
