@@ -48,7 +48,7 @@ storiesOf('atoms/MediaObject', module)
     components: { PostContentMedia },
     template: `<post-content-media
                   title='rubyでLispの処理系を書いた話'
-                  organization = '株式会社Aiming'
+                  organization = '株式会社Animal'
                   summary='Lispっていいですよね。何と言ってもインタプリタシンプルですよね。これrubyでも書けそうな気がしたんでかいてみました。少しでもLispに興味を盛ってくれる人が増えたら嬉しいなと思って作ってみました。'
                />`
   }))
