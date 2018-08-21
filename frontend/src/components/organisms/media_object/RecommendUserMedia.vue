@@ -6,7 +6,7 @@ nav.panel
   recommend-user-media(:profile-image-src='require("@/assets/home/user/tatata111.png")',     username='Takanori Yokoi', mentionname='tatata111', introduction='Co-Founder.COO at Qiita (Increments.inc)')
   recommend-user-media(:profile-image-src='require("@/assets/home/user/yukihiro_matz.png")', username='まつもと ゆきひろ', mentionname='yukihiro_matz',introduction='Rubyのパパ')
   recommend-user-media(:profile-image-src='require("@/assets/home/user/yusabana.png")',      username='Yuji Takaesu',   mentionname='yusabana',  introduction='')
-  recommend-user-media(:profile-image-src='require("@/assets/home/user/spring_aki.png")',    username='spring_aki',     mentionname='spring_aki',  introduction='')
+  recommend-user-media(:profile-image-src='require("@/assets/home/user/neko_2.png")',    username='neko_2',     mentionname='neko_2',  introduction='')
   recommend-user-media(:profile-image-src='require("@/assets/home/user/usagi.png")',      username='Shunichi Ikegami', mentionname='usagi',  introduction='')
   recommend-user-media(:profile-image-src='require("@/assets/home/user/t_oginogin.png")',    username='TatsuyaOgi',     mentionname='t_oginogin',  introduction='お気に入りは、Ruby、Ruby on Rails')
 </template>
