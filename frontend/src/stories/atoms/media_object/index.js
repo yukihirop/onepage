@@ -69,7 +69,7 @@ storiesOf('atoms/MediaObject', module)
     template: `<recommend-user-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
                   username='まつもと　ゆきひろ'
-                  mentionname='yukihiro_matz'
+                  mentionname='neko_7'
                   introduction='Rubyのパパ'
                />`
   }))
