@@ -14,10 +14,10 @@ storiesOf('molecules/MediaObject', module)
     components: { PostWithLikeMedia },
     template: `<post-with-like-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
-                  who='aimerald'
+                  who='gorilla'
                   when='1 day ago'
                   title='瞑想がプログラマに与える効果に関して'
-                  organization='株式会社Aiming'
+                  organization='株式会社Animal'
                   summary='Googleも取り入れている瞑想。意外としらない瞑想の効果。そんな瞑想の効果を1年間自分でたってみた経験を踏まえ話して見たいともいます。この資料をみて瞑想を生活週間に取り入れてくれる人が増えたらいいな'
                />`
   }))
@@ -25,10 +25,10 @@ storiesOf('molecules/MediaObject', module)
     components: { PostWithPostMedia },
     template: `<post-with-post-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
-                  who='Yuma Inaura'
+                  who='neko_8'
                   when='1 day ago'
                   title='瞑想がプログラマに与える効果に関して'
-                  organization='株式会社Aiming'
+                  organization='株式会社Animal'
                   summary='Googleも取り入れている瞑想。意外としらない瞑想の効果。そんな瞑想の効果を1年間自分でたってみた経験を踏まえ話して見たいともいます。この資料をみて瞑想を生活週間に取り入れてくれる人が増えたらいいな'
                />`
   }))
@@ -40,7 +40,7 @@ storiesOf('molecules/MediaObject', module)
                   tag='JavaScript'
                   when='1 months ago'
                   title='新人プログラマとペアプロしてわかったこと'
-                  organization='株式会社Aiming'
+                  organization='株式会社Animal'
                   summary='毎年、新しいメンバーが参画し、ペアプロで指導しています。今まで色んな人とペアプロしてきてわかったことがあります。その中でコツというかわかった事があったので資料にしてみました。背景知識がない人に以下に教えるか？相手の性格に焦点を当てて語りたいと思います。'
                />`
   }))

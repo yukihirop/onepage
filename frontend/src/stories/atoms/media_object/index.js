@@ -19,7 +19,7 @@ storiesOf('atoms/MediaObject', module)
     components: { ChatMedia },
     template: `<chat-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
-                  who='Yuma Inaura' what='コメント'
+                  who='neko_8' what='コメント'
                   when='1 hour ago'
                   comment='とっても聞いてみたいと思いました。'
                   refTitle='コードレビューで気をつけていること'
@@ -30,7 +30,7 @@ storiesOf('atoms/MediaObject', module)
     components: { NotificationChatMedia },
     template: `<notification-chat-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
-                  who='aimerald'
+                  who='gorilla'
                   postTitle='OnePageというWEB...'
                   when='2019/12/31 17:50'
                />`
@@ -48,7 +48,7 @@ storiesOf('atoms/MediaObject', module)
     components: { PostContentMedia },
     template: `<post-content-media
                   title='rubyでLispの処理系を書いた話'
-                  organization = '株式会社Aiming'
+                  organization = '株式会社Animal'
                   summary='Lispっていいですよね。何と言ってもインタプリタシンプルですよね。これrubyでも書けそうな気がしたんでかいてみました。少しでもLispに興味を盛ってくれる人が増えたら嬉しいなと思って作ってみました。'
                />`
   }))
@@ -69,7 +69,7 @@ storiesOf('atoms/MediaObject', module)
     template: `<recommend-user-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
                   username='まつもと　ゆきひろ'
-                  mentionname='yukihiro_matz'
+                  mentionname='neko_7'
                   introduction='Rubyのパパ'
                />`
   }))
@@ -87,8 +87,8 @@ storiesOf('atoms/MediaObject', module)
     template: `<user-media
                   rank=1
                   :profile-image-src="'https://bulma.io/images/placeholders/256x256.png'"
-                  username='aimerald'
-                  mentionname='aimerald'
+                  username='gorilla'
+                  mentionname='gorilla'
                   likes=99999
                />`
   }))

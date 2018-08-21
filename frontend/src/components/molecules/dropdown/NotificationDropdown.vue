@@ -6,16 +6,16 @@
         i.fa.fa-bell.fa-2x.trend
       .title.is-6 お知らせ
   .m-notification-dropdown-content
-    notification-chat-media(:profile-image-src='require("@/assets/home/user/aimerald.png")',
-             who="aimerald",    postTitle="OnePageというWEB...",    when="2019/12/31 17:50")
-    notification-chat-media(:profile-image-src='require("@/assets/home/user/YumaInaura.png")',
-             who="Yuma Inaura", postTitle="rubyでLispの処理系を...", when="2019/12/25 18:00")
-    notification-edit-media(:profile-image-src='require("@/assets/home/user/aimerald.png")',
-             who="aimerald",    postTitle="rubyでLispの処理系を...", when="2019/12/03 11:40")
-    notification-chat-media(:profile-image-src='require("@/assets/home/user/skuroki.jpg")',
-             who="skuroki",     postTitle="瞑想がプログラマに与え...", when="2019/11/24 09:50")
-    notification-edit-media(:profile-image-src='require("@/assets/home/user/yuemori.png")',
-             who="yuemori",     postTitle="Rails on Dockerとの戦い", when="2019/11/15 13:54")
+    notification-chat-media(:profile-image-src='require("@/assets/home/user/gorilla.png")',
+             who="gorilla",    postTitle="OnePageというWEB...",    when="2019/12/31 17:50")
+    notification-chat-media(:profile-image-src='require("@/assets/home/user/neko_8.png")',
+             who="neko_8", postTitle="rubyでLispの処理系を...", when="2019/12/25 18:00")
+    notification-edit-media(:profile-image-src='require("@/assets/home/user/gorilla.png")',
+             who="gorilla",    postTitle="rubyでLispの処理系を...", when="2019/12/03 11:40")
+    notification-chat-media(:profile-image-src='require("@/assets/home/user/panda.jpg")',
+             who="panda",     postTitle="瞑想がプログラマに与え...", when="2019/11/24 09:50")
+    notification-edit-media(:profile-image-src='require("@/assets/home/user/neko_6.png")',
+             who="neko_6",     postTitle="Rails on Dockerとの戦い", when="2019/11/15 13:54")
   .m-notification-dropdown-footer
     .panel-block
       a 通知一覧へ
