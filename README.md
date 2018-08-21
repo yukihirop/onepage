@@ -36,6 +36,8 @@ $ cd frontend
 $ npm run dev
 ```
 
+[![Image from Gyazo](https://i.gyazo.com/5aebab3dbab516b541c22a813be6dbeb.png)](https://gyazo.com/5aebab3dbab516b541c22a813be6dbeb)
+
 #### swagger
 ```
 $ docker run -p 5000:8080 swaggerapi/swagger-ui
@@ -52,7 +54,7 @@ $ open localhost:5000
 $ yarn storybook
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/c0687eb44fb5b2f3d1b2a8d9cae2cf6b.png)](https://gyazo.com/c0687eb44fb5b2f3d1b2a8d9cae2cf6b)
+[![Image from Gyazo](https://i.gyazo.com/88c675f9d95544378c3b089809a2a3f8.png)](https://gyazo.com/88c675f9d95544378c3b089809a2a3f8)
 
 
 
