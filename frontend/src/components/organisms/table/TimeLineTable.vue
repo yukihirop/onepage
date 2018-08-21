@@ -1,7 +1,7 @@
 <template lang="pug">
 .hero
   time-line-table-title
-  chat-media(:profile-image-src='require("@/assets/home/user/yusabana.png")',
+  chat-media(:profile-image-src='require("@/assets/home/user/neko_9.png")',
        who='Yuma Inaura', what='コメント', when='1 hour ago',
        comment='とっても聞いてみたいと思いました。',
        refTitle='コードレビューで気をつけていること',
