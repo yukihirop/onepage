@@ -84,6 +84,7 @@ ul
   display: inline-flex
   flex-direction: row
   align-items: stretch
+  width: 100%
 
 .a-chat-media-left
   display: flex

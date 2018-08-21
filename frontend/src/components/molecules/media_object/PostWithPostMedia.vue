@@ -79,6 +79,7 @@ ul
   display: inline-flex
   flex-direction: row
   align-items: stretch
+  width: 100%
 
 
 .m-post-with-post-media-left
