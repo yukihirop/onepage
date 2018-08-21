@@ -30,7 +30,7 @@ storiesOf('atoms/MediaObject', module)
     components: { NotificationChatMedia },
     template: `<notification-chat-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
-                  who='aimerald'
+                  who='gorilla'
                   postTitle='OnePageというWEB...'
                   when='2019/12/31 17:50'
                />`
@@ -87,8 +87,8 @@ storiesOf('atoms/MediaObject', module)
     template: `<user-media
                   rank=1
                   :profile-image-src="'https://bulma.io/images/placeholders/256x256.png'"
-                  username='aimerald'
-                  mentionname='aimerald'
+                  username='gorilla'
+                  mentionname='gorilla'
                   likes=99999
                />`
   }))

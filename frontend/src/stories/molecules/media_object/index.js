@@ -14,7 +14,7 @@ storiesOf('molecules/MediaObject', module)
     components: { PostWithLikeMedia },
     template: `<post-with-like-media
                   :profile-image-src="'https://bulma.io/images/placeholders/32x32.png'"
-                  who='aimerald'
+                  who='gorilla'
                   when='1 day ago'
                   title='瞑想がプログラマに与える効果に関して'
                   organization='株式会社Aiming'

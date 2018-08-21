@@ -41,7 +41,7 @@
 //     expect(typeof TrendTable.data).toBe('function')
 //     const defaultData = TrendTable.data()
 //     // assetsTransformerによって画像名に変換されてしまう。
-//     expect(defaultData.profileImageSrcs).toEqual(["aimerald.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "yukihirop.jpg"])
+//     expect(defaultData.profileImageSrcs).toEqual(["gorilla.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "yukihirop.jpg"])
 //     expect(defaultData.posts).toEqual([])
 //     expect(defaultData.headers).toEqual({})
 //   })

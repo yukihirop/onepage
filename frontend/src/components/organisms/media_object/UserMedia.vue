@@ -33,7 +33,7 @@ export default {
     return {
       // TODO: このやり方は一時しのぎであって実際はDBから取得するようにしたい
       profileImageSrcs: [
-        require("@/assets/home/user/aimerald.png"),
+        require("@/assets/home/user/gorilla.png"),
         require("@/assets/home/user/YumaInaura.png"),
         require("@/assets/home/user/YumaInaura.png"),
         require("@/assets/home/user/YumaInaura.png"),
