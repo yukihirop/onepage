@@ -14,8 +14,8 @@
              who="gorilla",    postTitle="rubyでLispの処理系を...", when="2019/12/03 11:40")
     notification-chat-media(:profile-image-src='require("@/assets/home/user/panda.jpg")',
              who="panda",     postTitle="瞑想がプログラマに与え...", when="2019/11/24 09:50")
-    notification-edit-media(:profile-image-src='require("@/assets/home/user/yuemori.png")',
-             who="yuemori",     postTitle="Rails on Dockerとの戦い", when="2019/11/15 13:54")
+    notification-edit-media(:profile-image-src='require("@/assets/home/user/neko_6.png")',
+             who="neko_6",     postTitle="Rails on Dockerとの戦い", when="2019/11/15 13:54")
   .m-notification-dropdown-footer
     .panel-block
       a 通知一覧へ
