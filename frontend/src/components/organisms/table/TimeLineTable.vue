@@ -11,7 +11,7 @@
        title='rubyでLispの処理系を書いた話',
        organization = '株式会社Aiming',
        summary='Lispっていいですよね。何と言ってもインタプリタシンプルですよね。これrubyでも書けそうな気がしたんでかいてみました。少しでもLispに興味を盛ってくれる人が増えたら嬉しいなと思って作ってみました。')
-  post-with-like-media(:profile-image-src='require("@/assets/home/user/YumaInaura.png")',
+  post-with-like-media(:profile-image-src='require("@/assets/home/user/neko_8.png")',
        who='gorilla', when='1 day ago',
        title='瞑想がプログラマに与える効果に関して',
        organization = '株式会社Aiming',
@@ -21,7 +21,7 @@
        comment='資料の構成が非常に参考になりました。',
        refTitle='新人プログラマとペアプロしてわかったこと',
        refComments=72)
-  post-with-post-media(:profile-image-src='require("@/assets/home/user/YumaInaura.png")',
+  post-with-post-media(:profile-image-src='require("@/assets/home/user/neko_8.png")',
        who='Yuma Inaura', when='1 week ago',
        title='瞑想がプログラマに与える効果に関して',
        organization = '株式会社Aiming',

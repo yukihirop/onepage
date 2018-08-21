@@ -37,7 +37,7 @@ describe('UserMedia.vue', () => {
     expect(typeof UserMedia.data).toBe('function')
     const defaultData = UserMedia.data()
     // assetsTransformerによって画像名に変換されてしまう。
-    expect(defaultData.profileImageSrcs).toEqual(["gorilla.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "YumaInaura.png", "yukihirop.jpg"])
+    expect(defaultData.profileImageSrcs).toEqual(["gorilla.png", "neko_8.png", "neko_8.png", "neko_8.png", "neko_8.png", "neko_8.png", "neko_8.png", "neko_8.png", "neko_8.png", "yukihirop.jpg"])
     expect(defaultData.users).toEqual([])
   })
 
